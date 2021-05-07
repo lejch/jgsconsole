@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.jgsconsole.app.repository.account.MenuDao">
+
+    <insert id="addMenu" parameterType="Map">
+    	insert into sys_menu(
+    		MENU_ID,
+    		PARENT_ID,
+    		ICONCLS,
+    		OPERTYPE,
+    		FLAG,
+    		APP_ID,
+    		TITLE,
+    		ORDER_SORT,
+    		LOCATION,
+    		DESCRIPTION,
+    		STATE
+    	) 
+    	values (
+    		#{MENU_ID},
+    		#{PARENT_ID},
+    		#{ICONCLS},
+    		#{OPERTYPE},
+    		#{FLAG},
+    		#{APP_ID},
+    		#{TITLE},
+    		#{ORDER_SORT},
+    		#{LOCATION},
+    		#{DESCRIPTION},
+    		#{STATE}
+    	)
+	</insert>
+	
+    <update id="editMenu" parameterType="Map">
+		update sys_menu set PARENT_ID=#{PARENT_ID},
+		ICONCLS=#{ICONCLS},
+		OPERTYPE=#{OPERTYPE},
+		APP_ID=#{APP_ID},
+		TITLE=#{TITLE},
+		ORDER_SORT=#{ORDER_SORT},
+		LOCATION=#{LOCATION},
+		DESCRIPTION=#{DESCRIPTION} 
+		where MENU_ID=#{MENU_ID}
+	</update>
+	
+    <update id="enableMenu" parameterType="Map">
+		update sys_menu set FLAG=#{enableFlag}
+		where MENU_ID=#{MENU_ID}
+	</update>
+	
+    <delete id="delMenuRoleHas" parameterType="Map">
+    	delete from sys_role_menu where MENU_ID=#{MENU_ID}
+	</delete>
+	
+    <select id="execSql" resultType="Map" parameterType="Map">
+		select * from sys_menu where title like #{SEARCHVAL} and app_id=#{APP_ID} and opertype='1' and flag='0' and parent_id!=#{APP_ID}
+	</select>
+    
+	<select id="getTreelistAdmin" resultType="java.util.HashMap" parameterType="Map"> 
+        select * from SYS_MENU
+        WHERE flag='0' and OPERTYPE!='2' 
+        <if test="ID != null and ID != ''">
+  			and parent_id=#{ID} 
+  		</if>
+  		<if test="ID == null or ID == ''">
+  			and parent_id is null
+  		</if>
+        order by TO_NUMBER(ORDER_SORT)
+    </select>
+    
+	<select id="selectForDelMenus" resultType="java.util.HashMap" parameterType="java.lang.String"> 
+       	select * from sys_menu
+		start with menu_id = #{_parameter}
+		connect by prior menu_id =  parent_id
+    </select>
+    
+	<delete id="delMenu" parameterType="java.lang.String"> 
+		delete from sys_menu where menu_id= #{_parameter}
+    </delete>
+    
+	<delete id="delSpecialPermissionMenu" parameterType="java.lang.String"> 
+		delete from sys_user_menu where menu_id= #{_parameter}
+    </delete>
+    
+	<select id="getTreeDatalistAdmin" resultType="java.util.HashMap" parameterType="Map"> 
+        select * from SYS_MENU
+        <if test="ID != null and ID != ''">
+  			WHERE parent_id=#{ID} 
+  		</if>
+  		<if test="ID == null or ID == ''">
+  			WHERE parent_id is null
+  		</if>
+        order by TO_NUMBER(ORDER_SORT)
+    </select>
+    
+    <insert id="insertMenu" parameterType="com.jgsconsole.app.entity.account.Menu"> 
+       insert into 
+       	SYS_MENU(
+       		MENU_ID,
+       		TITLE,
+       		LOCATION,
+       		PARENT_ID,
+       		DESCRIPTION,
+       		ORDER_SORT,
+       		CREATE_TIME,
+       		UPDATE_TIME,
+       		STATE
+       		) 
+       	values(
+       		#{menuId},
+       		#{title},
+       		#{location},
+       		#{parentId},
+       		#{description},
+       		#{oderSort},
+       		#{createTime},
+       		#{updateTime},
+       		#{state}
+       		) 
+    </insert> 
+    
+    <update id="updateMenu" parameterType="com.jgsconsole.app.entity.account.Menu">
+    	update SYS_MENU set
+    		TITLE = #{title},
+    		LOCATION = #{location},
+    		DESCRIPTION = #{description},
+    		UPDATE_TIME = #{updateTime}
+    	where
+    		MENU_ID = #{menuId}
+    </update>
+    
+    <update id="updateSetMenuState" parameterType="Map">
+    	update SYS_MENU set
+    		STATE = 'closed'
+    	where
+    		MENU_ID = #{PARENT_ID}
+    </update>
+    
+    <update id="updateAppId" parameterType="Map">
+    	update SYS_MENU set
+    		APP_ID = #{APP_ID}
+    	where
+    		MENU_ID = #{MENU_ID}
+    </update>
+    
+    <update id="delSetParentState" parameterType="Map">
+    	update SYS_MENU set
+    		STATE = 'open'
+    	where
+    		MENU_ID = #{PARENT_ID}
+    </update>
+    
+</mapper> 

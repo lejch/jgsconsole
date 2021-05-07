@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jgsconsole.app.repository.biz.UserRegDao">
+	<select id="getGrhysq" resultType="java.util.HashMap" parameterType="map">
+		select count(1) num,'个人会员申请' name,#{ID} id,#{APP_ID} app_id from ORG_MEMBEREG where HAS_OPERATE='1' and flag='1'
+	</select>
+	<select id="getLshysq" resultType="java.util.HashMap" parameterType="map">
+		select count(1) num,'理事会员申请' name,#{ID} id,#{APP_ID} app_id from ORG_MEMBEREG where HAS_LISHI_OPERA='1' and HAS_OPERATE='0' and COUNCIL_FLAG='1'
+	</select>
+	<select id="getTthysq" resultType="java.util.HashMap" parameterType="map">
+		select count(1) num,'团体会员申请' name,#{ID} id,#{APP_ID} app_id from ORG_GROUPREG where HAS_OPERATE='1' and flag='1'
+	</select>
+	<select id="getQyhysq" resultType="java.util.HashMap" parameterType="map">
+		select count(1) num,'企业会员申请' name,#{ID} id,#{APP_ID} app_id from ORG_COMPANY where HAS_OPERATE='1' and flag='1'
+	</select>
+    
+    <update id="disZh" parameterType="map">
+        update sys_user set flag='1' where USER_ID=#{user_id}
+    </update>
+    
+    <update id="enableZh" parameterType="map">
+        update sys_user set flag='0' where USER_ID=#{ID}
+    </update>
+    
+    <select id="getAllRegGroupData" resultType="java.util.HashMap">
+        select * from org_groupreg order by createtime desc
+    </select>
+    
+	<select id="getUserRegCount" resultType="int">
+	  	select count(1) from sys_user
+	</select>
+	
+	<select id="getUserRegList" resultType="java.util.HashMap" parameterType="map">
+		select USER_ID,USER_NAME,CREATE_DATE,PHONE,USER_ALIAS,FLAG from sys_user where user_id!='3' order by create_date desc
+	</select>
+	
+	<select id="getUserRegBySearchCount1" resultType="int" parameterType="map">
+	  	select count(1) from sys_user where USER_NAME like #{SEARCHVAL}
+	</select>
+	
+	<select id="getUserRegBySearch1" resultType="java.util.HashMap" parameterType="map">
+		select USER_ID,USER_NAME,CREATE_DATE,PHONE,USER_ALIAS from sys_user where user_id!='3' and USER_NAME like #{SEARCHVAL} order by create_date desc
+	</select>
+	<select id="getUserRegBySearchCount2" resultType="int" parameterType="map">
+	  	select count(1) from sys_user where USER_ALIAS like #{SEARCHVAL}
+	</select>
+	
+	<select id="getUserRegBySearch2" resultType="java.util.HashMap" parameterType="map">
+		select USER_ID,USER_NAME,CREATE_DATE,PHONE,USER_ALIAS from sys_user where user_id!='3' and USER_ALIAS like #{SEARCHVAL} order by create_date desc
+	</select>
+	<select id="getUserRegBySearchCount3" resultType="int" parameterType="map">
+	  	select count(1) from sys_user where PHONE like #{SEARCHVAL}
+	</select>
+	
+	<select id="getUserRegBySearch3" resultType="java.util.HashMap" parameterType="map">
+		select USER_ID,USER_NAME,CREATE_DATE,PHONE,USER_ALIAS from sys_user where user_id!='3' and PHONE like #{SEARCHVAL} order by create_date desc
+	</select>
+	
+	<update id="getBkPhone" parameterType="map">
+	    update sys_user set PHONE=null where user_id=#{ID}
+	</update>
+	
+	<insert id="initUnbindLog" parameterType="map">
+	    insert into sys_log(ID,
+							OPEARTER,
+							LOG_TYPE,
+							TIME,
+							DESCRIBE,
+							TARGET_ID,
+							USER_ID) values (#{OPERATE_ID},
+							#{OPERATE},
+							#{LOG_TYPE},
+							to_char(sysdate,'yyyy-MM-dd HH24:mi:ss'),
+							#{DESCRIBE},
+							#{TARGET_ID},
+							#{USER_ID})
+	</insert>
+	
+	<update id="changePassword" parameterType="map">
+		update sys_user set PASSWORD=#{surePassword},salt=#{salt} where USER_ID=#{user_id}
+	</update>
+	
+	<select id="getUserOperationed" parameterType="string" resultType="java.util.HashMap">
+	    select * from sys_log where target_id=#{_parameter} order by TIME desc
+	</select>
+	
+</mapper> 

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.jgsconsole.app.repository.account.RoleDao">
+	
+	<!-- 数据缓存 -->
+<!-- 	 <cache type="org.mybatis.caches.ehcache.EhcacheCache"/> -->
+	 
+	<select id="checkRoleName" resultType="java.util.HashMap" parameterType="Map">
+		select * from sys_role where role_name=#{ROLE_NAME} and app_id=#{APP_ID}
+	</select>
+	
+	 <update id="updateAppId" parameterType="Map">
+    	update SYS_ROLE set
+    		APP_ID = #{APP_ID}
+    	where
+    		ROLE_ID = #{ROLE_ID}
+    </update>
+	
+	<select id="getRolesAdmin" resultType="java.util.HashMap" parameterType="Map">
+		select * from sys_role
+		<if test="ROLE_ID != null and ROLE_ID != ''">
+  			where parent_id=#{ROLE_ID} 
+  		</if>
+  		<if test="ROLE_ID == null or ROLE_ID == ''">
+  			where parent_id is null
+  		</if>
+	</select>
+	
+	<select id="getMenuRolesAdmin" resultType="java.util.HashMap" parameterType="Map">
+		select * from sys_role where role_type in ('3','4')
+		<if test="ROLE_ID != null and ROLE_ID != ''">
+  			and parent_id=#{ROLE_ID} 
+  		</if>
+  		<if test="ROLE_ID == null or ROLE_ID == ''">
+  			and parent_id is null
+  		</if>
+	</select>
+	
+	<select id="selectForDelRoles" resultType="java.util.HashMap" parameterType="java.lang.String">
+		select * from sys_role
+		start with role_id =#{_parameter}
+		connect by prior role_id =  parent_id
+	</select>
+	
+	<select id="getOriginalPermission" resultType="java.util.HashMap" parameterType="java.lang.String">
+		select menu_id from sys_role_menu where role_id=#{_parameter}
+	</select>
+	
+	<update id="delSetParentState" parameterType="Map">
+		UPDATE sys_role 
+		set STATE='open'
+		where ROLE_ID=#{PARENT_ID}
+	</update>
+	
+	<insert id="addRole" parameterType="Map" >
+		insert into SYS_Role(
+			ROLE_ID,
+			ROLE_TYPE,
+			ROLE_NAME,
+			CREATE_TIME,
+			PARENT_ID,
+			ROLE_DESCRIPTION,
+			APP_ID,
+			STATE) 
+		values (
+			#{ROLE_ID},
+			#{ROLE_TYPE},
+			#{ROLE_NAME},
+			#{CREATE_TIME},
+			#{PARENT_ID},
+			#{ROLE_DESCRIPTION},
+			#{APP_ID},
+			#{STATE})
+	</insert>
+	
+	<update id="setParentRoleState" parameterType="Map" >
+		UPDATE sys_role 
+		set STATE='closed'
+		where ROLE_ID=#{PARENT_ID}
+	</update>
+	
+	<update id="editRole" parameterType="Map" >
+		UPDATE sys_role 
+		set ROLE_TYPE=#{ROLE_TYPE},
+			ROLE_NAME=#{ROLE_NAME},
+			PARENT_ID=#{PARENT_ID},
+			ROLE_DESCRIPTION=#{ROLE_DESCRIPTION},
+			UPDATE_TIME=#{UPDATE_TIME}
+		where ROLE_ID=#{ROLE_ID}
+	</update>
+	
+	<delete id="delRole" parameterType="java.lang.String">
+		delete from sys_role t where t.role_id=#{_parameter}
+	</delete>
+	
+	<delete id="delRolePermission" parameterType="java.lang.String">
+		delete from sys_role_menu t where t.role_id=#{_parameter}
+	</delete>
+	
+	<delete id="delUserRole" parameterType="java.lang.String">
+		delete from sys_user_role t where t.role_id=#{_parameter}
+	</delete>
+	
+	<select id="getPermissionAdmin" resultType="java.util.HashMap" parameterType="Map">
+		select m.state,m.menu_id,m.title,m.location,m.parent_id,m.iconcls,
+		m.description,m.OPERTYPE,m.app_id,t.ROLE_ID
+		from (select * from sys_menu where flag='0') m left join 
+		(select * from sys_role_menu where role_id=#{role_id}) t 
+		on m.menu_id=t.menu_id
+	</select>
+	
+	<select id="getPermission" resultType="java.util.HashMap" parameterType="Map">
+		select m.state,m.menu_id,m.title,m.location,m.parent_id,m.iconcls,
+		m.description,m.opertype,m.app_id,t.role_id
+		from (select * from sys_menu where flag='0' and app_id in('console',#{app_id})) m left join 
+		(select * from sys_role_menu where role_id=#{role_id}) t 
+		on m.menu_id=t.menu_id
+	</select>
+	
+	<select id="getRolesForUserAdmin" resultType="java.util.HashMap" parameterType="Map">
+		with s1 as (select * from sys_role t where t.ROLE_TYPE!='0'),
+		s2 as (select * from sys_user_role t1 where t1.user_id=#{EDIT_USER_ID})
+		select s1.ROLE_ID,STATE,ROLE_NAME,role_description,ROLE_TYPE,PARENT_ID,APP_ID,USER_ID 
+		from s1 left join s2 on s1.role_id=s2.role_id
+	</select>
+	
+	<select id="getRolesForUser" resultType="java.util.HashMap" parameterType="Map">
+		with s1 as (select * from sys_role where app_id=#{APP_ID}),
+		s2 as (select * from sys_user_role t1 where t1.user_id=#{EDIT_USER_ID})
+		select s1.ROLE_ID,STATE,ROLE_NAME,role_description,ROLE_TYPE,PARENT_ID,APP_ID,USER_ID 
+		from s1 left join s2 on s1.role_id=s2.role_id
+	</select>
+	
+	<select id="getRoleIdByUser" resultType="java.util.HashMap" parameterType="Map">
+	select parent_id,role_type,app_id from sys_role sr right join (select * from sys_user_role where user_id=#{USER_ID}) t 
+	on sr.role_id=t.role_id order by role_type
+	</select>
+	
+	<insert id="addRolemenu">
+		insert into sys_role_menu(ROLE_ID,MENU_ID)
+		<foreach collection="rmlist" item="item" index="index" open="" close="" separator="union all">
+			select #{item.ROLE_ID},#{item.MENU_ID} from dual
+		</foreach>
+	</insert>
+	
+	<insert id="insertUserRole" parameterType="Map">
+        INSERT INTO SYS_USER_ROLE(USER_ID,ROLE_ID) VALUES (#{USER_ID,jdbcType=VARCHAR},#{ROLE_ID,jdbcType=VARCHAR})
+    </insert>
+</mapper> 

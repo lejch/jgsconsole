@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jgsconsole.app.repository.biz.GroupMangeDao">
+    
+    <resultMap id="groupRegResult" type="java.util.HashMap">  
+        <result property="ID" column="ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="DWMC" column="DWMC" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="CLRQ" column="CLRQ" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="ZCZB" column="ZCZB" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="ZGRS" column="ZGRS" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="XXDZ" column="XXDZ" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="HYSL" column="HYSL" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="DWWZ" column="DWWZ" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="CZ" column="CZ" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="FZJGSL" column="FZJGSL" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="YZBM" column="YZBM" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="FRXM" column="FRXM" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="DH" column="DH" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="SEX" column="SEX" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="PHONE" column="PHONE" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="ZWZC" column="ZWZC" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="EMAIL" column="EMAIL" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="LXR" column="LXR" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="LXRDH" column="LXRDH" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="LXRSJ" column="LXRSJ" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="JL" column="JL" jdbcType="CLOB" javaType="java.lang.String" />
+		<result property="CREATETIME" column="CREATETIME" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="FLAG" column="FLAG" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="USERID" column="USERID" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="USERALIAS" column="USERALIAS" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="INITREGSUC" column="INITREGSUC" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="HAS_OPERATE" column="HAS_OPERATE" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="HY_ID" column="HY_ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="SHTIME" column="SHTIME" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="SHUSER" column="SHUSER" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="TTSH_ERR_REASON" column="TTSH_ERR_REASON" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </resultMap>
+    
+    <delete id="delInitRegSuccess" parameterType="map">
+        delete from user_msg where id=#{MSGID} and userid=#{USERID}
+    </delete>
+    
+    <select id="getGroupHz" parameterType="map" resultMap="groupRegResult">
+        <![CDATA[
+	        select HY_ID,DWMC,CLRQ,ZCZB,ZGRS,XXDZ,HYSL,DWWZ,CZ,FZJGSL,YZBM,FRXM,DH,SEX,PHONE,ZWZC,EMAIL,LXR,LXRDH,LXRSJ,JL
+	        from org_groupreg where flag='0' and createtime>=#{starttime} and createtime<=#{endtime}
+	        order by createtime desc
+        ]]>
+    </select>
+    
+    <update id="getBkGroupReg" parameterType="map">
+        update org_groupreg set FLAG='1',SHUSER=null,SHTIME=null,INITREGSUC=null,HY_ID=null,SHUSERID=null,TTSH_ERR_REASON=null where ID=#{ID}
+    </update>
+    
+    <insert id="initRegSuccess" parameterType="map">
+        insert into user_msg(USERID,
+							ID,
+							TITLE,
+							CONTENT,
+							CREATETIME,
+							DATETIME,
+							TYPE) values (
+							#{USERID},
+							#{MSGID},
+							'团体会员申请,已审核通过！',
+							'reg_success.jsp',
+							to_char(sysdate,'yyyy-MM-dd'),
+							to_char(sysdate,'yyyy-MM-dd HH24:mi:ss'),
+							'1')
+    </insert>
+    
+    <insert id="initRegRefuse" parameterType="map">
+        insert into user_msg(USERID,
+							ID,
+							TITLE,
+							CONTENT,
+							CREATETIME,
+							DATETIME,
+							TYPE,
+							MSG_PS) values (
+							#{USERID},
+							#{MSGID},
+							'团体会员申请,审核不通过！',
+							'reg_error.jsp',
+							to_char(sysdate,'yyyy-MM-dd'),
+							to_char(sysdate,'yyyy-MM-dd HH24:mi:ss'),
+							'1',
+							#{TTSH_ERR_REASON})
+    </insert>
+    
+    <update id="refuseGroupReg" parameterType="map">
+        update org_groupreg set FLAG='2',
+        						HAS_OPERATE='0',
+        						SHUSER=#{SHUSER},
+        						SHUSERID=#{SHUSERID},
+        						TTSH_ERR_REASON=#{TTSH_ERR_REASON},
+        						SHTIME=to_char(sysdate,'yyyy-MM-dd HH24:mi:ss'),
+        						INITREGSUC=#{MSGID} 
+        where ID=#{ID}
+    </update>
+    
+    <update id="passGroupReg" parameterType="map">
+        update org_groupreg set FLAG='0',
+        						HAS_OPERATE='0',
+        						HY_ID=#{HY_ID},
+        						SHUSER=#{SHUSER},
+        						SHUSERID=#{SHUSERID},
+        						SHTIME=to_char(sysdate,'yyyy-MM-dd HH24:mi:ss'),
+        						INITREGSUC=#{MSGID} 
+        where ID=#{ID}
+    </update>
+    
+    <select id="getAllRegGroupData" resultMap="groupRegResult">
+        select * from org_groupreg order by createtime desc
+    </select>
+    
+	<select id="getGroupRegCount" resultType="int">
+	  	select count(1) from org_groupreg
+	</select>
+	
+	<select id="getGroupRegList" resultMap="groupRegResult" parameterType="map">
+		select * from org_groupreg order by createtime desc
+	</select>
+	
+	<select id="getUserRegBySearchCount1" resultType="int" parameterType="map">
+	  	select count(1) from org_groupreg where hy_id like #{SEARCHVAL}
+	</select>
+	
+	<select id="getUserRegBySearch1" resultMap="groupRegResult" parameterType="map">
+		select * from org_groupreg where hy_id like #{SEARCHVAL} order by createtime desc
+	</select>
+	
+	<select id="getUserRegBySearchCount2" resultType="int" parameterType="map">
+	  	select count(1) from org_groupreg where DWMC like #{SEARCHVAL}
+	</select>
+	
+	<select id="getUserRegBySearch2" resultMap="groupRegResult" parameterType="map">
+		select * from org_groupreg where DWMC like #{SEARCHVAL} order by createtime desc
+	</select>
+	
+	<select id="getUserRegBySearchCount3" resultType="int" parameterType="map">
+	  	select count(1) from org_groupreg where USERALIAS like #{SEARCHVAL}
+	</select>
+	
+	<select id="getUserRegBySearch3" resultMap="groupRegResult" parameterType="map">
+		select * from org_groupreg where USERALIAS like #{SEARCHVAL} order by createtime desc
+	</select>
+	
+</mapper> 

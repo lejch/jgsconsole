@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jgsconsole.app.repository.biz.CpyMangeDao">
+    
+    <resultMap id="cpyRegResult" type="java.util.HashMap">  
+    	<result property="ID" column="ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="CPY_NAME_CN" column="CPY_NAME_CN" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="CPY_NAME_EN" column="CPY_NAME_EN" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="CPY_CREATE_TIME" column="CPY_CREATE_TIME" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="CPY_GSZCH" column="CPY_GSZCH" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="CPY_TYPE" column="CPY_TYPE" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="CPY_TYPE_OTHER" column="CPY_TYPE_OTHER" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="CPY_BELONG" column="CPY_BELONG" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="CPY_BELONG_OTHER" column="CPY_BELONG_OTHER" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="CPY_ADDR" column="CPY_ADDR" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="CPY_UB" column="CPY_UB" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="FR_NAME" column="FR_NAME" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="FR_ZW" column="FR_ZW" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="FR_BGDH" column="FR_BGDH" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="FR_PHONE" column="FR_PHONE" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="LXR_NAME" column="LXR_NAME" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="LXR_ZW" column="LXR_ZW" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="LXR_BGDH" column="LXR_BGDH" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="LXR_PHONE" column="LXR_PHONE" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="LXR_EMAIL" column="LXR_EMAIL" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="JL" column="JL" jdbcType="CLOB" javaType="java.lang.String" />
+		<result property="CREATETIME" column="CREATETIME" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="CREATETIME_CN" column="CREATETIME_CN" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="USERID" column="USERID" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="USERALIAS" column="USERALIAS" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="SHUSER" column="SHUSER" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="SHUSERID" column="SHUSERID" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="SHTIME" column="SHTIME" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="FLAG" column="FLAG" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="INITREGSUC" column="INITREGSUC" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="HAS_OPERATE" column="HAS_OPERATE" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="HY_ID" column="HY_ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="QYSH_ERR_REASON" column="QYSH_ERR_REASON" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </resultMap>
+    
+    <delete id="delInitRegSuccess" parameterType="map">
+        delete from user_msg where id=#{MSGID} and userid=#{USERID}
+    </delete>
+    
+    <select id="getGroupHz" parameterType="map" resultMap="cpyRegResult">
+        <![CDATA[
+	        select HY_ID,CPY_NAME_CN,CPY_NAME_EN,CPY_CREATE_TIME,CPY_GSZCH,CPY_TYPE,CPY_TYPE_OTHER,CPY_BELONG,CPY_BELONG_OTHER,CPY_ADDR,CPY_UB,
+				   FR_NAME,FR_ZW,FR_BGDH,FR_PHONE,LXR_NAME,LXR_ZW,LXR_BGDH,LXR_PHONE,LXR_EMAIL,JL
+	        from org_company where flag='0' and createtime>=#{starttime} and createtime<=#{endtime}
+	        order by createtime desc
+        ]]>
+    </select>
+    
+    <update id="getBkGroupReg" parameterType="map">
+        update org_company set FLAG='1',SHUSER=null,SHTIME=null,INITREGSUC=null,HY_ID=null,SHUSERID=null,QYSH_ERR_REASON=null where ID=#{ID}
+    </update>
+    
+    <insert id="initRegSuccess" parameterType="map">
+        insert into user_msg(USERID,ID,TITLE,CONTENT,CREATETIME,DATETIME,TYPE) values (
+							#{USERID},
+							#{MSGID},
+							'企业会员申请,已审核通过！',
+							'reg_success.jsp',
+							to_char(sysdate,'yyyy-MM-dd'),
+							to_char(sysdate,'yyyy-MM-dd HH24:mi:ss'),
+							'1')
+    </insert>
+    
+    <insert id="initRegRefuse" parameterType="map">
+        insert into user_msg(USERID,ID,TITLE,CONTENT,CREATETIME,DATETIME,TYPE,MSG_PS) values (
+							#{USERID},
+							#{MSGID},
+							'企业会员申请,审核不通过！',
+							'reg_error.jsp',
+							to_char(sysdate,'yyyy-MM-dd'),
+							to_char(sysdate,'yyyy-MM-dd HH24:mi:ss'),
+							'1',
+							#{TTSH_ERR_REASON})
+    </insert>
+    
+    <update id="refuseGroupReg" parameterType="map">
+        update org_company set FLAG='2',
+        						HAS_OPERATE='0',
+        						SHUSER=#{SHUSER},
+        						SHUSERID=#{SHUSERID},
+        						QYSH_ERR_REASON=#{TTSH_ERR_REASON},
+        						SHTIME=to_char(sysdate,'yyyy-MM-dd HH24:mi:ss'),
+        						INITREGSUC=#{MSGID} 
+        where ID=#{ID}
+    </update>
+    
+    <update id="passGroupReg" parameterType="map">
+        update org_company set FLAG='0',
+        					   HAS_OPERATE='0',
+        					   HY_ID=#{HY_ID},
+        					   SHUSER=#{SHUSER},
+        				       SHUSERID=#{SHUSERID},
+        				       SHTIME=to_char(sysdate,'yyyy-MM-dd HH24:mi:ss'),
+        					   INITREGSUC=#{MSGID} 
+        where ID=#{ID}
+    </update>
+    
+    <select id="getAllRegGroupData" resultMap="cpyRegResult">
+        select * from org_groupreg order by createtime desc
+    </select>
+    
+	<select id="getCpyRegCount" resultType="int">
+	  	select count(1) from org_company
+	</select>
+	
+	<select id="getCpyRegList" resultMap="cpyRegResult" parameterType="map">
+		select * from org_company order by createtime desc
+	</select>
+	
+	<select id="getUserRegBySearchCount1" resultType="int" parameterType="map">
+	  	select count(1) from org_company where hy_id like #{SEARCHVAL}
+	</select>
+	
+	<select id="getUserRegBySearch1" resultMap="cpyRegResult" parameterType="map">
+		select * from org_company where hy_id like #{SEARCHVAL} order by createtime desc
+	</select>
+	
+	<select id="getUserRegBySearchCount2" resultType="int" parameterType="map">
+	  	select count(1) from org_company where CPY_NAME_CN like #{SEARCHVAL}
+	</select>
+	
+	<select id="getUserRegBySearch2" resultMap="cpyRegResult" parameterType="map">
+		select * from org_company where CPY_NAME_CN like #{SEARCHVAL} order by createtime desc
+	</select>
+	
+	<select id="getUserRegBySearchCount3" resultType="int" parameterType="map">
+	  	select count(1) from org_company where CPY_NAME_EN like #{SEARCHVAL}
+	</select>
+	
+	<select id="getUserRegBySearch3" resultMap="cpyRegResult" parameterType="map">
+		select * from org_company where CPY_NAME_EN like #{SEARCHVAL} order by createtime desc
+	</select>
+	
+	<select id="getUserRegBySearchCount4" resultType="int" parameterType="map">
+	  	select count(1) from org_company where USERALIAS like #{SEARCHVAL}
+	</select>
+	
+	<select id="getUserRegBySearch4" resultMap="cpyRegResult" parameterType="map">
+		select * from org_company where USERALIAS like #{SEARCHVAL} order by createtime desc
+	</select>
+	
+</mapper> 

@@ -1,0 +1,12 @@
+2018-12-29 15:55:32,384 [main] DEBUG [druid.sql.Connection] - {conn-10001} connected
+2018-12-29 15:55:32,384 [main] DEBUG [druid.sql.Connection] - {conn-10001} setAutoCommit false
+2018-12-29 15:55:32,416 [main] INFO  [com.alibaba.druid.pool.DruidDataSource] - {dataSource-1} inited
+2018-12-29 15:55:32,419 [main] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2018-12-29 15:55:32,419 [main] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2018-12-29 15:55:32,652 [main] ERROR [com.alibaba.druid.pool.DruidDataSource] - invalid oracle validationQuery. SELECT 'x', may should be : SELECT 'x' FROM DUAL
+2018-12-29 15:55:32,665 [main] DEBUG [druid.sql.Connection] - {conn-110001} connected
+2018-12-29 15:55:32,665 [main] DEBUG [druid.sql.Connection] - {conn-110001} setAutoCommit false
+2018-12-29 15:55:32,666 [main] INFO  [com.alibaba.druid.pool.DruidDataSource] - {dataSource-2} inited
+2018-12-29 15:55:32,666 [main] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2018-12-29 15:55:32,666 [main] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2018-12-29 15:55:33,936 [main] INFO  [org.hibernate.validator.internal.util.Version] - HV000001: Hibernate Validator 4.3.1.Final

@@ -1,0 +1,126 @@
+2018-08-09 08:17:08,790 [http-8081-10] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2018-08-09 08:17:08,792 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20000} Parameters : [admin]
+2018-08-09 08:17:08,792 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20000} Types : [VARCHAR]
+2018-08-09 08:17:08,793 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20000} executed. 1.298 millis. select * from user_lock where user_name=? order by TRY_TIME desc
+2018-08-09 08:17:08,793 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20000} clearParameters. 
+2018-08-09 08:17:08,793 [http-8081-10] DEBUG [druid.sql.Connection] - {conn-10001} commited
+2018-08-09 08:17:08,794 [http-8081-10] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2018-08-09 08:17:08,794 [http-8081-10] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2018-08-09 08:17:08,794 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20001} Parameters : [admin]
+2018-08-09 08:17:08,794 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20001} Types : [VARCHAR]
+2018-08-09 08:17:08,795 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20001} executed. 0.669 millis. select * from sys_user where user_name=?
+2018-08-09 08:17:08,795 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20001} clearParameters. 
+2018-08-09 08:17:08,796 [http-8081-10] DEBUG [druid.sql.Connection] - {conn-10001} commited
+2018-08-09 08:17:08,796 [http-8081-10] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2018-08-09 08:17:08,796 [http-8081-10] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2018-08-09 08:17:08,796 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20002} Parameters : [3]
+2018-08-09 08:17:08,796 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20002} Types : [VARCHAR]
+2018-08-09 08:17:08,798 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20002} executed. 1.265 millis. select role_id roleId,role_name roleName,role_description roleDescription,ROLE_TYPE roleType
+  		from sys_role where role_id in 
+  		(select role_id from sys_user_role r where r.user_id=?) order by ROLE_TYPE
+2018-08-09 08:17:08,798 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20002} clearParameters. 
+2018-08-09 08:17:08,799 [http-8081-10] DEBUG [druid.sql.Connection] - {conn 10001} rollback
+2018-08-09 08:17:08,799 [http-8081-10] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2018-08-09 08:17:08,799 [http-8081-10] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2018-08-09 08:17:08,799 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20003} Parameters : [3, 3]
+2018-08-09 08:17:08,799 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20003} Types : [VARCHAR, VARCHAR]
+2018-08-09 08:17:08,801 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20003} executed. 2.428 millis. select 
+  	     	menu_id menuId,
+  	     	TITLE,
+  	     	LOCATION,
+  	     	PARENT_ID parentId,
+  	     	ICONCLS icon,
+  	     	DESCRIPTION,
+  	     	ORDER_SORT oderSort,
+  	     	CREATE_TIME createTime,
+  	     	UPDATE_TIME updateTime,
+  	     	OPERTYPE,
+  	     	FLAG,
+  	     	app_id
+  	     	from sys_menu a where exists(select 1 from 
+  	     	(select distinct menu_id from sys_role_menu where role_id in 
+				(select role_id from sys_user_role where user_id=?) union 
+			select menu_id from sys_user_menu where user_id=? and operate='0') b 
+			where a.menu_id = b.menu_id
+			)
+			order by ORDER_SORT
+2018-08-09 08:17:08,808 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20003} clearParameters. 
+2018-08-09 08:17:08,808 [http-8081-10] DEBUG [druid.sql.Connection] - {conn 10001} rollback
+2018-08-09 08:17:08,808 [http-8081-10] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2018-08-09 08:17:08,812 [http-8081-10] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2018-08-09 08:17:08,813 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20005} Parameters : [admin]
+2018-08-09 08:17:08,813 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20005} Types : [VARCHAR]
+2018-08-09 08:17:08,813 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20005} executed. 0.662 millis. delete from user_lock where user_name=?
+2018-08-09 08:17:08,813 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20005} clearParameters. 
+2018-08-09 08:17:08,814 [http-8081-10] DEBUG [druid.sql.Connection] - {conn-10001} commited
+2018-08-09 08:17:08,814 [http-8081-10] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2018-08-09 08:17:08,814 [http-8081-10] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2018-08-09 08:17:08,815 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20006} Parameters : [5397f9a7-f011-4e9a-bdb2-b4098bb8b9a9, 192.168.0.135, admin, 登陆日志, 2018-08-09 08:17:08, 管理员：成功登陆系统, , 3]
+2018-08-09 08:17:08,815 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20006} Types : [VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR]
+2018-08-09 08:17:08,815 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20006} executed. 0.83 millis. insert into sys_log(
+    		ID,
+    		IP,
+    		OPEARTER,
+    		LOG_TYPE,
+    		TIME,
+    		DESCRIBE,
+    		OPEATE_DETAIL,
+    		USER_ID
+    	) 
+    	values (
+    		?,
+    		?,
+    		?,
+    		?,
+    		?,
+    		?,
+    		?,
+    		?
+    	)
+2018-08-09 08:17:08,816 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20006} clearParameters. 
+2018-08-09 08:17:08,816 [http-8081-10] DEBUG [druid.sql.Connection] - {conn-10001} commited
+2018-08-09 08:17:08,817 [http-8081-10] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2018-08-09 08:17:09,010 [http-8081-1] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2018-08-09 08:17:09,011 [http-8081-1] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120009} Parameters : []
+2018-08-09 08:17:09,011 [http-8081-1] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120009} Types : []
+2018-08-09 08:17:09,012 [http-8081-1] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120009} executed. 1.573 millis. select count(1) from org_advice
+2018-08-09 08:17:09,012 [http-8081-1] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120009} clearParameters. 
+2018-08-09 08:17:09,013 [http-8081-1] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2018-08-09 08:17:09,013 [http-8081-1] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2018-08-09 08:17:09,014 [http-8081-1] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2018-08-09 08:17:09,014 [http-8081-1] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120010} Parameters : []
+2018-08-09 08:17:09,014 [http-8081-1] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120010} Types : []
+2018-08-09 08:17:09,016 [http-8081-1] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120010, rs-150053} query executed. 2.168 millis. select count(0) from ( select * from org_advice order by CREATETIME desc )
+2018-08-09 08:17:09,016 [http-8081-1] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120010} clearParameters. 
+2018-08-09 08:17:09,017 [http-8081-1] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120011} Parameters : []
+2018-08-09 08:17:09,017 [http-8081-1] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120011} Types : []
+2018-08-09 08:17:09,018 [http-8081-1] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120011} executed. 1.638 millis. select * from ( select row_.*, rownum rownum_ from ( select * from org_advice order by CREATETIME desc ) row_ ) where rownum_ > 0 and rownum_ <= 10
+2018-08-09 08:17:09,029 [http-8081-1] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120011} clearParameters. 
+2018-08-09 08:17:09,029 [http-8081-1] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2018-08-09 08:17:09,030 [http-8081-1] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2018-08-09 08:18:04,663 [http-8081-9] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2018-08-09 08:18:04,664 [http-8081-9] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20007} Parameters : [3]
+2018-08-09 08:18:04,664 [http-8081-9] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20007} Types : [VARCHAR]
+2018-08-09 08:18:04,666 [http-8081-9] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20007} executed. 2.515 millis. select * from (select t.*,row_number() over(order by time desc) as ss from sys_log t 
+	    where user_id=?) s where s.ss='2'
+2018-08-09 08:18:04,667 [http-8081-9] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20007} clearParameters. 
+2018-08-09 08:18:04,667 [http-8081-9] DEBUG [druid.sql.Connection] - {conn-10001} commited
+2018-08-09 08:18:04,667 [http-8081-9] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2018-08-09 08:18:07,796 [http-8081-10] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2018-08-09 08:18:07,796 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120009} Parameters : []
+2018-08-09 08:18:07,796 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120009} Types : []
+2018-08-09 08:18:07,797 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120009} executed. 0.728 millis. select count(1) from org_advice
+2018-08-09 08:18:07,797 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120009} clearParameters. 
+2018-08-09 08:18:07,797 [http-8081-10] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2018-08-09 08:18:07,797 [http-8081-10] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2018-08-09 08:18:07,797 [http-8081-10] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2018-08-09 08:18:07,798 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120010} Parameters : []
+2018-08-09 08:18:07,798 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120010} Types : []
+2018-08-09 08:18:07,799 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120010, rs-150056} query executed. 1.038 millis. select count(0) from ( select * from org_advice order by CREATETIME desc )
+2018-08-09 08:18:07,799 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120010} clearParameters. 
+2018-08-09 08:18:07,799 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120011} Parameters : []
+2018-08-09 08:18:07,799 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120011} Types : []
+2018-08-09 08:18:07,800 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120011} executed. 0.906 millis. select * from ( select row_.*, rownum rownum_ from ( select * from org_advice order by CREATETIME desc ) row_ ) where rownum_ > 0 and rownum_ <= 10
+2018-08-09 08:18:07,806 [http-8081-10] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120011} clearParameters. 
+2018-08-09 08:18:07,807 [http-8081-10] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2018-08-09 08:18:07,807 [http-8081-10] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle

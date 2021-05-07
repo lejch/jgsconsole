@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd"
+	default-lazy-init="true">
+
+	<description>Shiro安全配置</description>
+	
+	<!-- Shiro's main business-tier object for web-enabled applications -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="shiroDbRealm" />
+        <property name="cacheManager" ref="shiroEhcacheManager" />
+	</bean>
+	
+	<!-- 項目自定义的Realm, 所有accountService依赖的dao都需要用depends-on声明 -->
+	<bean id="shiroDbRealm" class="com.jgsconsole.app.service.account.ShiroDbRealm" depends-on="">
+		<property name="accountService" ref="accountService"/>
+	</bean>
+	
+	<!-- 自定义url过滤器 -->
+	<bean id="URLFilter" class="com.jgsconsole.app.web.filter.URLFilter">
+		<constructor-arg>
+		<value>sitemesh=false;EditDlg;View</value>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="UserFormAuthenticationFilter" class="com.jgsconsole.app.web.filter.UserFormAuthenticationFilter"></bean>
+	
+    <bean id="UnieapSessionFilter" class="com.jgsconsole.app.web.filter.UnieapSessionFilter"/>
+	
+	<!-- Shiro Filter /login = authc-->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean" depends-on="UserFormAuthenticationFilter">
+		 <property name="filters">
+			<util:map>
+				<entry key="UserFormAuthenticationFilter" value-ref="UserFormAuthenticationFilter"/>
+				<entry key="urlFilter" value-ref="URLFilter"/>
+				<entry key="user" value-ref="UnieapSessionFilter"/>
+			</util:map>
+    	</property> 
+		<property name="securityManager" ref="securityManager" />
+		<property name="loginUrl" value="/login" />
+		<property name="successUrl" value="/" />
+		<property name="unauthorizedUrl" value="/PermissionController/403"/>
+		<property name="filterChainDefinitions">
+			<value>
+				/cut/** = anon
+				/views/account/imgValidCode3.jsp = anon
+                /sso** = anon
+				/doctViewController/** = anon
+                /login = UserFormAuthenticationFilter
+                /login;** = UserFormAuthenticationFilter
+				/logout = logout
+				/static/** = anon
+				/upload/** = anon
+				/homepic/** = anon
+				/previewpdf/** = anon
+				/Hpwlm/** = anon
+				/download/** = anon
+				/xhfiles/** = anon
+				/importFiles/** = anon
+				/views/themeLayouts/** = user
+				/views/**/*.jsp = user,urlFilter
+				/** = user
+			</value>
+		</property>
+	</bean>
+	
+	<!-- 用户授权信息Cache, 采用EhCache -->
+	<bean id="shiroEhcacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+		<property name="cacheManagerConfigFile" value="classpath:ehcache/ehcache-shiro.xml"/>
+	</bean>
+	
+	<!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+	
+</beans>

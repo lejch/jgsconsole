@@ -1,0 +1,4 @@
+2019-01-02 09:19:41,177 [Thread-18] DEBUG [druid.sql.Connection] - {conn-110001} closed
+2019-01-02 09:19:41,179 [Thread-18] INFO  [com.alibaba.druid.pool.DruidDataSource] - {dataSource-2} closed
+2019-01-02 09:19:41,185 [Thread-18] DEBUG [druid.sql.Connection] - {conn-10001} closed
+2019-01-02 09:19:41,185 [Thread-18] INFO  [com.alibaba.druid.pool.DruidDataSource] - {dataSource-1} closed

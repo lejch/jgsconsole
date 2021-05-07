@@ -1,0 +1,823 @@
+2019-01-03 08:38:00,708 [main] DEBUG [druid.sql.Connection] - {conn-10001} connected
+2019-01-03 08:38:00,708 [main] DEBUG [druid.sql.Connection] - {conn-10001} setAutoCommit false
+2019-01-03 08:38:00,744 [main] INFO  [com.alibaba.druid.pool.DruidDataSource] - {dataSource-1} inited
+2019-01-03 08:38:00,747 [main] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2019-01-03 08:38:00,748 [main] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2019-01-03 08:38:00,970 [main] ERROR [com.alibaba.druid.pool.DruidDataSource] - invalid oracle validationQuery. SELECT 'x', may should be : SELECT 'x' FROM DUAL
+2019-01-03 08:38:00,983 [main] DEBUG [druid.sql.Connection] - {conn-110001} connected
+2019-01-03 08:38:00,983 [main] DEBUG [druid.sql.Connection] - {conn-110001} setAutoCommit false
+2019-01-03 08:38:00,985 [main] INFO  [com.alibaba.druid.pool.DruidDataSource] - {dataSource-2} inited
+2019-01-03 08:38:00,985 [main] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 08:38:00,985 [main] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 08:38:02,278 [main] INFO  [org.hibernate.validator.internal.util.Version] - HV000001: Hibernate Validator 4.3.1.Final
+2019-01-03 08:38:22,398 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2019-01-03 08:38:22,434 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20000} created. select * from user_lock where user_name=? order by TRY_TIME desc
+2019-01-03 08:38:22,436 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20000} Parameters : [admin]
+2019-01-03 08:38:22,436 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20000} Types : [VARCHAR]
+2019-01-03 08:38:22,439 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20000} executed. 3.688 millis. select * from user_lock where user_name=? order by TRY_TIME desc
+2019-01-03 08:38:22,447 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20000} clearParameters. 
+2019-01-03 08:38:22,449 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-10001} commited
+2019-01-03 08:38:22,450 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2019-01-03 08:38:22,451 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2019-01-03 08:38:22,451 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20001} created. select * from sys_user where user_name=?
+2019-01-03 08:38:22,451 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20001} Parameters : [admin]
+2019-01-03 08:38:22,451 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20001} Types : [VARCHAR]
+2019-01-03 08:38:22,453 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20001} executed. 2.107 millis. select * from sys_user where user_name=?
+2019-01-03 08:38:22,500 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20001} clearParameters. 
+2019-01-03 08:38:22,500 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-10001} commited
+2019-01-03 08:38:22,501 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2019-01-03 08:38:22,501 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2019-01-03 08:38:22,501 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20002} created. select role_id roleId,role_name roleName,role_description roleDescription,ROLE_TYPE roleType
+  		from sys_role where role_id in 
+  		(select role_id from sys_user_role r where r.user_id=?) order by ROLE_TYPE
+2019-01-03 08:38:22,501 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20002} Parameters : [3]
+2019-01-03 08:38:22,501 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20002} Types : [VARCHAR]
+2019-01-03 08:38:22,503 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20002} executed. 2.286 millis. select role_id roleId,role_name roleName,role_description roleDescription,ROLE_TYPE roleType
+  		from sys_role where role_id in 
+  		(select role_id from sys_user_role r where r.user_id=?) order by ROLE_TYPE
+2019-01-03 08:38:22,504 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20002} clearParameters. 
+2019-01-03 08:38:22,505 [http-8081-4] DEBUG [druid.sql.Connection] - {conn 10001} rollback
+2019-01-03 08:38:22,505 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2019-01-03 08:38:22,505 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2019-01-03 08:38:22,505 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20003} created. select 
+  	     	menu_id menuId,
+  	     	TITLE,
+  	     	LOCATION,
+  	     	PARENT_ID parentId,
+  	     	ICONCLS icon,
+  	     	DESCRIPTION,
+  	     	ORDER_SORT oderSort,
+  	     	CREATE_TIME createTime,
+  	     	UPDATE_TIME updateTime,
+  	     	OPERTYPE,
+  	     	FLAG,
+  	     	need_msg,
+  	     	need_msgtable,
+  	     	app_id
+  	     	from sys_menu a where exists(select 1 from 
+  	     	(select distinct menu_id from sys_role_menu where role_id in 
+				(select role_id from sys_user_role where user_id=?) union 
+			select menu_id from sys_user_menu where user_id=? and operate='0') b 
+			where a.menu_id = b.menu_id
+			)
+			order by ORDER_SORT
+2019-01-03 08:38:22,505 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20003} Parameters : [3, 3]
+2019-01-03 08:38:22,505 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20003} Types : [VARCHAR, VARCHAR]
+2019-01-03 08:38:22,512 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20003} executed. 6.579 millis. select 
+  	     	menu_id menuId,
+  	     	TITLE,
+  	     	LOCATION,
+  	     	PARENT_ID parentId,
+  	     	ICONCLS icon,
+  	     	DESCRIPTION,
+  	     	ORDER_SORT oderSort,
+  	     	CREATE_TIME createTime,
+  	     	UPDATE_TIME updateTime,
+  	     	OPERTYPE,
+  	     	FLAG,
+  	     	need_msg,
+  	     	need_msgtable,
+  	     	app_id
+  	     	from sys_menu a where exists(select 1 from 
+  	     	(select distinct menu_id from sys_role_menu where role_id in 
+				(select role_id from sys_user_role where user_id=?) union 
+			select menu_id from sys_user_menu where user_id=? and operate='0') b 
+			where a.menu_id = b.menu_id
+			)
+			order by ORDER_SORT
+2019-01-03 08:38:22,524 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20003} clearParameters. 
+2019-01-03 08:38:22,525 [http-8081-4] DEBUG [druid.sql.Connection] - {conn 10001} rollback
+2019-01-03 08:38:22,525 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2019-01-03 08:38:22,558 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2019-01-03 08:38:22,558 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20004} created. delete from user_lock where user_name=?
+2019-01-03 08:38:22,558 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20004} Parameters : [admin]
+2019-01-03 08:38:22,558 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20004} Types : [VARCHAR]
+2019-01-03 08:38:22,560 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20004} executed. 1.779 millis. delete from user_lock where user_name=?
+2019-01-03 08:38:22,560 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20004} clearParameters. 
+2019-01-03 08:38:22,561 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-10001} commited
+2019-01-03 08:38:22,561 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2019-01-03 08:38:22,562 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2019-01-03 08:38:22,562 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20005} created. insert into sys_log(
+    		ID,
+    		IP,
+    		OPEARTER,
+    		LOG_TYPE,
+    		TIME,
+    		DESCRIBE,
+    		OPEATE_DETAIL,
+    		USER_ID
+    	) 
+    	values (
+    		?,
+    		?,
+    		?,
+    		?,
+    		?,
+    		?,
+    		?,
+    		?
+    	)
+2019-01-03 08:38:22,562 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20005} Parameters : [a44603c5-9eed-4c9c-9a44-78a72b3cd503, 192.168.1.100, admin, 登陆日志, 2019-01-03 08:38:22, 管理员：成功登陆系统, , 3]
+2019-01-03 08:38:22,563 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20005} Types : [VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR]
+2019-01-03 08:38:22,565 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20005} executed. 2.464 millis. insert into sys_log(
+    		ID,
+    		IP,
+    		OPEARTER,
+    		LOG_TYPE,
+    		TIME,
+    		DESCRIBE,
+    		OPEATE_DETAIL,
+    		USER_ID
+    	) 
+    	values (
+    		?,
+    		?,
+    		?,
+    		?,
+    		?,
+    		?,
+    		?,
+    		?
+    	)
+2019-01-03 08:38:22,565 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20005} clearParameters. 
+2019-01-03 08:38:22,567 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-10001} commited
+2019-01-03 08:38:22,567 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2019-01-03 08:38:22,934 [http-8081-5] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 08:38:22,936 [http-8081-5] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120000} created. select count(1) num,'个人会员申请' name,? id,? app_id from ORG_MEMBEREG where HAS_OPERATE='1' and flag='1'
+2019-01-03 08:38:22,936 [http-8081-5] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120000} Parameters : [ffc6c177-3ea8-44f4-abe2-ce51fd501fd8, reg]
+2019-01-03 08:38:22,936 [http-8081-5] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120000} Types : [VARCHAR, VARCHAR]
+2019-01-03 08:38:22,944 [http-8081-5] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120000} executed. 8.65 millis. select count(1) num,'个人会员申请' name,? id,? app_id from ORG_MEMBEREG where HAS_OPERATE='1' and flag='1'
+2019-01-03 08:38:22,945 [http-8081-5] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120000} clearParameters. 
+2019-01-03 08:38:22,945 [http-8081-5] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 08:38:22,945 [http-8081-5] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 08:38:22,946 [http-8081-5] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 08:38:22,946 [http-8081-5] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120001} created. select count(1) num,'理事会员申请' name,? id,? app_id from ORG_MEMBEREG where HAS_LISHI_OPERA='1' and HAS_OPERATE='0' and COUNCIL_FLAG='1'
+2019-01-03 08:38:22,946 [http-8081-5] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120001} Parameters : [ffc6c177-3ea8-44f4-abe2-ce51fd501fd8, reg]
+2019-01-03 08:38:22,946 [http-8081-5] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120001} Types : [VARCHAR, VARCHAR]
+2019-01-03 08:38:22,948 [http-8081-5] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120001} executed. 1.625 millis. select count(1) num,'理事会员申请' name,? id,? app_id from ORG_MEMBEREG where HAS_LISHI_OPERA='1' and HAS_OPERATE='0' and COUNCIL_FLAG='1'
+2019-01-03 08:38:22,948 [http-8081-5] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120001} clearParameters. 
+2019-01-03 08:38:22,948 [http-8081-5] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 08:38:22,948 [http-8081-5] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 08:38:22,949 [http-8081-5] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 08:38:22,949 [http-8081-5] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120002} created. select count(1) num,'团体会员申请' name,? id,? app_id from ORG_GROUPREG where HAS_OPERATE='1' and flag='1'
+2019-01-03 08:38:22,949 [http-8081-5] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120002} Parameters : [4ba3a444-be52-4cea-b8cc-138a6efdfdf6, reg]
+2019-01-03 08:38:22,949 [http-8081-5] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120002} Types : [VARCHAR, VARCHAR]
+2019-01-03 08:38:22,951 [http-8081-5] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120002} executed. 1.731 millis. select count(1) num,'团体会员申请' name,? id,? app_id from ORG_GROUPREG where HAS_OPERATE='1' and flag='1'
+2019-01-03 08:38:22,951 [http-8081-5] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120002} clearParameters. 
+2019-01-03 08:38:22,951 [http-8081-5] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 08:38:22,951 [http-8081-5] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 08:38:22,952 [http-8081-5] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 08:38:22,952 [http-8081-5] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120003} created. select count(1) num,'企业会员申请' name,? id,? app_id from ORG_COMPANY where HAS_OPERATE='1' and flag='1'
+2019-01-03 08:38:22,952 [http-8081-5] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120003} Parameters : [a8337781-696e-4f2c-a8cf-39343af53941, reg]
+2019-01-03 08:38:22,952 [http-8081-5] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120003} Types : [VARCHAR, VARCHAR]
+2019-01-03 08:38:22,953 [http-8081-5] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120003} executed. 1.541 millis. select count(1) num,'企业会员申请' name,? id,? app_id from ORG_COMPANY where HAS_OPERATE='1' and flag='1'
+2019-01-03 08:38:22,953 [http-8081-5] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120003} clearParameters. 
+2019-01-03 08:38:22,954 [http-8081-5] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 08:38:22,954 [http-8081-5] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 08:38:23,127 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2019-01-03 08:38:23,127 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20006} created. select * from (select t.*,row_number() over(order by time desc) as ss from sys_log t 
+	    where user_id=?) s where s.ss='2'
+2019-01-03 08:38:23,127 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20006} Parameters : [3]
+2019-01-03 08:38:23,127 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20006} Types : [VARCHAR]
+2019-01-03 08:38:23,135 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20006} executed. 7.68 millis. select * from (select t.*,row_number() over(order by time desc) as ss from sys_log t 
+	    where user_id=?) s where s.ss='2'
+2019-01-03 08:38:23,136 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20006} clearParameters. 
+2019-01-03 08:38:23,136 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-10001} commited
+2019-01-03 08:38:23,137 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2019-01-03 08:39:03,406 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 08:39:03,407 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120004} created. select count(1) from org_news where flag='0' and type=?
+2019-01-03 08:39:03,407 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120004} Parameters : [1]
+2019-01-03 08:39:03,407 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120004} Types : [VARCHAR]
+2019-01-03 08:39:03,409 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120004} executed. 2.47 millis. select count(1) from org_news where flag='0' and type=?
+2019-01-03 08:39:03,410 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120004} clearParameters. 
+2019-01-03 08:39:03,411 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 08:39:03,411 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 08:39:03,411 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 08:39:03,413 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120005} created. select count(0) from ( select * from org_news where flag='0' and type=? order by create_time desc )
+2019-01-03 08:39:03,414 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120005} Parameters : [1]
+2019-01-03 08:39:03,414 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120005} Types : [VARCHAR]
+2019-01-03 08:39:03,416 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120005, rs-150005} query executed. 1.883 millis. select count(0) from ( select * from org_news where flag='0' and type=? order by create_time desc )
+2019-01-03 08:39:03,416 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120005} clearParameters. 
+2019-01-03 08:39:03,416 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120006} created. select * from ( select row_.*, rownum rownum_ from ( select * from org_news where flag='0' and type=? order by create_time desc ) row_ ) where rownum_ > 0 and rownum_ <= 10
+2019-01-03 08:39:03,416 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120006} Parameters : [1]
+2019-01-03 08:39:03,416 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120006} Types : [VARCHAR]
+2019-01-03 08:39:03,419 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120006} executed. 2.683 millis. select * from ( select row_.*, rownum rownum_ from ( select * from org_news where flag='0' and type=? order by create_time desc ) row_ ) where rownum_ > 0 and rownum_ <= 10
+2019-01-03 08:39:03,465 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120006} clearParameters. 
+2019-01-03 08:39:03,466 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 08:39:03,466 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 08:42:45,688 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2019-01-03 08:42:45,689 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20000} Parameters : [admin]
+2019-01-03 08:42:45,689 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20000} Types : [VARCHAR]
+2019-01-03 08:42:45,689 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20000} executed. 0.817 millis. select * from user_lock where user_name=? order by TRY_TIME desc
+2019-01-03 08:42:45,690 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20000} clearParameters. 
+2019-01-03 08:42:45,690 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-10001} commited
+2019-01-03 08:42:45,690 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2019-01-03 08:42:45,691 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2019-01-03 08:42:45,691 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20001} Parameters : [admin]
+2019-01-03 08:42:45,691 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20001} Types : [VARCHAR]
+2019-01-03 08:42:45,692 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20001} executed. 0.976 millis. select * from sys_user where user_name=?
+2019-01-03 08:42:45,693 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20001} clearParameters. 
+2019-01-03 08:42:45,694 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-10001} commited
+2019-01-03 08:42:45,694 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2019-01-03 08:42:45,694 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2019-01-03 08:42:45,695 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20002} Parameters : [3]
+2019-01-03 08:42:45,695 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20002} Types : [VARCHAR]
+2019-01-03 08:42:45,696 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20002} executed. 0.906 millis. select role_id roleId,role_name roleName,role_description roleDescription,ROLE_TYPE roleType
+  		from sys_role where role_id in 
+  		(select role_id from sys_user_role r where r.user_id=?) order by ROLE_TYPE
+2019-01-03 08:42:45,696 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20002} clearParameters. 
+2019-01-03 08:42:45,697 [http-8081-2] DEBUG [druid.sql.Connection] - {conn 10001} rollback
+2019-01-03 08:42:45,697 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2019-01-03 08:42:45,697 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2019-01-03 08:42:45,697 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20003} Parameters : [3, 3]
+2019-01-03 08:42:45,697 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20003} Types : [VARCHAR, VARCHAR]
+2019-01-03 08:42:45,701 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20003} executed. 3.951 millis. select 
+  	     	menu_id menuId,
+  	     	TITLE,
+  	     	LOCATION,
+  	     	PARENT_ID parentId,
+  	     	ICONCLS icon,
+  	     	DESCRIPTION,
+  	     	ORDER_SORT oderSort,
+  	     	CREATE_TIME createTime,
+  	     	UPDATE_TIME updateTime,
+  	     	OPERTYPE,
+  	     	FLAG,
+  	     	need_msg,
+  	     	need_msgtable,
+  	     	app_id
+  	     	from sys_menu a where exists(select 1 from 
+  	     	(select distinct menu_id from sys_role_menu where role_id in 
+				(select role_id from sys_user_role where user_id=?) union 
+			select menu_id from sys_user_menu where user_id=? and operate='0') b 
+			where a.menu_id = b.menu_id
+			)
+			order by ORDER_SORT
+2019-01-03 08:42:45,711 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20003} clearParameters. 
+2019-01-03 08:42:45,712 [http-8081-2] DEBUG [druid.sql.Connection] - {conn 10001} rollback
+2019-01-03 08:42:45,712 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2019-01-03 08:42:45,716 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2019-01-03 08:42:45,717 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20004} Parameters : [admin]
+2019-01-03 08:42:45,717 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20004} Types : [VARCHAR]
+2019-01-03 08:42:45,718 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20004} executed. 0.829 millis. delete from user_lock where user_name=?
+2019-01-03 08:42:45,718 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20004} clearParameters. 
+2019-01-03 08:42:45,718 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-10001} commited
+2019-01-03 08:42:45,718 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2019-01-03 08:42:45,719 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2019-01-03 08:42:45,719 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20005} Parameters : [bd91b176-d2bd-4932-a6fd-ece69eb27da0, 192.168.1.100, admin, 登陆日志, 2019-01-03 08:42:45, 管理员：成功登陆系统, , 3]
+2019-01-03 08:42:45,719 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20005} Types : [VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR]
+2019-01-03 08:42:45,719 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20005} executed. 0.55 millis. insert into sys_log(
+    		ID,
+    		IP,
+    		OPEARTER,
+    		LOG_TYPE,
+    		TIME,
+    		DESCRIBE,
+    		OPEATE_DETAIL,
+    		USER_ID
+    	) 
+    	values (
+    		?,
+    		?,
+    		?,
+    		?,
+    		?,
+    		?,
+    		?,
+    		?
+    	)
+2019-01-03 08:42:45,720 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20005} clearParameters. 
+2019-01-03 08:42:45,720 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-10001} commited
+2019-01-03 08:42:45,720 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2019-01-03 08:42:45,884 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 08:42:45,884 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120000} Parameters : [ffc6c177-3ea8-44f4-abe2-ce51fd501fd8, reg]
+2019-01-03 08:42:45,884 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120000} Types : [VARCHAR, VARCHAR]
+2019-01-03 08:42:45,885 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120000} executed. 0.837 millis. select count(1) num,'个人会员申请' name,? id,? app_id from ORG_MEMBEREG where HAS_OPERATE='1' and flag='1'
+2019-01-03 08:42:45,885 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120000} clearParameters. 
+2019-01-03 08:42:45,886 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 08:42:45,886 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 08:42:45,886 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 08:42:45,886 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120001} Parameters : [ffc6c177-3ea8-44f4-abe2-ce51fd501fd8, reg]
+2019-01-03 08:42:45,886 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120001} Types : [VARCHAR, VARCHAR]
+2019-01-03 08:42:45,887 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120001} executed. 0.576 millis. select count(1) num,'理事会员申请' name,? id,? app_id from ORG_MEMBEREG where HAS_LISHI_OPERA='1' and HAS_OPERATE='0' and COUNCIL_FLAG='1'
+2019-01-03 08:42:45,887 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120001} clearParameters. 
+2019-01-03 08:42:45,887 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 08:42:45,887 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 08:42:45,887 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 08:42:45,888 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120002} Parameters : [4ba3a444-be52-4cea-b8cc-138a6efdfdf6, reg]
+2019-01-03 08:42:45,888 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120002} Types : [VARCHAR, VARCHAR]
+2019-01-03 08:42:45,888 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120002} executed. 0.602 millis. select count(1) num,'团体会员申请' name,? id,? app_id from ORG_GROUPREG where HAS_OPERATE='1' and flag='1'
+2019-01-03 08:42:45,888 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120002} clearParameters. 
+2019-01-03 08:42:45,889 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 08:42:45,889 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 08:42:45,889 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 08:42:45,889 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120003} Parameters : [a8337781-696e-4f2c-a8cf-39343af53941, reg]
+2019-01-03 08:42:45,889 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120003} Types : [VARCHAR, VARCHAR]
+2019-01-03 08:42:45,890 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120003} executed. 0.709 millis. select count(1) num,'企业会员申请' name,? id,? app_id from ORG_COMPANY where HAS_OPERATE='1' and flag='1'
+2019-01-03 08:42:45,890 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120003} clearParameters. 
+2019-01-03 08:42:45,891 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 08:42:45,891 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 08:42:46,016 [http-8081-6] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2019-01-03 08:42:46,016 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20006} Parameters : [3]
+2019-01-03 08:42:46,016 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20006} Types : [VARCHAR]
+2019-01-03 08:42:46,019 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20006} executed. 2.716 millis. select * from (select t.*,row_number() over(order by time desc) as ss from sys_log t 
+	    where user_id=?) s where s.ss='2'
+2019-01-03 08:42:46,019 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20006} clearParameters. 
+2019-01-03 08:42:46,020 [http-8081-6] DEBUG [druid.sql.Connection] - {conn-10001} commited
+2019-01-03 08:42:46,020 [http-8081-6] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2019-01-03 08:42:48,553 [http-8081-6] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 08:42:48,553 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120004} Parameters : [1]
+2019-01-03 08:42:48,553 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120004} Types : [VARCHAR]
+2019-01-03 08:42:48,554 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120004} executed. 0.973 millis. select count(1) from org_news where flag='0' and type=?
+2019-01-03 08:42:48,554 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120004} clearParameters. 
+2019-01-03 08:42:48,555 [http-8081-6] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 08:42:48,555 [http-8081-6] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 08:42:48,555 [http-8081-6] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 08:42:48,555 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120005} Parameters : [1]
+2019-01-03 08:42:48,555 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120005} Types : [VARCHAR]
+2019-01-03 08:42:48,557 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120005, rs-150012} query executed. 1.747 millis. select count(0) from ( select * from org_news where flag='0' and type=? order by create_time desc )
+2019-01-03 08:42:48,557 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120005} clearParameters. 
+2019-01-03 08:42:48,558 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120006} Parameters : [1]
+2019-01-03 08:42:48,558 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120006} Types : [VARCHAR]
+2019-01-03 08:42:48,559 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120006} executed. 1.206 millis. select * from ( select row_.*, rownum rownum_ from ( select * from org_news where flag='0' and type=? order by create_time desc ) row_ ) where rownum_ > 0 and rownum_ <= 10
+2019-01-03 08:42:48,596 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120006} clearParameters. 
+2019-01-03 08:42:48,597 [http-8081-6] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 08:42:48,597 [http-8081-6] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 08:43:21,315 [http-8081-6] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 08:43:21,315 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120000} Parameters : [ffc6c177-3ea8-44f4-abe2-ce51fd501fd8, reg]
+2019-01-03 08:43:21,315 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120000} Types : [VARCHAR, VARCHAR]
+2019-01-03 08:43:21,316 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120000} executed. 0.901 millis. select count(1) num,'个人会员申请' name,? id,? app_id from ORG_MEMBEREG where HAS_OPERATE='1' and flag='1'
+2019-01-03 08:43:21,316 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120000} clearParameters. 
+2019-01-03 08:43:21,317 [http-8081-6] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 08:43:21,317 [http-8081-6] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 08:43:21,317 [http-8081-6] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 08:43:21,317 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120001} Parameters : [ffc6c177-3ea8-44f4-abe2-ce51fd501fd8, reg]
+2019-01-03 08:43:21,317 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120001} Types : [VARCHAR, VARCHAR]
+2019-01-03 08:43:21,318 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120001} executed. 0.656 millis. select count(1) num,'理事会员申请' name,? id,? app_id from ORG_MEMBEREG where HAS_LISHI_OPERA='1' and HAS_OPERATE='0' and COUNCIL_FLAG='1'
+2019-01-03 08:43:21,318 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120001} clearParameters. 
+2019-01-03 08:43:21,319 [http-8081-6] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 08:43:21,319 [http-8081-6] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 08:43:21,319 [http-8081-6] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 08:43:21,319 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120002} Parameters : [4ba3a444-be52-4cea-b8cc-138a6efdfdf6, reg]
+2019-01-03 08:43:21,319 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120002} Types : [VARCHAR, VARCHAR]
+2019-01-03 08:43:21,320 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120002} executed. 0.985 millis. select count(1) num,'团体会员申请' name,? id,? app_id from ORG_GROUPREG where HAS_OPERATE='1' and flag='1'
+2019-01-03 08:43:21,320 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120002} clearParameters. 
+2019-01-03 08:43:21,321 [http-8081-6] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 08:43:21,321 [http-8081-6] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 08:43:21,321 [http-8081-6] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 08:43:21,321 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120003} Parameters : [a8337781-696e-4f2c-a8cf-39343af53941, reg]
+2019-01-03 08:43:21,321 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120003} Types : [VARCHAR, VARCHAR]
+2019-01-03 08:43:21,322 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120003} executed. 0.612 millis. select count(1) num,'企业会员申请' name,? id,? app_id from ORG_COMPANY where HAS_OPERATE='1' and flag='1'
+2019-01-03 08:43:21,322 [http-8081-6] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120003} clearParameters. 
+2019-01-03 08:43:21,323 [http-8081-6] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 08:43:21,323 [http-8081-6] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 08:43:21,416 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2019-01-03 08:43:21,416 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20006} Parameters : [3]
+2019-01-03 08:43:21,416 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20006} Types : [VARCHAR]
+2019-01-03 08:43:21,418 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20006} executed. 2.009 millis. select * from (select t.*,row_number() over(order by time desc) as ss from sys_log t 
+	    where user_id=?) s where s.ss='2'
+2019-01-03 08:43:21,419 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20006} clearParameters. 
+2019-01-03 08:43:21,419 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-10001} commited
+2019-01-03 08:43:21,420 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2019-01-03 08:43:24,272 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 08:43:24,272 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120004} Parameters : [1]
+2019-01-03 08:43:24,272 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120004} Types : [VARCHAR]
+2019-01-03 08:43:24,273 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120004} executed. 1.07 millis. select count(1) from org_news where flag='0' and type=?
+2019-01-03 08:43:24,274 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120004} clearParameters. 
+2019-01-03 08:43:24,275 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 08:43:24,275 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 08:43:24,275 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 08:43:24,275 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120005} Parameters : [1]
+2019-01-03 08:43:24,275 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120005} Types : [VARCHAR]
+2019-01-03 08:43:24,277 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120005, rs-150019} query executed. 1.518 millis. select count(0) from ( select * from org_news where flag='0' and type=? order by create_time desc )
+2019-01-03 08:43:24,277 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120005} clearParameters. 
+2019-01-03 08:43:24,277 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120006} Parameters : [1]
+2019-01-03 08:43:24,277 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120006} Types : [VARCHAR]
+2019-01-03 08:43:24,278 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120006} executed. 1.284 millis. select * from ( select row_.*, rownum rownum_ from ( select * from org_news where flag='0' and type=? order by create_time desc ) row_ ) where rownum_ > 0 and rownum_ <= 10
+2019-01-03 08:43:24,315 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120006} clearParameters. 
+2019-01-03 08:43:24,316 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 08:43:24,316 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 08:47:51,841 [http-8081-8] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2019-01-03 08:47:51,842 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20000} Parameters : [admin]
+2019-01-03 08:47:51,842 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20000} Types : [VARCHAR]
+2019-01-03 08:47:51,843 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20000} executed. 1.042 millis. select * from user_lock where user_name=? order by TRY_TIME desc
+2019-01-03 08:47:51,843 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20000} clearParameters. 
+2019-01-03 08:47:51,844 [http-8081-8] DEBUG [druid.sql.Connection] - {conn-10001} commited
+2019-01-03 08:47:51,844 [http-8081-8] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2019-01-03 08:47:51,844 [http-8081-8] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2019-01-03 08:47:51,844 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20001} Parameters : [admin]
+2019-01-03 08:47:51,844 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20001} Types : [VARCHAR]
+2019-01-03 08:47:51,845 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20001} executed. 0.615 millis. select * from sys_user where user_name=?
+2019-01-03 08:47:51,845 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20001} clearParameters. 
+2019-01-03 08:47:51,846 [http-8081-8] DEBUG [druid.sql.Connection] - {conn-10001} commited
+2019-01-03 08:47:51,846 [http-8081-8] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2019-01-03 08:47:51,846 [http-8081-8] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2019-01-03 08:47:51,846 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20002} Parameters : [3]
+2019-01-03 08:47:51,846 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20002} Types : [VARCHAR]
+2019-01-03 08:47:51,847 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20002} executed. 0.711 millis. select role_id roleId,role_name roleName,role_description roleDescription,ROLE_TYPE roleType
+  		from sys_role where role_id in 
+  		(select role_id from sys_user_role r where r.user_id=?) order by ROLE_TYPE
+2019-01-03 08:47:51,847 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20002} clearParameters. 
+2019-01-03 08:47:51,848 [http-8081-8] DEBUG [druid.sql.Connection] - {conn 10001} rollback
+2019-01-03 08:47:51,848 [http-8081-8] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2019-01-03 08:47:51,848 [http-8081-8] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2019-01-03 08:47:51,848 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20003} Parameters : [3, 3]
+2019-01-03 08:47:51,848 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20003} Types : [VARCHAR, VARCHAR]
+2019-01-03 08:47:51,852 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20003} executed. 4.234 millis. select 
+  	     	menu_id menuId,
+  	     	TITLE,
+  	     	LOCATION,
+  	     	PARENT_ID parentId,
+  	     	ICONCLS icon,
+  	     	DESCRIPTION,
+  	     	ORDER_SORT oderSort,
+  	     	CREATE_TIME createTime,
+  	     	UPDATE_TIME updateTime,
+  	     	OPERTYPE,
+  	     	FLAG,
+  	     	need_msg,
+  	     	need_msgtable,
+  	     	app_id
+  	     	from sys_menu a where exists(select 1 from 
+  	     	(select distinct menu_id from sys_role_menu where role_id in 
+				(select role_id from sys_user_role where user_id=?) union 
+			select menu_id from sys_user_menu where user_id=? and operate='0') b 
+			where a.menu_id = b.menu_id
+			)
+			order by ORDER_SORT
+2019-01-03 08:47:51,862 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20003} clearParameters. 
+2019-01-03 08:47:51,862 [http-8081-8] DEBUG [druid.sql.Connection] - {conn 10001} rollback
+2019-01-03 08:47:51,862 [http-8081-8] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2019-01-03 08:47:51,867 [http-8081-8] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2019-01-03 08:47:51,867 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20004} Parameters : [admin]
+2019-01-03 08:47:51,867 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20004} Types : [VARCHAR]
+2019-01-03 08:47:51,868 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20004} executed. 0.923 millis. delete from user_lock where user_name=?
+2019-01-03 08:47:51,868 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20004} clearParameters. 
+2019-01-03 08:47:51,869 [http-8081-8] DEBUG [druid.sql.Connection] - {conn-10001} commited
+2019-01-03 08:47:51,869 [http-8081-8] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2019-01-03 08:47:51,869 [http-8081-8] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2019-01-03 08:47:51,869 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20005} Parameters : [a5177cfb-a336-46b5-adae-80de86ffbe11, 192.168.1.100, admin, 登陆日志, 2019-01-03 08:47:51, 管理员：成功登陆系统, , 3]
+2019-01-03 08:47:51,870 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20005} Types : [VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR]
+2019-01-03 08:47:51,870 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20005} executed. 0.662 millis. insert into sys_log(
+    		ID,
+    		IP,
+    		OPEARTER,
+    		LOG_TYPE,
+    		TIME,
+    		DESCRIBE,
+    		OPEATE_DETAIL,
+    		USER_ID
+    	) 
+    	values (
+    		?,
+    		?,
+    		?,
+    		?,
+    		?,
+    		?,
+    		?,
+    		?
+    	)
+2019-01-03 08:47:51,870 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20005} clearParameters. 
+2019-01-03 08:47:51,873 [http-8081-8] DEBUG [druid.sql.Connection] - {conn-10001} commited
+2019-01-03 08:47:51,873 [http-8081-8] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2019-01-03 08:47:52,028 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 08:47:52,028 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120000} Parameters : [ffc6c177-3ea8-44f4-abe2-ce51fd501fd8, reg]
+2019-01-03 08:47:52,028 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120000} Types : [VARCHAR, VARCHAR]
+2019-01-03 08:47:52,029 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120000} executed. 0.58 millis. select count(1) num,'个人会员申请' name,? id,? app_id from ORG_MEMBEREG where HAS_OPERATE='1' and flag='1'
+2019-01-03 08:47:52,029 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120000} clearParameters. 
+2019-01-03 08:47:52,030 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 08:47:52,030 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 08:47:52,030 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 08:47:52,030 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120001} Parameters : [ffc6c177-3ea8-44f4-abe2-ce51fd501fd8, reg]
+2019-01-03 08:47:52,030 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120001} Types : [VARCHAR, VARCHAR]
+2019-01-03 08:47:52,031 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120001} executed. 0.539 millis. select count(1) num,'理事会员申请' name,? id,? app_id from ORG_MEMBEREG where HAS_LISHI_OPERA='1' and HAS_OPERATE='0' and COUNCIL_FLAG='1'
+2019-01-03 08:47:52,031 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120001} clearParameters. 
+2019-01-03 08:47:52,031 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 08:47:52,031 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 08:47:52,031 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 08:47:52,031 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120002} Parameters : [4ba3a444-be52-4cea-b8cc-138a6efdfdf6, reg]
+2019-01-03 08:47:52,032 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120002} Types : [VARCHAR, VARCHAR]
+2019-01-03 08:47:52,032 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120002} executed. 0.618 millis. select count(1) num,'团体会员申请' name,? id,? app_id from ORG_GROUPREG where HAS_OPERATE='1' and flag='1'
+2019-01-03 08:47:52,032 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120002} clearParameters. 
+2019-01-03 08:47:52,033 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 08:47:52,033 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 08:47:52,033 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 08:47:52,033 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120003} Parameters : [a8337781-696e-4f2c-a8cf-39343af53941, reg]
+2019-01-03 08:47:52,033 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120003} Types : [VARCHAR, VARCHAR]
+2019-01-03 08:47:52,034 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120003} executed. 0.587 millis. select count(1) num,'企业会员申请' name,? id,? app_id from ORG_COMPANY where HAS_OPERATE='1' and flag='1'
+2019-01-03 08:47:52,034 [http-8081-2] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120003} clearParameters. 
+2019-01-03 08:47:52,034 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 08:47:52,034 [http-8081-2] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 08:47:52,143 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2019-01-03 08:47:52,144 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20006} Parameters : [3]
+2019-01-03 08:47:52,144 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20006} Types : [VARCHAR]
+2019-01-03 08:47:52,146 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20006} executed. 2.592 millis. select * from (select t.*,row_number() over(order by time desc) as ss from sys_log t 
+	    where user_id=?) s where s.ss='2'
+2019-01-03 08:47:52,147 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20006} clearParameters. 
+2019-01-03 08:47:52,148 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-10001} commited
+2019-01-03 08:47:52,148 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2019-01-03 08:47:54,752 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 08:47:54,753 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120004} Parameters : [1]
+2019-01-03 08:47:54,753 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120004} Types : [VARCHAR]
+2019-01-03 08:47:54,754 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120004} executed. 1.019 millis. select count(1) from org_news where flag='0' and type=?
+2019-01-03 08:47:54,754 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120004} clearParameters. 
+2019-01-03 08:47:54,754 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 08:47:54,754 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 08:47:54,755 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 08:47:54,755 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120005} Parameters : [1]
+2019-01-03 08:47:54,755 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120005} Types : [VARCHAR]
+2019-01-03 08:47:54,756 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120005, rs-150026} query executed. 0.944 millis. select count(0) from ( select * from org_news where flag='0' and type=? order by create_time desc )
+2019-01-03 08:47:54,756 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120005} clearParameters. 
+2019-01-03 08:47:54,756 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120006} Parameters : [1]
+2019-01-03 08:47:54,756 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120006} Types : [VARCHAR]
+2019-01-03 08:47:54,757 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120006} executed. 1.209 millis. select * from ( select row_.*, rownum rownum_ from ( select * from org_news where flag='0' and type=? order by create_time desc ) row_ ) where rownum_ > 0 and rownum_ <= 10
+2019-01-03 08:47:54,794 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120006} clearParameters. 
+2019-01-03 08:47:54,795 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 08:47:54,795 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 08:53:06,501 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 08:53:06,501 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120007} created. update org_news set OPERATE_TIME=?,
+	    OPERATOR=?,
+	    TITLE=?,
+	    DATETIME=?,
+	    IS_SHOWN=?,
+	    CREATE_TIME=?,
+	     
+	        ATTACHMENT=?,
+	     
+	     
+	        QUICK_IMG=?,
+	     
+	     
+	        QUICK_DESC=?,
+	     
+	     
+	        CONTENT=?,
+	     
+	    CREATOR=?
+	    where id = ?
+2019-01-03 08:53:06,502 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120007} Parameters : [2019-01-03 08:53:06, 管理员, 第二届江苏省临床研究大会通知.docx, 2018-12-05, 1, 2018-12-05 11:13:48, /importFiles/admin/201901030853030511590/111.jpg, http://127.0.0.1:8081/jgsconsole/importFiles/admin/2018120511134792453752/image/word/media/image1.jpeg, 兼任中华医学会老年医学分会副主任委员、全军老年医学专业委员会 &nbsp;副主任委员、上海市医学会老年医学专业委员会主任委员、中华预防医学会循证预防医学专业委员会常委、上海市医学会内科学分会 常务委员..., <style>p{margin-top:0pt;margin-bottom:1pt;}span.X1{font-size:12.0pt;}p.X2{margin-top:12.0pt;margin-bottom:3.0pt;}span.X2{font-family:'Cambria';font-size:16.0pt;font-weight:bold;}p.X3{margin-top:12.0pt;margin-bottom:3.0pt;}span.X3{font-family:'Cambria';font-size:14.0pt;font-weight:bold;font-style:italic;}p.X4{margin-top:12.0pt;margin-bottom:3.0pt;}span.X4{font-family:'Cambria';font-size:13.0pt;font-weight:bold;}p.X5{margin-top:12.0pt;margin-bottom:3.0pt;}span.X5{font-size:14.0pt;font-weight:bold;}p.X6{margin-top:12.0pt;margin-bottom:3.0pt;}span.X6{font-size:13.0pt;font-weight:bold;font-style:italic;}p.X7{margin-top:12.0pt;margin-bottom:3.0pt;}span.X7{font-size:11.0pt;font-weight:bold;}p.X8{margin-top:12.0pt;margin-bottom:3.0pt;}p.X9{margin-top:12.0pt;margin-bottom:3.0pt;}span.X9{font-style:italic;}p.X10{margin-top:12.0pt;margin-bottom:3.0pt;}span.X10{font-family:'Cambria';font-size:11.0pt;}span.X11{font-size:9.0pt;}span.X12{font-size:9.0pt;}span.X13{font-size:9.0pt;}p.X14{text-align:center;margin-bottom:3.0pt;}span.X14{font-family:'Cambria';}p.X15{margin-top:5.0pt;margin-bottom:5.0pt;}span.X15{font-family:'宋体';}p.X16{text-align:center;margin-top:12.0pt;margin-bottom:3.0pt;}span.X16{font-family:'Cambria';font-size:16.0pt;font-weight:bold;}span.X18{font-weight:bold;}span.X19{font-family:'Calibri';font-weight:bold;font-style:italic;}span.X20{color:#0000ff;text-decoration:underline;}p.X23{margin-bottom:10.0pt;}span.X23{font-family:'Franklin Gothic Book';font-size:12.0pt;color:#000000;}p.X26{text-align:left;text-indent:36.0pt;}span.X27{font-style:italic;}p.X28{text-align:left;text-indent:36.0pt;text-align:right;text-indent:36.0pt;}span.X28{font-weight:bold;font-style:italic;}span.X30{font-family:'Calibri';font-size:9.0pt;}span.X31{font-family:'Calibri';font-size:9.0pt;}span.X32{font-size:5.0pt;}span.X33{font-family:'Cambria';font-size:16.0pt;font-weight:bold;}span.X34{font-family:'Cambria';font-size:14.0pt;font-weight:bold;font-style:italic;}span.X35{font-family:'Cambria';font-size:13.0pt;font-weight:bold;}span.X36{font-size:14.0pt;font-weight:bold;}span.X37{font-size:13.0pt;font-weight:bold;font-style:italic;}span.X38{font-weight:bold;}span.X39{font-size:12.0pt;}span.X40{font-size:12.0pt;font-style:italic;}span.X41{font-family:'Cambria';}span.X42{font-family:'Cambria';font-size:16.0pt;font-weight:bold;}span.X43{font-family:'Cambria';font-size:12.0pt;}span.X44{font-size:12.0pt;font-style:italic;}span.X45{font-size:12.0pt;font-weight:bold;font-style:italic;}span.X46{font-style:italic;color:#5a5a5a;}span.X47{font-size:12.0pt;font-weight:bold;font-style:italic;text-decoration:underline;}span.X48{font-size:12.0pt;text-decoration:underline;}span.X49{font-size:12.0pt;font-weight:bold;text-decoration:underline;}span.X50{font-family:'Cambria';font-size:12.0pt;font-weight:bold;font-style:italic;}span.X51{font-size:9.0pt;}</style><div style="width:595.0pt;margin-bottom:72.0pt;margin-top:72.0pt;margin-left:90.0pt;margin-right:90.0pt;"><p style="text-align:center;"><span id="_GoBack"><span style="font-family:&#39;黑体&#39;;font-size:24.0pt;font-weight:bold;">第二届江苏省临床研究大会</span></span></p><p style="text-align:center;"><br/></p><p style="text-align:center;"><span style="font-size:18.0pt;font-weight:bold;">暨江苏省医学会临床流行病学分会学术年会</span></p><p style="text-align:center;"><span style="font-size:18.0pt;font-weight:bold;">暨江苏省老年医学学会学术年会</span></p><p style="text-align:center;"><span style="font-size:18.0pt;font-weight:bold;">暨《实用老年医学》青年编委论坛</span></p><p><br/></p><p><br/></p><p style="text-indent:88.0pt;"><span style="font-size:16.0pt;">主办单位：江苏省医学会</span></p><p><span style="font-size:16.0pt;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 江苏省老年医学学会</span></p><p><span style="font-size:16.0pt;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 南京医科大学附属老年医院</span></p><p><span style="font-size:16.0pt;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;《实用老年医学》编辑部</span></p><p><br/></p><p><br/></p><p style="text-indent:120.0pt;"><span style="font-size:16.0pt;">2018年11月23日-24日</span></p><p><br/></p><p style="text-indent:160.0pt;"><span style="font-size:16.0pt;">中国 &nbsp;南京</span></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p style="text-align:center;"><br/></p><p style="text-align:center;"><span style="font-family:&#39;黑体&#39;;font-size:16.0pt;">欢迎辞</span></p><p><br/></p><p class="X1 X15" style="text-indent:21.0pt;"><span class="X1 X15" style="font-family:&#39;Arial&#39;;color:#3e3a39;">临床</span><span class="X1 X15" style="font-family:&#39;Arial&#39;;color:#3e3a39;">研究</span><span class="X1 X15" style="font-family:&#39;Arial&#39;;color:#3e3a39;">是以</span><span class="X1 X15" style="font-family:&#39;Arial&#39;;color:#3e3a39;">病人</span><span class="X1 X15" style="font-family:&#39;Arial&#39;;color:#3e3a39;">为研究对象，探讨疾病发生、发展、康复规律的医学科学研究</span><span class="X1 X15" style="font-family:&#39;Arial&#39;;color:#3e3a39;">。深入开展医学临床研究，可以不断发展医学新理论，开拓研究新领域，提高医疗技术和医疗质量，满足人们对医疗技术日益增长的需要。</span></p><p class="X1 X15" style="text-indent:21.0pt;"><span class="X1 X15" style="font-family:&#39;Arial&#39;;color:#404040;">目前的临床研究主要包括前瞻性研究、回顾性研究、转化研究以及基于文献的循证医学研究。其中随机对照试验仍处于主导地位。近年来，随着互联网的发展，临床研究也随之进入了大数据时代，临床研究的模式也将发生天翻地覆的变化。</span></p><p class="X1 X15" style="text-indent:21.0pt;"><span class="X1 X15" style="font-family:&#39;Arial&#39;;color:#3e3a39;">现代医院应重视培养既掌握临床医疗技术，又能从事临床科研的高素质医学人才。</span><span class="X1 X15" style="font-family:&#39;Arial&#39;;color:#404040;">为积极应对临床研究现状，顺应临床研究需要，江苏省医学会临床流行病学分会、江苏省老年医学学会、南京医科大学附属老年医院和《实用老年医学》杂志将在2018年11月24日在南京华东饭店联合举办第二届江苏省临床研究大会暨江苏省医学会临床流行病学分会学术年会、江苏省老年医学学会学术年会，旨在介绍临床研究方法，分享临床研究成功经验，助力医务人员提高临床研究水平，推动临床研究的发展。</span></p><p style="text-indent:24.0pt;">江苏省老年医学学会自2018年5月12日成立以来，学会的各项工作稳步推进，经过征询各位学会理事以及专家的意见，在此会议期间，将举办常务理事会，讨论成立专业委员会，并制定2019年工作计划。</p><p style="text-indent:24.0pt;">欢迎各专业临床工作人员参会，预祝大会圆满成功！</p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p style="text-align:center;"><span style="font-family:&#39;黑体&#39;;font-size:16.0pt;">大会主席</span></p><p><br/></p><p><img src="http://127.0.0.1:8081/jgsconsole/importFiles/admin/2018120511134792453752/image/word/media/image1.jpeg" width="125.25pt" height="175.5pt" style="width: 139px; height: 176px;"/></p><p class="X1 X26"><span class="X1 X26">许家仁，博士，主任医师，现任南京医科大学附属老年医院（江苏省老年病医院）院长。</span><span class="X1 X26" style="font-family:&#39;宋体&#39;;">《实用老年医学》杂志主编，江苏省医学会临床流行病学分会主任委员，江苏省老年学会会长，江苏省中西医结合学会副会长，江苏省中西医结合学会老年医学专业委员会主任委员，江苏省医学会老年医学分会副主任委员，江苏省医师协会老年医学科医师分会副主任委员</span><span id="_GoBack"><span class="X1 X26" style="font-family:&#39;宋体&#39;;">南京医学会健康保健专科分会主任委员，中华医学会临床流行病学和循证医学分会第八届委员会委员。</span></span></p><p><br/></p><p><br/></p><p style="text-indent:32.0pt;"><img src="http://127.0.0.1:8081/jgsconsole/importFiles/admin/2018120511134792453752/image/word/media/image2.jpeg" width="126.0pt" height="187.45pt"/><span style="font-family:&#39;Times New Roman&#39;;font-weight:bold;">沈洪兵</span><span style="font-family:&#39;Times New Roman&#39;;">，博士生导师，国家杰出青年科学基金获得者，教育部“长江学者”特聘教授，国家自然基金委创新研究群体学术带头人，国务院特殊津贴专家，全国优秀科技工作者。现任南京医科大学校长，江苏省恶性肿瘤生物标志物与防治重点实验室主任，中国抗癌协会肿瘤流行病学专业委员会候任主任委员，生物标志物专业委员会副主任委员，国家自然科学基金委员会医学科学部专家咨询委员会委员，教育部科技委生命与医学学部委员。主要从事肿瘤等慢性病的分子遗传流行病学研究，特别是在恶性肿瘤遗传易感性研究等方面取得多项原创性研究成果。累计发表SCI论文200余篇，包括Nature Genetics，Nature Review Cancer，J Clin Oncol，J Clin Invest等，其中IF&gt;20通讯作者论文7篇，SCI他引6000余次；3篇论文入选汤森路透ESI全球前1%高被引论文；获国家自然科学二等奖、教育部高校自然科学奖一等奖、江苏省科技进步一等奖、中华医学奖二等奖等科技奖8项；受邀担任Lung Cancer等多个国际杂志编委。</span></p><p style="text-align:center;"><br/></p><p style="text-align:center;"><span style="font-family:&#39;黑体&#39;;font-size:16.0pt;">大会报告嘉宾</span></p><p style="text-indent:32.0pt;"><br/></p><p style="text-indent:32.0pt;"><img src="http://127.0.0.1:8081/jgsconsole/importFiles/admin/2018120511134792453752/image/word/media/image3.jpeg" width="120.75pt" height="177.9pt" style="width: 132px; height: 178px;"/><span style="font-family:&#39;宋体&#39;;font-weight:bold;">王咏红</span><span style="font-family:&#39;宋体&#39;;">，管理学博士</span><span style="font-family:&#39;宋体&#39;;">，</span><span style="font-family:&#39;宋体&#39;;">教授</span><span style="font-family:&#39;宋体&#39;;">，</span><span style="font-family:&#39;宋体&#39;;">博士</span><span style="font-family:&#39;宋体&#39;;">研究生</span><span style="font-family:&#39;宋体&#39;;">导师</span><span style="font-family:&#39;宋体&#39;;">，第十二届全国人大代表，江苏省第十二届省委委员，江苏省医学会会长。</span></p><p style="text-indent:24.0pt;"><span style="font-family:&#39;宋体&#39;;">曾</span><span style="font-family:&#39;宋体&#39;;">在美国马里兰大学作经济管理高级研究学者</span><span style="font-family:&#39;宋体&#39;;">，在</span><span style="font-family:&#39;宋体&#39;;">美国</span><span style="font-family:&#39;宋体&#39;;">哈佛大学公共卫生学院卫生发展与改革高级国际研修班研修。</span><span style="font-family:&#39;宋体&#39;;">近年来主持科研项目1</span><span style="font-family:&#39;宋体&#39;;">6</span><span style="font-family:&#39;宋体&#39;;">项，出版著作</span><span style="font-family:&#39;宋体&#39;;">20多</span><span style="font-family:&#39;宋体&#39;;">部，发表论文</span><span style="font-family:&#39;宋体&#39;;">3</span><span style="font-family:&#39;宋体&#39;;">00多篇，多篇在全国、省、市获奖。</span></p><p><br/></p><p><img src="http://127.0.0.1:8081/jgsconsole/importFiles/admin/2018120511134792453752/image/word/media/image4.jpeg" width="144.2pt" height="256.65pt" style="width: 160px; height: 257px;"/></p><p style="text-indent:24.0pt;"><span style="font-family:&#39;宋体&#39;;font-weight:bold;">顾丰</span><span style="font-family:&#39;宋体&#39;;">，</span><span style="font-family:&#39;宋体&#39;;">瑞典斯德哥尔摩卡洛琳斯卡医学院</span><span style="font-family:&#39;宋体&#39;;">分子医学</span><span style="font-family:&#39;宋体&#39;;">研究员、首席科学家、博士研究生导师。</span><span style="font-family:&#39;宋体&#39;;"> 现</span><span style="font-family:&#39;宋体&#39;;">任中国药科大学基础医学与临床药学学院</span><span style="font-family:&#39;宋体&#39;;">病理生理学研究中心</span><span style="font-family:&#39;宋体&#39;;">教授。主要研究</span><span style="font-family:&#39;宋体&#39;;">方向为</span><span style="font-family:&#39;宋体&#39;;">糖尿病、糖尿病并发症和肥胖症发病机制，开发早期诊断试剂盒及新药等。发表SCI科研论文120余篇，参编专著五部，申请专利一项。曾担任中国医学科学院北京协和医学院、南京医科大学</span><span style="font-family:&#39;宋体&#39;;">等单位</span><span style="font-family:&#39;宋体&#39;;">客座教授；</span><span style="font-family:&#39;宋体&#39;;">浙江大学985平台</span><span style="font-family:&#39;宋体&#39;;">讲席教授；国家自然科学基金重大项目和面上项目评委；美国糖尿病协会以及英国、新加坡和香港</span><span style="font-family:&#39;宋体&#39;;">等地</span><span style="font-family:&#39;宋体&#39;;">科研项目评委。人类基因组组织、欧洲糖尿病协会、美国糖尿病协会、瑞典糖尿病协会和欧洲糖尿病肾病学会等学术组织成员。</span></p><p style="text-indent:24.0pt;"><br/></p><p style="text-indent:24.0pt;"><span style="font-family:&#39;宋体&#39;;">卡洛琳斯卡医学院</span><span style="font-family:&#39;宋体&#39;;">是诺贝尔生理学</span><span style="font-family:&#39;宋体&#39;;">或</span><span style="font-family:&#39;宋体&#39;;">生物学奖评审单位，在国际上享有很高的声誉。顾丰教授特意收集和</span><span style="font-family:&#39;宋体&#39;;">整理了</span><span style="font-family:&#39;宋体&#39;;">今年诺贝尔生理学奖主要内容和诺贝尔先生生前事迹,</span><span style="font-family:&#39;宋体&#39;;"> </span><span style="font-family:&#39;宋体&#39;;">并</span><span style="font-family:&#39;宋体&#39;;">用自己的科研实</span><span style="font-family:&#39;宋体&#39;;">例说明</span><span style="font-family:&#39;宋体&#39;;">原始</span><span style="font-family:&#39;宋体&#39;;">临床</span><span style="font-family:&#39;宋体&#39;;">科研的重要性。</span><span style="font-family:&#39;宋体&#39;;">他的报告将有助于我们丰富思想认识，提高科研精神和学术水平。</span></p><p><br/></p><p><img src="http://127.0.0.1:8081/jgsconsole/importFiles/admin/2018120511134792453752/image/word/media/image5.jpeg" width="106.6pt" height="149.25pt"/><span style="font-family:&#39;宋体&#39;;color:#333333;background-color:#ffffff;">胡志斌</span><span style="font-family:&#39;宋体&#39;;color:#333333;background-color:#ffffff;">，二级教授/博导，江苏特聘教授，教育部长江学者特聘教授（2014）。现任南京医科大学副校长，生殖医学国家重点实验室副主任，江苏省医药动物实验基地主任，江苏省恶性肿瘤生物标志物与防治重点实验室/肿瘤个体化医学协同创新中心课题组长。主要致力于复杂疾病的分子流行病学研究。在研国家杰出青年基金（2012），科技部首批青年“973”项目，国家自然科学基金重大项目课题，国家自然科学基金重点项目，中组部青年拔尖人才基金（万人计划）等。在Nature Genetics等杂志上发表论文200多篇，SCI他引5000多次，H指数超过40，入选2014年Elsevier“化学、遗传与分子生物学”高被引中国学者。研究成果获得国家发明专利授权8项，作为主要完成人获国家自然科学奖二等奖、科技进步奖二等奖及多项部省级科技进步奖一等奖。担任中国生理学会生殖科学专业委员会副主任委员，中华预防医学会流行病分会青年委员会副主任委员等。</span></p><p><br/></p><p style="text-indent:27.0pt;"><img src="http://127.0.0.1:8081/jgsconsole/importFiles/admin/2018120511134792453752/image/word/media/image6.jpeg" width="115.7pt" height="143.95pt"/><span style="font-family:&#39;Times New Roman&#39;;font-weight:bold;">张永</span><span style="font-family:&#39;Times New Roman&#39;;font-weight:bold;">红</span><span style="font-family:&#39;Times New Roman&#39;;font-weight:bold;">，</span>流行病学教授、博士研究生导师。现为苏州大学医学部公共卫生学院院长。先后主持（该领域）国家自然科学项目8项（包括面上项目5项、重点国际（地区）合作项目1项，其他2项）、国家“十三.五”重大科技专项课题1项以及其他国际合作课题2项，在国内外杂志上已经发表100余篇该领域的研究论文，以第一作者或通讯作者在JAMA、Neurology、Hypertension、Stroke、J hypertens等学术期刊上发表SCI收录论文80余篇。先后获国家科学技术进步二等奖2项，华夏医学科技奖二等奖1项。主要社会兼职: 江苏省预防医学会常务理事，江苏省卒中学会常务理事，江苏省卒中学会预防与控制专业委员会主任委员，江苏省预防医学会流行病学专业委员会副主任委员，中华预防医学会心脏病预防控制专业委员会常委，中国医师协会高血压专业委员会委员。《中华预防医学杂志》编委，《中华疾病控制杂志》编委，《中国公共卫生》编委。</p><p><br/></p><p><img src="http://127.0.0.1:8081/jgsconsole/importFiles/admin/2018120511134792453752/image/word/media/image7.jpeg" width="102.15pt" height="141.85pt"/><span style="font-family:&#39;Times New Roman&#39;;font-weight:bold;">陈琼</span><span style="font-family:&#39;Times New Roman&#39;;">，医学博士，教授、一级主任医师，博士研究生导师，湘雅名医、湖南省首届三湘好医生。现任中南大学湘雅医院老年医学科/老年呼吸内科主任，国际医疗部和全科医学教研室主任，国家老年病临床医学研究中心副主任。兼任中华医学会老年医学分会全国委员和老年呼吸病学组组长、中国老年医学中心联盟常委、中华医学会呼吸病学分会烟草病学组委员，中华医学会肠内肠外营养学分会老年营养支持学组委员、湖南省呼吸病学专业委员会副主任委员、湖南老年医学专业委员会副主委、湖南肺癌专业委员会副主任委员和湖南抗癌协会理事、湖南省干部医疗保健核心专家、湖南智库联盟专家，多种国内外期刊杂志编委或审稿人。</span></p><p style="text-indent:18.0pt;"><img src="http://127.0.0.1:8081/jgsconsole/importFiles/admin/2018120511134792453752/image/word/media/image8.png" width="92.9pt" height="140.0pt"/></p><p style="text-indent:24.0pt;"><span style="font-family:&#39;微软雅黑&#39;;font-weight:bold;">拓西平</span><span style="font-family:&#39;宋体&#39;;">，</span>海军军医大学第一附属医院老年病科主任医师、教授、博士生导师。主持科技部重点支撑项目子课题、上海市卫计委重点项目及军队保健专项课题3项；获上海市医学科技三等奖1项、军队科技进步三等奖1项、上海市教育委员会科研创新项目之重点项目1项、国家发明专利1项、中国国际专利与名牌博览会金奖1项；以专家论坛及第一 /通讯作者发表核心期刊论著及SCI论文50余篇，主(参)编专著10余部；培养博士、硕士研究生18名；荣立个人三等功2次，荣获“全军干部保健先进个人”及“军队保健工作突出贡献者”荣誉称号。</p><p>兼任中华医学会老年医学分会副主任委员、全军老年医学专业委员会 &nbsp;副主任委员、上海市医学会老年医学专业委员会主任委员、中华预防医学会循证预防医学专业委员会常委、上海市医学会内科学分会 常务委员会委员、上海市医学会资深会员、中央军委保健委员会会诊专家</p><p><br/></p><p><br/></p><p><img src="http://127.0.0.1:8081/jgsconsole/importFiles/admin/2018120511134792453752/image/word/media/image9.png" width="101.25pt" height="132.75pt"/><span style="font-weight:bold;">徐斐</span>，流行病与卫生统计学博士、主任医师/教授。现任南京市疾控中心副主任。学术研究领域主要包含体力活动及其影响因素、体力活动与肥胖和糖尿病之间关系、社会经济状况与慢性病之间关系、人居环境与体力活动和健康之间关系、健康素养与健康促进的现场流行病学研究；研究对象为社区成人和儿童青少年；研究方法涵盖现况研究、病例对照研究、社区随访观察研究和临床干预研究。曾在澳大利亚昆士兰大学公共卫生学院和 FLINDERS 大学医学院、美国约翰霍普金斯大学公共卫生学院进行访问研究。承担过多个大型的现场流行病学研究项目，近 10 年，累计发表中文论文 120 多篇，SCI 收录论文近 45篇（其中，第一且通讯作者的 SCI 论文 30 多篇）。《中国公共卫生》等杂志和SCI 期刊 BMC Public Health 学术编辑，The Lancet、American Journal of Public Health、Journal of Epidemiology and Community Health 等国际期刊的审稿人。</p><p><br/></p><p><img src="http://127.0.0.1:8081/jgsconsole/importFiles/admin/2018120511134792453752/image/word/media/image10.jpeg" width="109.35pt" height="153.8pt"/><span style="font-family:&#39;宋？？？&#39;;font-weight:bold;">庄勋</span><span style="font-family:&#39;宋体&#39;;">，</span><span style="font-family:&#39;宋体&#39;;">教授，现任南通大学公共卫生学院副院长。</span><span style="font-family:&#39;宋体&#39;;">现任中华预防医学会公共卫生教育分会委员、江苏省医学会临床流行病学分会副主任委员等职，从事流行病学教学和研究工作26年，主持/主要参与国际合作项目、国家级、省部级及其他各级各类课题多项，发表学术论文百余篇，合作通讯发表于国际顶级期刊Lancet和Hepatology</span><span style="font-family:&#39;宋体&#39;;">，</span><span style="font-family:&#39;宋体&#39;;">曾获澳大利亚政府领袖奖学金、江苏医学科技奖和南通市科技进步奖等荣誉。</span></p><p><br/></p><p><img src="http://127.0.0.1:8081/jgsconsole/importFiles/admin/2018120511134792453752/image/word/media/image11.jpeg" width="108.0pt" height="161.25pt"/><span style="font-weight:bold;">黄剑飞</span>，南通大学附属医院生物样本库主任、病理科副主任；病理学副主任医师，副教授；硕士生导师。社会兼职：中国研究型医院学会临床数据与样本资源库专业委员会第一届委员，中国医药生物技术协会精准医疗分会第一届全国委员，组织生物样本库分会第三届全国委员，江苏省医学会临床流行病学分会委员，南通市抗癌协会病理学分会常委，中华医学会南通市病理学分会委员。</p><p style="text-indent:24.0pt;">获得江苏省第五期“333高层次人才培养工程”培养对象，省六大人才高峰第十一批高层次人才选拔培养对象，省卫计委十三五“强卫工程”重点人才培养对象等称号。主持在研国自然面上项目2项、省重点研发计划项目（社会发展-临床前沿技术）1项、曾获国家博士后、省博士后资助各1项，市厅级科研项目多个。第一或通讯作者发表SCI论文30余篇，影响因子最高为7.786分，国家发明专利授权5项，市厅级科研奖项10余项，参编论著4部。</p><p style="text-indent:24.0pt;"><br/></p><p><img src="http://127.0.0.1:8081/jgsconsole/importFiles/admin/2018120511134792453752/image/word/media/image12.png" width="95.25pt" height="133.7pt"/></p><p style="margin-top:5.0pt;margin-bottom:5.0pt;"><span style="font-family:&#39;宋体&#39;;font-weight:bold;">任利群</span><span style="font-family:&#39;宋体&#39;;">，</span><span style="font-family:&#39;宋体&#39;;color:#000000;">医学博士，副教授，硕士生导师，心血管科主任医师，老年干部科主任。</span></p><p><span style="font-family:&#39;宋体&#39;;font-weight:bold;color:#000000;">主要学术职务：</span><span style="font-family:&#39;宋体&#39;;color:#000000;">中国微循环学会理事；江苏省微循环分</span><span style="font-family:&#39;宋体&#39;;color:#000000;">委</span><span style="font-family:&#39;宋体&#39;;color:#000000;">会副主任委员；江苏省老年医学</span><span style="font-family:&#39;宋体&#39;;color:#000000;">学</span><span style="font-family:&#39;宋体&#39;;color:#000000;">会副会长</span><span style="font-family:&#39;宋体&#39;;color:#000000;">；</span><span style="font-family:&#39;宋体&#39;;">江苏省医学会心电生理与起搏分会</span><span style="font-family:&#39;宋体&#39;;color:#000000;">起搏学组委员；江苏省心血管病分会脂质代谢学组委员；</span><span style="font-family:&#39;宋体&#39;;color:#000000;">江苏省老年医学分会委员；江苏省中西医结合学会老年医学分委会副主任委员；江苏省中西医结合学会周围血管病分委会副主任委员；南京</span><span style="font-family:&#39;宋体&#39;;color:#000000;">医学会</span><span style="font-family:&#39;宋体&#39;;color:#000000;">老年医学</span><span style="font-family:&#39;宋体&#39;;color:#000000;">分</span><span style="font-family:&#39;宋体&#39;;color:#000000;">会委员；南京医学会起搏与电生理分会委员</span><span style="font-family:&#39;宋体&#39;;color:#000000;">；</span><span style="font-family:&#39;宋体&#39;;color:#000000;">中国医师协会心血管内科医师分会专科会员；全国心血管疾病心律失常介入诊疗技术培训基地</span><span style="font-family:&#39;宋体&#39;;color:#000000;">导师；</span><span style="font-family:&#39;宋体&#39;;color:#000000;">中国医师协会心血管内科医师分会专科会员；</span><span style="font-family:&#39;宋体&#39;;color:#000000;">《</span><span style="font-family:&#39;宋体&#39;;color:#000000;">实用老年医学</span><span style="font-family:&#39;宋体&#39;;color:#000000;">》</span><span style="font-family:&#39;宋体&#39;;color:#000000;">编委</span><span style="font-family:&#39;宋体&#39;;">。</span><span style="font-family:&#39;宋体&#39;;color:#000000;">主持和</span><span style="font-family:&#39;宋体&#39;;">参与国家、省、市、校级课题8项，近年发表SCI收录论文10余篇，核心期刊收录论文40余篇。</span></p><p style="text-indent:24.0pt;"><br/></p><p><img src="http://127.0.0.1:8081/jgsconsole/importFiles/admin/2018120511134792453752/image/word/media/image13.png" width="92.25pt" height="163.5pt"/></p><p><span style="font-weight:bold;">沈冲</span>，男，南京医科大学公共卫生学院流行病学系副教授，硕士研究生导师。兼江苏省老年医院临床流行病研究室主任，江苏省公共卫生研究院研究员。2008 年 7 月毕业于北京协和医学院。当选为江苏省“青蓝工程”优秀青年骨干教师，江苏省“333 高层次人才培养工程”第三层次培养对象，国家精品课程《流行病学》双语教学团队成员。主要研究方向，慢性病流行病学。现为中华预防医学会心脏病预防与控制专业委员会委员，中华预防医学会慢性病预防与控制分会青年委员会常委，中国营养学会营养与慢病分会委员，江苏省预防医学会流行病学专业委员会委员，江苏省预防医学会慢性病预防与控制专业委员会委员，江苏省卒中学会预防与控制专业委员会副主委，江苏省健康管理学会理事。中华预防医学杂志和慢性病与转化医学（英文）杂志编委。承担并参与多项国家自然科学基金和科技部科技支撑计划项目 10 余项；近年来发表中英文论文 170 余篇，其中英文论文 70 余篇；参与获得多项省部级科研奖励；参编专著和教材 10 余部。</p><p><br/></p><p><img src="http://127.0.0.1:8081/jgsconsole/importFiles/admin/2018120511134792453752/image/word/media/image14.jpeg" width="103.5pt" height="148.5pt"/><span style="font-weight:bold;">王宁宁</span>，主任医师，教授，博士生导师。现任南京医科大学第一附属医院肾内科副主任。社会兼职：中国医师协会循证医学专业委员会青年委员；中国研究型医院学会甲状旁腺及骨代谢疾病专委会青年委员；江苏省医学会临床流行病学分会委员；江苏省肾脏病学会青年委员、中西医结合肾病学会青年委员。主持多项国家自然科学基金、中华医学会首届肾脏病青年研究基金等课题。以第一/通讯作者发表SCI论文20余篇。多次获省部级奖励。主要方向为慢性肾脏病-矿物质骨代谢紊乱（CKD-MBD)的临床与基础研究。</p><p><br/></p><p><img src="http://127.0.0.1:8081/jgsconsole/importFiles/admin/2018120511134792453752/image/word/media/image15.jpeg" width="108.0pt" height="108.0pt"/><span style="font-weight:bold;">余德才</span>，肝胆外科副主任医师，副教授，南京大学博士研究生导师。美国MUSC临床研究硕士，南京大学外科学博士。江苏省十二五、十三五科教兴卫工程医学重点人才、江苏省“六大人才高峰”高层次人才。国际肝癌协会（ILCA）和美国肿瘤协会（AACR）会员。TCR肝癌编委，多家国内外杂志的评审专家。先后赴香港玛丽医院、美国MUSC、韩国Asan医院研修肝胆外科、肝移植及腔镜技术。擅长于肝胆疾病的诊治，特别是肝胆肿瘤的外科治疗。精通肝脏外科、胆道外科的腹腔镜手术。主持国家自然基金3项及其他省市级科研项目5项。先后获得省部级科技进步奖2项。在国内外高水平学术刊物发表论文70余篇，其中第一作者SCI论文30余篇，参编专著2部。</p><p style="text-indent:24.0pt;text-align:center;"><br/></p><p style="text-indent:24.0pt;text-align:center;"><br/></p><p style="text-indent:24.0pt;text-align:center;"><br/></p><p style="text-indent:24.0pt;text-align:center;"><span style="font-family:&#39;黑体&#39;;font-size:16.0pt;">会议内容</span></p><p style="text-indent:24.0pt;">会议时间：2018年11月23-24日</p><table class="X21" style="width:485.1pt;border-collapse:collapse;"><tbody><tr class="X21"><td class="X21" style="width:44.1pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>日期</p></td><td class="X21" style="width:71.9pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>时间</p></td><td class="X21" style="width:221.5pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p style="text-align:center;">内容</p></td><td class="X21" style="width:91.25pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>主讲人</p></td><td class="X21" style="width:56.35pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>主持</p></td></tr><tr class="X21"><td class="X21" style="width:44.1pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;" rowspan="2"><p>23日</p><p></p></td><td class="X21" style="width:71.9pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>11:00~19:00</p></td><td class="X21" style="width:369.1pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;" colspan="3"><p>报到</p></td></tr><tr class="X21"><td class="X21" style="width:71.9pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>19:00~21:00</p></td><td class="X21" style="width:312.75pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;" colspan="2"><p>江苏省老年医学学会常务理事会（D楼二楼第一会议室）</p></td><td class="X21" style="width:56.35pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>许家仁</p></td></tr><tr class="X21"><td class="X21" style="width:44.1pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;" rowspan="8"><p>24日上午</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></td><td class="X21" style="width:71.9pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>8:30~9:00</p></td><td class="X21" style="width:221.5pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>开幕式（D楼二楼大会堂）</p></td><td class="X21" style="width:91.25pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p></p></td><td class="X21" style="width:56.35pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p></p></td></tr><tr class="X21"><td class="X21" style="width:71.9pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>9:00~9:30</p></td><td class="X21" style="width:221.5pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>人工智能与医疗改革</p></td><td class="X21" style="width:91.25pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>王咏红 &nbsp;会长</p></td><td class="X21" style="width:56.35pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p><br/></p></td></tr><tr class="X21"><td class="X21" style="width:71.9pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>9:30~10:00</p></td><td class="X21" style="width:221.5pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>大数据时代的临床医学研究</p></td><td class="X21" style="width:91.25pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>沈洪兵 &nbsp;教授</p></td><td class="X21" style="width:56.35pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p><br/></p></td></tr><tr class="X21"><td class="X21" style="width:71.9pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>10: 0~10:30</p></td><td class="X21" style="width:221.5pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>今年诺贝尔生理学奖介绍</p><p>以诺贝尔精神做临床科研</p></td><td class="X21" style="width:91.25pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>顾丰 &nbsp;教授</p></td><td class="X21" style="width:56.35pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p><br/></p></td></tr><tr class="X21"><td class="X21" style="width:71.9pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>10:30~10:40</p></td><td class="X21" style="width:369.1pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;" colspan="3"><p style="text-align:center;">茶歇</p></td></tr><tr class="X21"><td class="X21" style="width:71.9pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>10:40~11:10</p></td><td class="X21" style="width:221.5pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>中国出生队列的建立和应用</p></td><td class="X21" style="width:91.25pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>胡志斌 &nbsp;教授</p></td><td class="X21" style="width:56.35pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p><br/></p></td></tr><tr class="X21"><td class="X21" style="width:71.9pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>11:10~11:40</p></td><td class="X21" style="width:221.5pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>缺血性脑卒中预后相关生物标志</p></td><td class="X21" style="width:91.25pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>张永红 &nbsp;院长</p></td><td class="X21" style="width:56.35pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p><br/></p></td></tr><tr class="X21"><td class="X21" style="width:71.9pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>12:00</p></td><td class="X21" style="width:221.5pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>午餐</p></td><td class="X21" style="width:91.25pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p><br/></p></td><td class="X21" style="width:56.35pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p><br/></p></td></tr><tr class="X21"><td class="X21" style="width:485.1pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;" colspan="5"><p style="text-align:center;">流行病学论坛（D楼三楼多功能厅）</p></td></tr><tr class="X21"><td class="X21" style="width:44.1pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;" rowspan="6"><p>24日下午</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></td><td class="X21" style="width:71.9pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>13:30~14:10</p></td><td class="X21" style="width:221.5pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>中国MSM人群扩大检测和ART规模后</p><p>艾滋病流行趋势预测及卫生经济学评价</p></td><td class="X21" style="width:91.25pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>庄勋 &nbsp;教授</p></td><td class="X21" style="width:56.35pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p></p></td></tr><tr class="X21"><td class="X21" style="width:71.9pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>14:10~14:50</p></td><td class="X21" style="width:221.5pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>多光谱免疫病理图像分析系统的临床</p><p>科研应用</p></td><td class="X21" style="width:91.25pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>黄剑飞 &nbsp;教授</p></td><td class="X21" style="width:56.35pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p><br/></p></td></tr><tr class="X21"><td class="X21" style="width:71.9pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>14:50~15:10</p></td><td class="X21" style="width:369.1pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;" colspan="3"><p style="text-align:center;">茶歇</p></td></tr><tr class="X21"><td class="X21" style="width:71.9pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>15:10~15:50</p></td><td class="X21" style="width:221.5pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>肝胆外科手术创新与临床研究</p></td><td class="X21" style="width:91.25pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>余德才 &nbsp;教授</p></td><td class="X21" style="width:56.35pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p><br/></p></td></tr><tr class="X21"><td class="X21" style="width:71.9pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>15:50~16:30</p></td><td class="X21" style="width:221.5pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>围手术期甲状旁腺激素监测精准评估</p><p>肾性甲旁亢手术的疗效</p></td><td class="X21" style="width:91.25pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>王宁宁 &nbsp;教授</p></td><td class="X21" style="width:56.35pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p><br/></p></td></tr><tr class="X21"><td class="X21" style="width:71.9pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>16:40~17:30</p></td><td class="X21" style="width:312.75pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;" colspan="2"><p>江苏省医学会临床流行病学分会全体委员会</p></td><td class="X21" style="width:56.35pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>许家仁</p></td></tr><tr class="X21"><td class="X21" style="width:485.1pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;" colspan="5"><p style="text-align:center;">老年医学论坛（D楼二楼多功能厅）</p></td></tr><tr class="X21"><td class="X21" style="width:44.1pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;" rowspan="5"><p>24日下午</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></td><td class="X21" style="width:71.9pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>13:30~14:10</p></td><td class="X21" style="width:221.5pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>慢病管理</p></td><td class="X21" style="width:91.25pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>徐斐 &nbsp;教授</p></td><td class="X21" style="width:56.35pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p></p></td></tr><tr class="X21"><td class="X21" style="width:71.9pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>14:10~14:50</p></td><td class="X21" style="width:221.5pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>老年人慢性阻塞性肺疾病诊治特点及进展</p></td><td class="X21" style="width:91.25pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>陈琼 &nbsp;教授</p></td><td class="X21" style="width:56.35pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p><br/></p></td></tr><tr class="X21"><td class="X21" style="width:71.9pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>14:50~15:10</p></td><td class="X21" style="width:369.1pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;" colspan="3"><p style="text-align:center;">茶歇</p></td></tr><tr class="X21"><td class="X21" style="width:71.9pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>15:10~15:50</p></td><td class="X21" style="width:221.5pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>老龄化与健康</p></td><td class="X21" style="width:91.25pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>拓西平 &nbsp;教授</p></td><td class="X21" style="width:56.35pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p><br/></p></td></tr><tr class="X21"><td class="X21" style="width:71.9pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>15:50~16:30</p></td><td class="X21" style="width:221.5pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>老年髋部骨折围手术期水、电解质和容量控制</p></td><td class="X21" style="width:91.25pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>任利群 &nbsp;教授</p></td><td class="X21" style="width:56.35pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p><br/></p></td></tr><tr class="X21"><td class="X21" style="width:44.1pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p><br/></p></td><td class="X21" style="width:71.9pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>16:30~17:10</p></td><td class="X21" style="width:221.5pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>老年慢性病临床研究设计</p></td><td class="X21" style="width:91.25pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>沈冲 &nbsp;教授</p></td><td class="X21" style="width:56.35pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p><br/></p></td></tr><tr class="X21"><td class="X21" style="width:44.1pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>24日晚上</p></td><td class="X21" style="width:71.9pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>19:00~20:00</p></td><td class="X21" style="width:312.75pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;" colspan="2"><p>实用老年医学第二届青年编委会全委会会议</p></td><td class="X21" style="width:56.35pt;border-top:0.5px solid #000000;border-bottom:0.5px solid #000000;border-left:0.5px solid #000000;border-right:0.5px solid #000000;"><p>杜志波</p></td></tr></tbody></table><p style="text-indent:24.0pt;"><br/></p><p style="text-indent:24.0pt;"><br/></p><p style="text-indent:24.0pt;">会议须知</p><p style="text-indent:24.0pt;">1.会务费：500元/人，包含资料费和餐费。</p><p style="text-indent:24.0pt;">2.本次会议地点：南京华东饭店D楼大会堂，南京市鼓楼区北京西路67号。</p><p style="text-indent:24.0pt;">3.参会人员需自理交通费、住宿费等费用，如需预定会议酒店（南京华东饭店），需在注册申请表中填写备注，数量有限。</p><p style="text-indent:24.0pt;">4.本次会议不设机场/火车站接站环节，请参会人员自行前往会场。</p><p style="text-indent:24.0pt;">5.酒店地址：</p><p style="text-indent:24.0pt;"><img src="http://127.0.0.1:8081/jgsconsole/importFiles/admin/2018120511134792453752/image/word/media/image16.png" width="344.25pt" height="193.55pt"/></p><p style="text-indent:24.0pt;"><br/></p><p style="text-indent:24.0pt;text-align:center;"><span style="font-family:&#39;黑体&#39;;font-size:16.0pt;">联系我们</span></p><p style="text-indent:144.0pt;"><span style="font-family:&#39;？？体&#39;;">杜志波：13851719581（手机）</span></p><p style="text-indent:24.0pt;"><span style="font-family:&#39;黑体&#39;;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;陈金凤：13655198764（手机）</span></p><p style="text-indent:24.0pt;"><span style="font-family:&#39;黑体&#39;;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;025-86632917（办公室）</span></p></div>, 管理员, f6e63328-79df-48ff-9c12-b063c60547e1]
+2019-01-03 08:53:06,503 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120007} Types : [VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR]
+2019-01-03 08:53:06,523 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120007} executed. 21.072 millis. update org_news set OPERATE_TIME=?,
+	    OPERATOR=?,
+	    TITLE=?,
+	    DATETIME=?,
+	    IS_SHOWN=?,
+	    CREATE_TIME=?,
+	     
+	        ATTACHMENT=?,
+	     
+	     
+	        QUICK_IMG=?,
+	     
+	     
+	        QUICK_DESC=?,
+	     
+	     
+	        CONTENT=?,
+	     
+	    CREATOR=?
+	    where id = ?
+2019-01-03 08:53:06,523 [http-8081-4] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120007} clearParameters. 
+2019-01-03 08:53:06,525 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 08:53:06,525 [http-8081-4] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 14:31:05,555 [http-8081-3] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2019-01-03 14:31:05,556 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20000} Parameters : [admin]
+2019-01-03 14:31:05,556 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20000} Types : [VARCHAR]
+2019-01-03 14:31:05,558 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20000} executed. 1.641 millis. select * from user_lock where user_name=? order by TRY_TIME desc
+2019-01-03 14:31:05,558 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20000} clearParameters. 
+2019-01-03 14:31:05,559 [http-8081-3] DEBUG [druid.sql.Connection] - {conn-10001} commited
+2019-01-03 14:31:05,559 [http-8081-3] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2019-01-03 14:31:05,559 [http-8081-3] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2019-01-03 14:31:05,559 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20001} Parameters : [admin]
+2019-01-03 14:31:05,560 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20001} Types : [VARCHAR]
+2019-01-03 14:31:05,561 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20001} executed. 1.117 millis. select * from sys_user where user_name=?
+2019-01-03 14:31:05,561 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20001} clearParameters. 
+2019-01-03 14:31:05,562 [http-8081-3] DEBUG [druid.sql.Connection] - {conn-10001} commited
+2019-01-03 14:31:05,562 [http-8081-3] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2019-01-03 14:31:05,563 [http-8081-3] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2019-01-03 14:31:05,563 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20002} Parameters : [3]
+2019-01-03 14:31:05,563 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20002} Types : [VARCHAR]
+2019-01-03 14:31:05,564 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20002} executed. 1.481 millis. select role_id roleId,role_name roleName,role_description roleDescription,ROLE_TYPE roleType
+  		from sys_role where role_id in 
+  		(select role_id from sys_user_role r where r.user_id=?) order by ROLE_TYPE
+2019-01-03 14:31:05,564 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20002} clearParameters. 
+2019-01-03 14:31:05,565 [http-8081-3] DEBUG [druid.sql.Connection] - {conn 10001} rollback
+2019-01-03 14:31:05,565 [http-8081-3] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2019-01-03 14:31:05,565 [http-8081-3] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2019-01-03 14:31:05,565 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20003} Parameters : [3, 3]
+2019-01-03 14:31:05,566 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20003} Types : [VARCHAR, VARCHAR]
+2019-01-03 14:31:05,569 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20003} executed. 3.997 millis. select 
+  	     	menu_id menuId,
+  	     	TITLE,
+  	     	LOCATION,
+  	     	PARENT_ID parentId,
+  	     	ICONCLS icon,
+  	     	DESCRIPTION,
+  	     	ORDER_SORT oderSort,
+  	     	CREATE_TIME createTime,
+  	     	UPDATE_TIME updateTime,
+  	     	OPERTYPE,
+  	     	FLAG,
+  	     	need_msg,
+  	     	need_msgtable,
+  	     	app_id
+  	     	from sys_menu a where exists(select 1 from 
+  	     	(select distinct menu_id from sys_role_menu where role_id in 
+				(select role_id from sys_user_role where user_id=?) union 
+			select menu_id from sys_user_menu where user_id=? and operate='0') b 
+			where a.menu_id = b.menu_id
+			)
+			order by ORDER_SORT
+2019-01-03 14:31:05,579 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20003} clearParameters. 
+2019-01-03 14:31:05,580 [http-8081-3] DEBUG [druid.sql.Connection] - {conn 10001} rollback
+2019-01-03 14:31:05,580 [http-8081-3] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2019-01-03 14:31:05,585 [http-8081-3] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2019-01-03 14:31:05,585 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20004} Parameters : [admin]
+2019-01-03 14:31:05,585 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20004} Types : [VARCHAR]
+2019-01-03 14:31:05,586 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20004} executed. 1.048 millis. delete from user_lock where user_name=?
+2019-01-03 14:31:05,586 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20004} clearParameters. 
+2019-01-03 14:31:05,587 [http-8081-3] DEBUG [druid.sql.Connection] - {conn-10001} commited
+2019-01-03 14:31:05,587 [http-8081-3] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2019-01-03 14:31:05,587 [http-8081-3] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2019-01-03 14:31:05,587 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20005} Parameters : [0ffe987a-092e-48b3-a0f5-a2751090a0ff, 192.168.1.100, admin, 登陆日志, 2019-01-03 14:31:05, 管理员：成功登陆系统, , 3]
+2019-01-03 14:31:05,587 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20005} Types : [VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR]
+2019-01-03 14:31:05,588 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20005} executed. 0.973 millis. insert into sys_log(
+    		ID,
+    		IP,
+    		OPEARTER,
+    		LOG_TYPE,
+    		TIME,
+    		DESCRIBE,
+    		OPEATE_DETAIL,
+    		USER_ID
+    	) 
+    	values (
+    		?,
+    		?,
+    		?,
+    		?,
+    		?,
+    		?,
+    		?,
+    		?
+    	)
+2019-01-03 14:31:05,588 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20005} clearParameters. 
+2019-01-03 14:31:05,589 [http-8081-3] DEBUG [druid.sql.Connection] - {conn-10001} commited
+2019-01-03 14:31:05,589 [http-8081-3] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2019-01-03 14:31:05,773 [http-8081-3] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 14:31:05,773 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120000} Parameters : [ffc6c177-3ea8-44f4-abe2-ce51fd501fd8, reg]
+2019-01-03 14:31:05,773 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120000} Types : [VARCHAR, VARCHAR]
+2019-01-03 14:31:05,774 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120000} executed. 1.288 millis. select count(1) num,'个人会员申请' name,? id,? app_id from ORG_MEMBEREG where HAS_OPERATE='1' and flag='1'
+2019-01-03 14:31:05,775 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120000} clearParameters. 
+2019-01-03 14:31:05,775 [http-8081-3] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 14:31:05,775 [http-8081-3] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 14:31:05,775 [http-8081-3] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 14:31:05,776 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120001} Parameters : [ffc6c177-3ea8-44f4-abe2-ce51fd501fd8, reg]
+2019-01-03 14:31:05,776 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120001} Types : [VARCHAR, VARCHAR]
+2019-01-03 14:31:05,776 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120001} executed. 0.761 millis. select count(1) num,'理事会员申请' name,? id,? app_id from ORG_MEMBEREG where HAS_LISHI_OPERA='1' and HAS_OPERATE='0' and COUNCIL_FLAG='1'
+2019-01-03 14:31:05,777 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120001} clearParameters. 
+2019-01-03 14:31:05,777 [http-8081-3] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 14:31:05,777 [http-8081-3] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 14:31:05,777 [http-8081-3] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 14:31:05,777 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120002} Parameters : [4ba3a444-be52-4cea-b8cc-138a6efdfdf6, reg]
+2019-01-03 14:31:05,778 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120002} Types : [VARCHAR, VARCHAR]
+2019-01-03 14:31:05,778 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120002} executed. 0.857 millis. select count(1) num,'团体会员申请' name,? id,? app_id from ORG_GROUPREG where HAS_OPERATE='1' and flag='1'
+2019-01-03 14:31:05,779 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120002} clearParameters. 
+2019-01-03 14:31:05,779 [http-8081-3] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 14:31:05,779 [http-8081-3] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 14:31:05,779 [http-8081-3] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 14:31:05,780 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120003} Parameters : [a8337781-696e-4f2c-a8cf-39343af53941, reg]
+2019-01-03 14:31:05,780 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120003} Types : [VARCHAR, VARCHAR]
+2019-01-03 14:31:05,780 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120003} executed. 0.829 millis. select count(1) num,'企业会员申请' name,? id,? app_id from ORG_COMPANY where HAS_OPERATE='1' and flag='1'
+2019-01-03 14:31:05,781 [http-8081-3] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120003} clearParameters. 
+2019-01-03 14:31:05,781 [http-8081-3] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 14:31:05,781 [http-8081-3] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 14:31:05,899 [http-8081-11] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2019-01-03 14:31:05,899 [http-8081-11] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20006} Parameters : [3]
+2019-01-03 14:31:05,899 [http-8081-11] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20006} Types : [VARCHAR]
+2019-01-03 14:31:05,902 [http-8081-11] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20006} executed. 3.176 millis. select * from (select t.*,row_number() over(order by time desc) as ss from sys_log t 
+	    where user_id=?) s where s.ss='2'
+2019-01-03 14:31:05,904 [http-8081-11] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20006} clearParameters. 
+2019-01-03 14:31:05,905 [http-8081-11] DEBUG [druid.sql.Connection] - {conn-10001} commited
+2019-01-03 14:31:05,905 [http-8081-11] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2019-01-03 14:31:08,844 [http-8081-11] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 14:31:08,845 [http-8081-11] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120004} Parameters : [1]
+2019-01-03 14:31:08,845 [http-8081-11] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120004} Types : [VARCHAR]
+2019-01-03 14:31:08,846 [http-8081-11] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120004} executed. 1.368 millis. select count(1) from org_news where flag='0' and type=?
+2019-01-03 14:31:08,846 [http-8081-11] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120004} clearParameters. 
+2019-01-03 14:31:08,847 [http-8081-11] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 14:31:08,847 [http-8081-11] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 14:31:08,848 [http-8081-11] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 14:31:08,848 [http-8081-11] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120005} Parameters : [1]
+2019-01-03 14:31:08,848 [http-8081-11] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120005} Types : [VARCHAR]
+2019-01-03 14:31:08,849 [http-8081-11] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120005, rs-150033} query executed. 1.161 millis. select count(0) from ( select * from org_news where flag='0' and type=? order by create_time desc )
+2019-01-03 14:31:08,849 [http-8081-11] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120005} clearParameters. 
+2019-01-03 14:31:08,850 [http-8081-11] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120006} Parameters : [1]
+2019-01-03 14:31:08,850 [http-8081-11] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120006} Types : [VARCHAR]
+2019-01-03 14:31:08,853 [http-8081-11] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120006} executed. 2.976 millis. select * from ( select row_.*, rownum rownum_ from ( select * from org_news where flag='0' and type=? order by create_time desc ) row_ ) where rownum_ > 0 and rownum_ <= 10
+2019-01-03 14:31:08,902 [http-8081-11] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120006} clearParameters. 
+2019-01-03 14:31:08,903 [http-8081-11] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 14:31:08,903 [http-8081-11] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 14:32:08,197 [http-8081-8] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 14:32:08,197 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120008} created. insert into org_news(ID,
+							 TITLE,
+							 CONTENT,
+							 DATETIME,
+							 IS_SHOWN,
+							 CREATE_TIME,
+							 CREATOR,
+							 TYPE,
+							 OPERATE_TIME,
+						   
+							 ATTACHMENT,
+						   
+						   
+							 QUICK_IMG,
+						   
+						   
+							 QUICK_DESC,
+						   
+							 OPERATOR) values (
+							 ?,
+							 ?,
+							 ?,
+							 ?,
+							 ?,
+							 ?,
+							 ?,
+							 ?,
+							 ?,
+						   
+							 ?,
+						   
+						   
+							 ?,
+						   
+						   
+							 ?,
+						   
+							 ?
+							 )
+2019-01-03 14:32:08,197 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120008} Parameters : [82e8e295-7650-459b-a12f-fce97b460419, 2019新年寄语, <p><img src="http://127.0.0.1:8081/jgsconsole/upload/2019010314320469398883.jpg" _src="http://127.0.0.1:8081/jgsconsole/upload/2019010314320469398883.jpg"/></p>, 2019-01-03, 1, 2019-01-03 14:31:42, 管理员, 1, 2019-01-03 14:32:08, , http://127.0.0.1:8081/jgsconsole/upload/2019010314320469398883.jpg, 2019新年寄语, 管理员]
+2019-01-03 14:32:08,197 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120008} Types : [VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR]
+2019-01-03 14:32:08,204 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120008} executed. 6.868 millis. insert into org_news(ID,
+							 TITLE,
+							 CONTENT,
+							 DATETIME,
+							 IS_SHOWN,
+							 CREATE_TIME,
+							 CREATOR,
+							 TYPE,
+							 OPERATE_TIME,
+						   
+							 ATTACHMENT,
+						   
+						   
+							 QUICK_IMG,
+						   
+						   
+							 QUICK_DESC,
+						   
+							 OPERATOR) values (
+							 ?,
+							 ?,
+							 ?,
+							 ?,
+							 ?,
+							 ?,
+							 ?,
+							 ?,
+							 ?,
+						   
+							 ?,
+						   
+						   
+							 ?,
+						   
+						   
+							 ?,
+						   
+							 ?
+							 )
+2019-01-03 14:32:08,204 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120008} clearParameters. 
+2019-01-03 14:32:08,205 [http-8081-8] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 14:32:08,205 [http-8081-8] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 14:32:08,293 [http-8081-8] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 14:32:08,293 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120004} Parameters : [1]
+2019-01-03 14:32:08,293 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120004} Types : [VARCHAR]
+2019-01-03 14:32:08,294 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120004} executed. 0.931 millis. select count(1) from org_news where flag='0' and type=?
+2019-01-03 14:32:08,294 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120004} clearParameters. 
+2019-01-03 14:32:08,294 [http-8081-8] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 14:32:08,294 [http-8081-8] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2019-01-03 14:32:08,295 [http-8081-8] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2019-01-03 14:32:08,295 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120005} Parameters : [1]
+2019-01-03 14:32:08,295 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120005} Types : [VARCHAR]
+2019-01-03 14:32:08,296 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120005, rs-150036} query executed. 0.633 millis. select count(0) from ( select * from org_news where flag='0' and type=? order by create_time desc )
+2019-01-03 14:32:08,296 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120005} clearParameters. 
+2019-01-03 14:32:08,296 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120006} Parameters : [1]
+2019-01-03 14:32:08,296 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120006} Types : [VARCHAR]
+2019-01-03 14:32:08,297 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120006} executed. 1.183 millis. select * from ( select row_.*, rownum rownum_ from ( select * from org_news where flag='0' and type=? order by create_time desc ) row_ ) where rownum_ > 0 and rownum_ <= 10
+2019-01-03 14:32:08,343 [http-8081-8] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120006} clearParameters. 
+2019-01-03 14:32:08,344 [http-8081-8] DEBUG [druid.sql.Connection] - {conn-110001} commited
+2019-01-03 14:32:08,344 [http-8081-8] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle

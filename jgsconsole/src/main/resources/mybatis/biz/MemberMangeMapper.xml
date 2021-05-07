@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jgsconsole.app.repository.biz.MemberMangeDao">
+    
+    <resultMap id="memberRegResult" type="java.util.HashMap">  
+	    <result property="ID" column="ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="NAME" column="NAME" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="SEX" column="SEX" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="BIRTH" column="BIRTH" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="JG" column="JG" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="MZ" column="MZ" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="DP" column="DP" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="SFZ" column="SFZ" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="GZDH" column="GZDH" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="PHONE" column="PHONE" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="EMAIL" column="EMAIL" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="YZBM" column="YZBM" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="LXDZ" column="LXDZ" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="ZHBYYX" column="ZHBYYX" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="SXZY" column="SXZY" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="XL" column="XL" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="CSZY" column="CSZY" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="GZDW" column="GZDW" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="KS" column="KS" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="DWZW" column="DWZW" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="JSZC" column="JSZC" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="ISRDZX" column="ISRDZX" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="JL" column="JL" jdbcType="CLOB" javaType ="java.lang.String" />
+		<result property="CREATETIME" column="CREATETIME" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="FLAG" column="FLAG" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="USERID" column="USERID" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="USERALIAS" column="USERALIAS" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="INITREGSUC" column="INITREGSUC" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="HAS_OPERATE" column="HAS_OPERATE" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="HY_ID" column="HY_ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="COUNCIL_FLAG" column="COUNCIL_FLAG" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="HAS_LISHI_OPERA" column="HAS_LISHI_OPERA" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="INITCILSUC" column="INITCILSUC" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="CUR_LISHI_ID" column="CUR_LISHI_ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="HAS_CLI_RECORD" column="HAS_CLI_RECORD" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="HYSH_ERR_REASON" column="HYSH_ERR_REASON" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="LSSH_ERR_REASON" column="LSSH_ERR_REASON" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="ALLOW_MSGID" column="ALLOW_MSGID" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </resultMap>
+    
+    <update id="allowApplyCli" parameterType="map">
+        update org_membereg set ALLOWCLI_TIME=to_char(sysdate,'yyyy-MM-dd HH24:mi:ss'), 
+								ALLOWCLI_USER=#{ALLOWCLI_USER},
+								ALLOWCLI_USERID=#{ALLOWCLI_USERID},
+								COUNCIL_FLAG='4',
+								ALLOW_MSGID=#{MSGID}
+		where id=#{ID}
+    </update>
+    
+    <insert id="initApplyCli" parameterType="map">
+        insert into user_msg(USERID,
+							ID,
+							TITLE,
+							CONTENT,
+							CREATETIME,
+							DATETIME,
+							TYPE) values (
+							#{USERID},
+							#{MSGID},
+							'您已可以开始申请理事！',
+							'reg_cil_start.jsp',
+							to_char(sysdate,'yyyy-MM-dd'),
+							to_char(sysdate,'yyyy-MM-dd HH24:mi:ss'),
+							'1')
+    </insert>
+    
+    <select id="getCilHz" parameterType="map" resultType="java.util.HashMap">
+        <![CDATA[
+	        select HY_ID,NAME,BIRTH,SEX,SXZY,GZDW,DWZW||'/'||JSZC DWZWZC,LXDZ,YZBM,GZDH,PHONE,EMAIL 
+	        from org_membereg where flag='0' and COUNCIL_FLAG='0' and createtime>=#{starttime} and createtime<=#{endtime}
+	        order by createtime desc
+        ]]>
+    </select>
+    
+    <select id="getMbrHz" parameterType="map" resultType="java.util.HashMap">
+        <![CDATA[
+	        select HY_ID,NAME,BIRTH,SEX,SXZY,GZDW,DWZW||'/'||JSZC DWZWZC,LXDZ,YZBM,GZDH,PHONE,EMAIL 
+	        from org_membereg where flag='0' and first_createtime>=#{starttime} and first_createtime<=#{endtime}
+	        order by first_createtime desc
+        ]]>
+    </select>
+    
+    <select id="getLiShiList" parameterType="string" resultType="java.util.HashMap">
+        select * from COUNCIL_REC where userid=#{_parameter} order by createtime desc
+    </select>
+    
+    <insert id="initCouncilSuccess" parameterType="map">
+        insert into user_msg(USERID,
+							ID,
+							TITLE,
+							CONTENT,
+							CREATETIME,
+							DATETIME,
+							TYPE) values (
+							#{USERID},
+							#{MSGID},
+							'理事申请,已审核通过！',
+							'reg_success.jsp',
+							to_char(sysdate,'yyyy-MM-dd'),
+							to_char(sysdate,'yyyy-MM-dd HH24:mi:ss'),
+							'1')
+    </insert>
+    
+    <insert id="initRegSuccess" parameterType="map">
+        insert into user_msg(USERID,
+							ID,
+							TITLE,
+							CONTENT,
+							CREATETIME,
+							DATETIME,
+							TYPE) values (
+							#{USERID},
+							#{MSGID},
+							'个人会员申请,已审核通过！',
+							'reg_success.jsp',
+							to_char(sysdate,'yyyy-MM-dd'),
+							to_char(sysdate,'yyyy-MM-dd HH24:mi:ss'),
+							'1')
+    </insert>
+    
+    <insert id="initRegRefuse" parameterType="map">
+        insert into user_msg(USERID,
+							ID,
+							TITLE,
+							CONTENT,
+							CREATETIME,
+							DATETIME,
+							TYPE,
+							MSG_PS) values (
+							#{USERID},
+							#{MSGID},
+							'个人会员申请,审核不通过！',
+							'reg_error.jsp',
+							to_char(sysdate,'yyyy-MM-dd'),
+							to_char(sysdate,'yyyy-MM-dd HH24:mi:ss'),
+							'1',
+							#{disreason})
+    </insert>
+    
+    <insert id="initCouncilRefuse" parameterType="map">
+        insert into user_msg(USERID,
+							ID,
+							TITLE,
+							CONTENT,
+							CREATETIME,
+							DATETIME,
+							TYPE,
+							MSG_PS) values (
+							#{USERID},
+							#{MSGID},
+							'理事申请,审核不通过！',
+							'reg_error.jsp',
+							to_char(sysdate,'yyyy-MM-dd'),
+							to_char(sysdate,'yyyy-MM-dd HH24:mi:ss'),
+							'1',
+							#{disreason})
+    </insert>
+    
+    <update id="passCouncil" parameterType="map">
+        update org_membereg set COUNCIL_FLAG='0',
+        						HAS_LISHI_OPERA='0',
+        						CLI_TIME=to_char(sysdate,'yyyy-MM-dd HH24:mi:ss'),
+        						INITCILSUC=#{MSGID} 
+        where ID=#{ID}
+    </update>
+    
+    <update id="pass_council_record" parameterType="map">
+        update council_rec set FLAG='0',
+        						CIL_SH_USERID=#{CLIUSERID},
+        						CIL_SH_USER=#{CIL_USER},
+        						CIL_SH_TIME=to_char(sysdate,'yyyy-MM-dd HH24:mi:ss') 
+        where ID=#{clid}
+    </update>
+    
+    <update id="passMebReg" parameterType="map">
+        update org_membereg set FLAG='0',HAS_OPERATE='0',HY_ID=#{HY_ID},SHUSER=#{SHUSER},SHUSERID=#{SHUSERID},SHTIME=to_char(sysdate,'yyyy-MM-dd HH24:mi:ss'),INITREGSUC=#{MSGID} where ID=#{ID}
+    </update>
+    
+    <update id="refuseMebReg" parameterType="map">
+        update org_membereg set FLAG='2',
+        						HAS_OPERATE='0',
+        						SHUSER=#{SHUSER},
+        						SHUSERID=#{SHUSERID},
+        						HYSH_ERR_REASON=#{disreason},
+        						SHTIME=to_char(sysdate,'yyyy-MM-dd HH24:mi:ss'),
+        						INITREGSUC=#{MSGID} 
+        where ID=#{ID}
+    </update>
+    
+    <update id="refuse_council_record" parameterType="map">
+        update council_rec set FLAG='3',
+        						  CIL_SH_USER=#{CIL_USER},
+        						  CIL_SH_USERID=#{CLIUSERID},
+        						  LSSH_ERR_REASON=#{disreason},
+        						  CIL_SH_TIME=to_char(sysdate,'yyyy-MM-dd HH24:mi:ss')
+        where ID=#{clid}
+    </update>
+    
+    <update id="refuseCouncil" parameterType="map">
+        update org_membereg set COUNCIL_FLAG='3',
+        						HAS_LISHI_OPERA='0',
+        						LSSH_ERR_REASON=#{disreason},
+        						CLI_TIME=to_char(sysdate,'yyyy-MM-dd HH24:mi:ss') ,
+        						INITCILSUC=#{MSGID} 
+        where ID=#{ID}
+    </update>
+    
+    <update id="bk_council_record" parameterType="map">
+        update council_rec set flag='1',
+						       CIL_SH_TIME=null,
+							   CIL_SH_USERID=null,
+							   CIL_SH_USER=null,
+							   LSSH_ERR_REASON=null
+		where ID=#{clid}
+    </update>
+    
+    <delete id="delInitCouncilSuccess" parameterType="map">
+        delete from user_msg where id=#{MSGID} and userid=#{USERID}
+    </delete>
+    
+    <delete id="delInitRegSuccess" parameterType="map">
+        delete from user_msg where id=#{MSGID} and userid=#{USERID}
+    </delete>
+    
+    <update id="getBkMebReg" parameterType="map">
+        update org_membereg set FLAG='1',
+        						COUNCIL_FLAG='2',
+        						SHUSER=null,
+        						SHUSERID=null,
+        						SHTIME=null,
+        						INITREGSUC=null,
+        						HY_ID=null, 
+        						HYSH_ERR_REASON=null,
+        						CUR_LISHI_ID=null, 
+        						CLI_TIME=null,
+        						LSSH_ERR_REASON=null
+        where ID=#{ID}
+    </update>
+    
+    <update id="getBkCouncil" parameterType="map">
+        update org_membereg set COUNCIL_FLAG='1',INITCILSUC=null,CLI_TIME=null,LSSH_ERR_REASON=null where ID=#{ID}
+    </update>
+    
+    <update id="getBkAllowCil" parameterType="map">
+        update org_membereg set COUNCIL_FLAG='2',
+						        ALLOWCLI_TIME=null,
+								ALLOWCLI_USER=null,
+								ALLOWCLI_USERID=null,
+								ALLOW_MSGID=null
+		where ID=#{ID}
+    </update>
+    
+    <delete id="delAllowCilMsg" parameterType="map">
+        delete from user_msg where id=#{MSGID} and userid=#{USERID}
+    </delete>
+    
+    <select id="getAllRegMemberData" resultMap="memberRegResult">
+        select * from org_membereg order by createtime desc
+    </select>
+    
+	<select id="getMemberRegCount" resultType="int">
+	  	select count(1) from org_membereg
+	</select>
+	
+	<select id="getMemberRegList" resultMap="memberRegResult" parameterType="map">
+		select * from org_membereg order by createtime desc
+	</select>
+    
+	<select id="getUserRegBySearchCount1" resultType="int" parameterType="map">
+	  	select count(1) from org_membereg where HY_ID like #{SEARCHVAL}
+	</select>
+	
+	<select id="getUserRegBySearch1" resultMap="memberRegResult" parameterType="map">
+		select * from org_membereg where HY_ID like #{SEARCHVAL} order by createtime desc
+	</select>
+    
+	<select id="getUserRegBySearchCount2" resultType="int" parameterType="map">
+	  	select count(1) from org_membereg where NAME like #{SEARCHVAL}
+	</select>
+	
+	<select id="getUserRegBySearch2" resultMap="memberRegResult" parameterType="map">
+		select * from org_membereg where NAME like #{SEARCHVAL} order by createtime desc
+	</select>
+    
+	<select id="getUserRegBySearchCount3" resultType="int" parameterType="map">
+	  	select count(1) from org_membereg where PHONE like #{SEARCHVAL}
+	</select>
+	
+	<select id="getUserRegBySearch3" resultMap="memberRegResult" parameterType="map">
+		select * from org_membereg where PHONE like #{SEARCHVAL} order by createtime desc
+	</select>
+    
+	<select id="getUserRegBySearchCount4" resultType="int" parameterType="map">
+	  	select count(1) from org_membereg where EMAIL like #{SEARCHVAL}
+	</select>
+	
+	<select id="getUserRegBySearch4" resultMap="memberRegResult" parameterType="map">
+		select * from org_membereg where EMAIL like #{SEARCHVAL} order by createtime desc
+	</select>
+	
+	<select id="getUserRegBySearchCount5" resultType="int" parameterType="map">
+	  	select count(1) from org_membereg where USERALIAS like #{SEARCHVAL}
+	</select>
+	
+	<select id="getUserRegBySearch5" resultMap="memberRegResult" parameterType="map">
+		select * from org_membereg where USERALIAS like #{SEARCHVAL} order by createtime desc
+	</select>
+	
+</mapper> 

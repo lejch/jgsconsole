@@ -1,0 +1,156 @@
+.glyhiconBk{
+	background :#58aeec;
+	width:35px;
+	height:35px;
+	line-height:35px;
+	border-radius:50%;
+	color:#ffffff;
+}
+.ppdnTl{
+	display:inline-block;
+	margin-left:5px;
+	font-weight:bold;
+	color:#465a64;
+}
+.aHfbtn{
+	letter-spacing:2px;
+	font-weight:bold;
+	font-size:12px;
+	text-shadow: 2px 2px rgba(100, 100, 100, 0.1);
+	color:#465a64;
+	display:inline-block;
+	margin-right:20px;
+	height:30px;
+	position:relative;
+}
+.aHfbtn:hover{color:#58aeec;}
+.ppdnMul{
+	list-style:none;
+	padding:0 0 0 4%;
+}
+.ppdnMul li{
+	min-width:44%;
+	float:left;
+	margin-right:4%;
+	margin-bottom:10px;
+}
+.ppdnMul li:hover i{background:black;}
+.ppdnMul li:hover span{color:black;}
+.tmldivx{background-color:#e9f0f5;
+		 position:absolute;
+		 top:0px;
+		 width:100%;
+ 		 height:30px;
+ 		 line-height:25px;
+ 		 z-index:9;
+ 		 margin-top:8px;
+ 		 }
+
+.plTtleshowd{
+	height:30px;
+	background:#e9f0f5;
+	margin-bottom:10px;
+	margin-top:12px;
+	position:relative;
+}
+.plTtleshowd li{
+	-webkit-box-sizing:content-box;
+    -moz-box-sizing:content-box;
+    box-sizing:content-box;
+	display: inline-block;
+	position: relative;
+	margin-right: 10px;
+	height:20px;
+	line-height: 18px;
+	list-style: none;
+	padding: 5px 10px 5px 30px;
+	background:#fff;
+	box-shadow: 3px 1px 3px rgba(0, 0, 0, 0), 2px 2px 2px rgba(0, 0, 0, 0.1);
+}
+.plTtleshowd li:first-child{
+	border-radius: 4px 0 0 4px;
+	padding-left: 12px;
+}
+/* .plTtleshowd a{ */
+/* 	line-height: 18px; */
+/* 	font-size:13px; */
+/* 	letter-spacing:1px; */
+/* list-style: none; */
+/* text-shadow: 2px 2px rgba(100, 100, 100, 0.1); */
+/* color:#465a64;} */
+.backTriangle{
+	position:absolute;
+	top:0px;
+	right:-15px;
+	height: 0;
+	width: 0;
+	border-bottom: 15px inset transparent;
+	border-left: 15px solid #fff;
+	border-top: 15px inset transparent;
+	z-index:2;
+}
+.frontTriangle{
+	position:absolute;
+	top:0px;
+	left:0px;
+	height: 0;
+	width: 0;
+	border-bottom: 15px inset transparent;
+	border-left: 15px solid #e9f0f5;
+	border-top: 15px inset transparent;
+	z-index:1;
+}
+.plTtleshowd li:hover{background:#58aeec;}
+.plTtleshowd li:hover a{color:#fff;}
+.plTtleshowd li:hover .backTriangle{border-bottom: 15px inset transparent;
+	border-left: 15px solid #58aeec;
+	border-top: 15px inset transparent;}
+.activeLL{background:#58aeec !important;}
+.activeLL a{color:#fff;}
+.activeLL .backTriangle{border-bottom: 15px inset transparent;
+	border-left: 15px solid #58aeec;
+	border-top: 15px inset transparent;}
+.activeSY{background:#eff3f6 !important;}
+.activeSY a{color:#fff;}
+
+
+.rtf_div{
+	cursor: pointer;
+	padding:0px;
+	display:inline-block;
+	width: 60px;
+	height: 30px;
+	z-index:999;
+	position: absolute;
+	right: 1px;
+	top: 0px;
+	background-color:#fff;
+	box-shadow: 3px 1px 3px rgba(0, 0, 0, 0), 2px 2px 2px rgba(0, 0, 0, 0.1);
+	text-shadow: 2px 2px rgba(100, 100, 100, 0.1);
+}
+.rftpFront{
+	position:absolute;
+	top:0px;
+	right:47px;
+	height: 0;
+	width: 0;
+	border-bottom: 15px inset transparent;
+	border-left: 15px solid #e9f0f5;
+	border-top: 15px inset transparent;
+	z-index: 1000;
+}
+.rtf_div:hover{
+	cursor: pointer;
+	background-color:#3fa9df;
+}
+.rtf_div:hover .hi-icon:before{
+	color:#fff;
+	-webkit-animation: spinAround 2s linear infinite;
+	-moz-animation: spinAround 2s linear infinite;
+	animation: spinAround 2s linear infinite;
+}
+/* .rtf_div:hover a{color:#3fa9df;} */
+.window,
+.window .window-body {
+  /*border-color: #fff;*/
+}

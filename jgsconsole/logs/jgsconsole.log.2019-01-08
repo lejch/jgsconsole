@@ -1,0 +1,9 @@
+2019-01-08 19:56:22,113 [Thread-7] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120007} closed
+2019-01-08 19:56:22,114 [Thread-7] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120000} closed
+2019-01-08 19:56:22,114 [Thread-7] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120001} closed
+2019-01-08 19:56:22,114 [Thread-7] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120002} closed
+2019-01-08 19:56:22,114 [Thread-7] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120003} closed
+2019-01-08 19:56:22,115 [Thread-7] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120008} closed
+2019-01-08 19:56:22,115 [Thread-7] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120004} closed
+2019-01-08 19:56:22,115 [Thread-7] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120005} closed
+2019-01-08 19:56:22,115 [Thread-7] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120006} closed

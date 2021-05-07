@@ -1,0 +1,30 @@
+2018-12-28 08:04:24,184 [Thread-7] DEBUG [druid.sql.Statement] - {conn-110002, pstmt-120016} closed
+2018-12-28 08:04:24,185 [Thread-7] DEBUG [druid.sql.Statement] - {conn-110002, pstmt-120012} closed
+2018-12-28 08:04:24,185 [Thread-7] DEBUG [druid.sql.Statement] - {conn-110002, pstmt-120013} closed
+2018-12-28 08:04:24,185 [Thread-7] DEBUG [druid.sql.Statement] - {conn-110002, pstmt-120014} closed
+2018-12-28 08:04:24,185 [Thread-7] DEBUG [druid.sql.Statement] - {conn-110002, pstmt-120015} closed
+2018-12-28 08:04:24,185 [Thread-7] DEBUG [druid.sql.Statement] - {conn-110002, pstmt-120009} closed
+2018-12-28 08:04:24,186 [Thread-7] DEBUG [druid.sql.Statement] - {conn-110002, pstmt-120010} closed
+2018-12-28 08:04:24,186 [Thread-7] DEBUG [druid.sql.Statement] - {conn-110002, pstmt-120011} closed
+2018-12-28 08:04:24,188 [Thread-7] DEBUG [druid.sql.Connection] - {conn-110002} closed
+2018-12-28 08:04:24,189 [Thread-7] INFO  [com.alibaba.druid.pool.DruidDataSource] - {dataSource-2} closed
+2018-12-28 08:04:24,191 [Thread-7] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20007} closed
+2018-12-28 08:04:24,191 [Thread-7] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20008} closed
+2018-12-28 08:04:24,191 [Thread-7] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20009} closed
+2018-12-28 08:04:24,191 [Thread-7] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20010} closed
+2018-12-28 08:04:24,191 [Thread-7] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20011} closed
+2018-12-28 08:04:24,191 [Thread-7] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20012} closed
+2018-12-28 08:04:24,191 [Thread-7] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20013} closed
+2018-12-28 08:04:24,192 [Thread-7] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20014} closed
+2018-12-28 08:04:24,192 [Thread-7] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20015} closed
+2018-12-28 08:04:24,192 [Thread-7] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20016} closed
+2018-12-28 08:04:24,192 [Thread-7] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20017} closed
+2018-12-28 08:04:24,192 [Thread-7] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20001} closed
+2018-12-28 08:04:24,192 [Thread-7] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20002} closed
+2018-12-28 08:04:24,192 [Thread-7] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20003} closed
+2018-12-28 08:04:24,192 [Thread-7] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20004} closed
+2018-12-28 08:04:24,193 [Thread-7] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20005} closed
+2018-12-28 08:04:24,193 [Thread-7] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20006} closed
+2018-12-28 08:04:24,193 [Thread-7] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20000} closed
+2018-12-28 08:04:24,195 [Thread-7] DEBUG [druid.sql.Connection] - {conn-10001} closed
+2018-12-28 08:04:24,196 [Thread-7] INFO  [com.alibaba.druid.pool.DruidDataSource] - {dataSource-1} closed

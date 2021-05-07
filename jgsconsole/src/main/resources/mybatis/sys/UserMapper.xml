@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.jgsconsole.app.repository.account.UserDao">
+	<select id="getLstLoginfo" resultType="java.util.HashMap" parameterType="String">
+	    <![CDATA[
+	    select * from (select t.*,row_number() over(order by time desc) as ss from sys_log t 
+	    where user_id=#{_parameter}) s where s.ss='2'
+	    ]]>
+	</select>
+	<!--
+		获取用户: 输出直接映射到对象, login_name列要"as loginName"以方便映射 ,team_id as "team.id"创建team对象并赋值
+	 <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+	-->
+	<select id="getAppName" resultType="java.util.HashMap" parameterType="java.lang.String">
+		select nvl(app_name,'console') app_name from (select app_id from sys_role where role_id=#{_parameter}) t 
+		left join sys_app a on t.app_id=a.id
+	</select>
+	
+	<select id="getHighestRole" resultType="java.util.HashMap" parameterType="java.lang.String">
+		select * from sys_role where role_id in 
+		(select ROLE_ID from sys_user_role where user_id=(select user_id from sys_user where user_name=#{_parameter}))
+		order by role_type asc
+	</select>
+	
+	<select id="getUserLockListByUserName" resultType="java.util.HashMap" parameterType="java.lang.String">
+		select * from user_lock where user_name=#{_parameter} order by TRY_TIME desc
+	</select>
+	
+	<delete id="delUserLocksByUserName" parameterType="java.lang.String">
+		delete from user_lock where user_name=#{_parameter}
+	</delete>
+	
+	<insert id="insertFailLogin" parameterType="map">
+	    insert into user_lock(id,user_name) values (#{ID},#{USER_NAME})
+	</insert>
+	
+	<select id="checkUserExist" resultType="java.util.HashMap" parameterType="java.lang.String">
+		select * from sys_user where user_name=#{_parameter}
+	</select>
+	
+	<select id="getAppLayout" resultType="java.util.HashMap" parameterType="java.lang.String">
+		select LAYOUT from sys_app where ID=#{_parameter}
+	</select>
+	
+	<select id="searchUser" resultType="java.util.HashMap" parameterType="Map">
+		select * from sys_user where (user_name like #{SEARCHVAL} or user_alias like #{SEARCHVAL}) and user_name!='admin'
+	</select>
+	
+	<update id="changePassword" parameterType="map">
+		update sys_user set PASSWORD=#{surePassword},salt=#{salt} where USER_ID=#{USER_ID}
+	</update>
+	
+	<update id="changeLayout" parameterType="map">
+		update sys_app set layout=#{layout} where ID=#{ID}
+	</update>
+	
+	<select id="getUsers" resultType="java.util.HashMap" parameterType="map">
+		select s.*,r.unit_name from 
+			(select su.*,t.role_type from 
+				(select user_id,min(role_type) role_type from sys_user_role a left join sys_role b 
+				 on b.role_id=a.role_id group by user_id) t 
+			right join sys_user su on t.user_id=su.user_id) s 
+		left join sys_unit r on s.unitcode=r.unit_code where s.role_type!='0' or s.role_type is null
+		order by USER_NAME
+	</select>
+	
+	<select id="getUsersCount" resultType="int" parameterType="map">
+  		select count(1) from (
+  			select s.*,r.unit_name from 
+			(select su.*,t.role_type from 
+				(select user_id,min(role_type) role_type from sys_user_role a left join sys_role b 
+				 on b.role_id=a.role_id group by user_id) t 
+			right join sys_user su on t.user_id=su.user_id) s 
+			left join sys_unit r on s.unitcode=r.unit_code where s.role_type!='0' or s.role_type is null)
+	</select>
+	
+	<select id="get" parameterType="string" resultType="User">
+		select * from sys_user  where user_id=#{userId}
+	</select>
+  
+   	 <!-- 根据登录名查询除了用户名为map.get(USER_NAME)的用户 -->
+  <select id="getByNameForUpdate" resultMap="findRoleMenu" parameterType="Map" >
+  	select * from sys_user m 
+  	<where>
+  		<if test="USER_NAME != null and USER_NAME != ''">
+  			m.user_name!=#{USER_NAME} 
+  		</if>
+  		<if test="username != null and username != ''">
+  			and m.user_name=#{username} 
+  		</if>
+  	</where>
+   </select>
+   	
+  <select id="getByName" resultMap="findRoleMenu" parameterType="Map">
+      select * from sys_user where user_name=#{loginName}
+  </select>
+  
+  <!-- 用户信息map -->
+	<resultMap type="com.jgsconsole.app.entity.account.User" id="findRoleMenu">
+		<id property="userId" column="USER_ID" />
+		<result property="username" column="USER_NAME" />
+		<result property="useralias" column="USER_ALIAS" />
+		<result property="email" column="EMAIL" />
+		<result property="password" column="PASSWORD" />
+		<result property="createDate" column="CREATE_DATE" />
+		<result property="flag" column="FLAG" />
+		<result property="salt" column="SALT" />
+		<result property="idcard" column="IDCARD" />
+		<result property="birthday" column="BIRTHDAY" />
+		<result property="gender" column="GENDER" />
+		<result property="location" column="LOCATION" />
+		<result property="work_unit" column="WORK_UNIT" />
+		<result property="phone" column="PHONE" />
+		<result property="unitcode" column="UNITCODE" />
+		<result property="creater" column="CREATER" />
+		<result property="homephone" column="HOMEPHONE" />
+		
+		<collection property="roles" ofType="com.jgsconsole.app.entity.account.Role"
+		javaType="ArrayList" column="USER_ID"  select="selectRole"/>
+		<collection property="menus" ofType="com.jgsconsole.app.entity.account.Menu"
+		javaType="ArrayList" column="USER_ID"  select="selectMenu"/>
+	</resultMap>
+
+	<!-- 更具参数分页查找用户 -->
+	<select id="findUserByParam" resultType="Map" parameterType="map">
+	    SELECT SU.USER_ID,
+	           SU.USER_NAME,
+	           SU.USER_ALIAS,
+	           SU.EMAIL,
+	           SR.ROLE_NAME,
+	           SR.ROLE_ID,
+	           SU.UNITCODE UNIT_CODE,
+	           DECODE(SU.UNITCODE,'',(SELECT SUT.UNIT_NAME FROM SYS_UNIT SUT WHERE SUT.PARENT_CODE = '0'),(SELECT SUT.UNIT_NAME AS A FROM SYS_UNIT SUT WHERE UNIT_CODE = SU.UNITCODE)) UNIT_NAME
+		FROM SYS_USER SU,SYS_ROLE SR,SYS_USER_ROLE SUR
+		WHERE SU.USER_ID = SUR.USER_ID
+		AND SR.ROLE_ID = SUR.ROLE_ID
+		AND SR.ROLE_TYPE NOT IN('0','4')
+		<if test="USER_NAME != null and USER_NAME != ''">
+			and SU.USER_NAME LIKE CONCAT(CONCAT('%', #{USER_NAME}),'%')
+		</if>
+		<if test="EMAIL != null and EMAIL != ''">
+			and SU.EMAIL LIKE CONCAT(CONCAT('%', #{EMAIL}),'%')
+		</if>
+		<if test="USER_ALIAS != null and USER_ALIAS != ''">
+			and SU.USER_ALIAS LIKE CONCAT(CONCAT('%', #{USER_ALIAS}),'%')
+		</if>
+		<if test="UNIT_CODE != null and UNIT_CODE != ''">
+			and SU.UNITCODE = #{UNIT_CODE}
+		</if>
+	</select>
+
+	<select id="selectRole" resultType="Role" parameterType="string">
+  		select role_id roleId,role_name roleName,role_description roleDescription,ROLE_TYPE roleType
+  		from sys_role where role_id in 
+  		(select role_id from sys_user_role r where r.user_id=#{userId}) order by ROLE_TYPE
+  	</select>
+  
+  
+  <!-- 根据用户id查询菜单 -->
+<select id="selectMenu" resultType="com.jgsconsole.app.entity.account.Menu" parameterType="HashMap" >
+  	<![CDATA[
+  	     select 
+  	     	menu_id menuId,
+  	     	TITLE,
+  	     	LOCATION,
+  	     	PARENT_ID parentId,
+  	     	ICONCLS icon,
+  	     	DESCRIPTION,
+  	     	ORDER_SORT oderSort,
+  	     	CREATE_TIME createTime,
+  	     	UPDATE_TIME updateTime,
+  	     	OPERTYPE,
+  	     	FLAG,
+  	     	need_msg,
+  	     	need_msgtable,
+  	     	app_id
+  	     	from sys_menu a where exists(select 1 from 
+  	     	(select distinct menu_id from sys_role_menu where role_id in 
+				(select role_id from sys_user_role where user_id=#{user_id}) union 
+			select menu_id from sys_user_menu where user_id=#{user_id} and operate='0') b 
+			where a.menu_id = b.menu_id
+			)
+			order by ORDER_SORT
+	]]>
+</select>
+ 
+ 	<!-- 插入用户  -->
+	<insert id="save" parameterType="com.jgsconsole.app.entity.account.User">
+      	insert into sys_user(user_id,
+      						 user_name,
+      						 user_alias,
+      						 password,
+      						 email,	
+      						 flag,
+      						 creater,
+      						 unitcode,
+      						 salt
+    	<if test="homephone!=null and homephone!=''">
+      	    ,homephone
+      	</if>
+    	<if test="phone!=null and phone!=''">
+      	    ,phone
+      	</if>
+      	)
+		values (#{userId ,jdbcType=VARCHAR},
+				#{username, jdbcType=VARCHAR},
+				#{useralias, jdbcType=VARCHAR},
+				#{password, jdbcType=VARCHAR},
+				#{email, jdbcType=VARCHAR},
+				#{flag, jdbcType=VARCHAR},
+				#{creater, jdbcType=VARCHAR},
+				#{unitcode, jdbcType=VARCHAR},
+				#{salt, jdbcType=VARCHAR}
+		<if test="homephone!=null and homephone!=''">
+      	    ,#{homephone, jdbcType=VARCHAR}
+      	</if>
+    	<if test="phone!=null and phone!=''">
+      	    ,#{phone, jdbcType=VARCHAR}
+      	</if>
+		)
+	</insert>
+	
+	<insert id="setRoleToUser" parameterType="map">
+		insert into sys_user_role(USER_ID,ROLE_ID) values (#{USER_ID},#{ROLE_ID})
+	</insert>
+	
+	<delete id="delRoleToUser" parameterType="map">
+		delete from sys_user_role where USER_ID=#{USER_ID} and ROLE_ID=#{ROLE_ID}
+	</delete>
+	
+	<!-- 修改用戶信息  -->
+	<update id="update" parameterType="com.jgsconsole.app.entity.account.User">
+		update sys_user
+		<set>
+	      <if test="useralias != null">user_alias=#{useralias},</if>
+	      <if test="password != null and password != ''">password=#{password},</if>
+	      <if test="email != null">email=#{email},</if>
+	      <if test="salt != null and salt != ''">salt=#{salt},</if>
+	      <if test="unitcode != null and unitcode != ''">unitcode=#{unitcode},</if>
+	      <if test="homephone != null">homephone=#{homephone},</if>
+	      <if test="idcard != null and idcard != ''">idcard=#{idcard},</if>
+	      <if test="birthday != null">birthday=#{birthday},</if>
+	      <if test="gender != null">gender=#{gender},</if>
+	      <if test="location != null">location=#{location},</if>
+	      <if test="work_unit != null">work_unit=#{work_unit},</if>
+	      <if test="phone != null">phone=#{phone},</if>  
+	      <if test="username != null">user_name=#{username},</if>
+    	</set>
+    	where user_id = #{userId}
+	</update>
+	
+	
+	<!-- 
+	删除用户
+	 -->
+	<delete id="deleteUser" parameterType="string">
+		<![CDATA[
+		delete from sys_user where user_id=#{userId}
+		]]>
+	</delete>
+	
+	<!-- 删除用户角色表中的数据 -->
+ 	<delete id="deleteUserMenu" parameterType="string">
+ 		delete from sys_user_menu where user_id = #{userId}
+ 	</delete>
+ 	
+ 	<delete id="deleteUserRole" parameterType="string">
+ 		delete from sys_user_role where user_id = #{userId}
+ 	</delete>
+ 
+	<select id="getCount" resultType="int" parameterType="Map" >
+	  	select count(1) from sys_user where (user_name like #{SEARCHVAL} or user_alias like #{SEARCHVAL}) and user_name!='admin'
+	</select>
+	
+	<select id="exportUsers" resultType="Map" >
+  	<![CDATA[
+	   	 select u.user_name, u.user_alias, r.role_name, u.email
+		 from sys_user u
+		 left join sys_user_role ur
+		 on  u.user_id = ur.user_id
+		 left join sys_role r
+		 on ur.role_id = r.role_id
+	]]>
+	</select>
+</mapper> 

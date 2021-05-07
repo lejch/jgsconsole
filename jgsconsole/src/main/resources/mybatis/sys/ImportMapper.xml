@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.jgsconsole.app.repository.excel.ImportDao">
+	
+	<select id="getImportRule" resultType="java.util.HashMap" parameterType="java.lang.String"> 
+        select 
+        	T.RULE_ID,
+        	T.BIZ_TABLE,
+        	T.BIZ_TABLE_KEY,
+        	T.XLS_DATA_BEGIN,  
+        	T.PRC_NAME
+         from 
+         	SYS_IMPEXCEL_RULE_MAIN T 
+         where
+          	T.BIZ_TYPE=#{type}
+    </select>
+    
+   	<select id="getImportRuleDetail" resultType="java.util.HashMap" parameterType="java.lang.String"> 
+        select 
+        	T.XLS_TITLE_NAME,
+        	T.BIZ_TABLE_COLUMN_NAME,
+        	T.BIZ_TABLE_COLUMN_TYPE,
+        	T.XLS_TITLE_COLUMN,
+        	T.XLS_TITLE_LINE,  
+        	T.NULL_ABLE
+         from 
+         	SYS_IMPEXCEL_RULE_DETAILS T 
+       	 where
+         	T.RULE_ID = #{ruleID}
+    </select>
+    
+   	<select id="getRoleInfo" resultType="java.util.HashMap"> 
+        select 
+        	T.ROLE_ID,
+        	T.ROLE_NAME
+         from 
+         	SYS_ROLE T 
+    </select>
+    
+   	<insert id="insertLog" parameterType="java.util.HashMap"> 
+       insert into 
+       	SYS_IMPEXCEL_LOG(
+       		LOG_ID,
+       		USER_ID,
+       		IMP_TIME,
+       		XLS_FILE_NAME,
+       		IMPXLS_STATUS,
+       		CHECKS_TATUS,
+       		IMPDATA_STATUS,
+       		ERROR_MSG,
+       		IMP_DESCRIBE,
+       		BIZ_TYPE
+       		) 
+       	values(
+       		#{LOG_ID},
+       		#{USER_ID},
+       		#{IMP_TIME},
+       		#{XLS_FILE_NAME},
+       		#{IMPXLS_STATUS},
+       		#{CHECKS_TATUS},
+       		#{IMPDATA_STATUS},
+       		#{ERROR_MSG},
+       		#{IMP_DESCRIBE},
+       		#{BIZ_TYPE}
+       		) 
+    </insert> 
+    
+    <insert id="batchInsertUserData">
+		insert into SYS_USER_TEMP(USER_ID,USER_NAME,EMAIL,PASSWORD,CREATE_DATE,UPDATE_DATE,ROLE_ID,LOG_ID,SALT,USER_ALIAS)
+		<foreach collection="list" item="item" index="index" separator="union all">
+			(select #{item.USER_ID,jdbcType=VARCHAR},
+				#{item.USER_NAME,jdbcType=VARCHAR},
+				#{item.EMAIL,jdbcType=VARCHAR},
+				#{item.PASSWORD,jdbcType=VARCHAR},
+				#{item.CREATE_DATE,jdbcType=VARCHAR},
+				#{item.UPDATE_DATE,jdbcType=VARCHAR},
+				#{item.ROLE_ID,jdbcType=VARCHAR},
+				#{item.LOG_ID,jdbcType=VARCHAR},
+				#{item.SALT,jdbcType=VARCHAR},
+				#{item.USER_ALIAS,jdbcType=VARCHAR}
+		    from dual)
+		</foreach>
+	</insert>
+    
+    
+</mapper> 

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jgsconsole.app.repository.biz.DownLoadMangeDao">
+    
+	<insert id="insertUploadFile" parameterType="map">
+	    insert into org_download(ID,
+							TITLE,
+							FILE_TYPE,
+							FILE_SIZE,
+							CREATE_TIME,
+							FILE_LOC,
+							PDF_LOC,
+							CREATOR) values (
+							    #{ID},
+								#{TITLE},
+								#{FILE_TYPE},
+								#{FILE_SIZE},
+								to_char(sysdate,'yyyy-MM-dd'),
+								#{FILE_LOC},
+								#{PDF_LOC},
+								#{CREATOR}
+							 )
+	</insert>
+	
+	<delete id="delUpFile" parameterType="map">
+	    delete from org_download where id=#{ID}
+	</delete>
+	
+	<select id="getDownloadList" resultType="java.util.HashMap" parameterType="map">
+		select * from org_download where flag='0' order by addtime desc
+	</select>
+	
+	<select id="getDownloadListCount" resultType="int">
+	  	select count(1) from org_download where flag='0'
+	</select>
+</mapper> 

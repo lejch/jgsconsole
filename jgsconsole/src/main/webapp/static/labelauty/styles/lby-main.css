@@ -1,0 +1,82 @@
+@font-face{
+	font-family: 'open_sans_lightregular';
+	src: url('../fonts/opensans-light-webfont.eot');
+	src: url('../fonts/opensans-light-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/opensans-light-webfont.woff') format('woff'),
+		 url('../fonts/opensans-light-webfont.ttf') format('truetype'),
+		 url('../fonts/opensans-light-webfont.svg#open_sans_lightregular') format('svg');
+	font-weight: 800;
+	font-style: normal;
+}
+
+input.to-labelauty-icon + label { display: inline-block; margin-right: 6px; margin-top:1px;}
+input.to-labelauty-icon + label:last-child { margin-right: 0; }
+
+input.labelauty + label { font-size: 11px; }
+
+input.labelauty + label > span.labelauty-unchecked-image
+{
+	background-image: url( ../images/input-unchecked.png );
+}
+input.labelauty + label > span.labelauty-checked-image
+{
+	background-image: url( ../images/input-checked.png );
+}
+
+input.labelauty.synch-icon + label > span.labelauty-unchecked-image
+{
+	background-image: url( ../images/synch-unchecked.png );
+}
+input.labelauty.synch-icon + label > span.labelauty-checked-image
+{
+	background-image: url( ../images/synch-checked.png );
+}
+
+input.labelauty.terms-icon + label > span.labelauty-unchecked-image
+{
+	background-image: url( ../images/terms-unchecked.png );
+}
+input.labelauty.terms-icon + label > span.labelauty-checked-image
+{
+	background-image: url( ../images/terms-checked.png );
+}
+
+input.labelauty.disabled-icon + label > span.labelauty-unchecked-image
+{
+	background-image: url( ../images/input-disabled.png );
+}
+input.labelauty.disabled-icon + label > span.labelauty-checked-image
+{
+	background-image: url( ../images/input-disabled.png );
+}
+
+a.button
+{
+	display: table;
+	font-size: 12px;
+	background-color: #3498db;
+	text-align: center;
+	font-weight: bold;
+	margin: 0 auto;
+	padding: 15px 25px;
+	color: #FFF;
+
+	border-radius: 3px 3px 3px 3px;
+	-moz-border-radius: 3px 3px 3px 3px;
+	-webkit-border-radius: 3px 3px 3px 3px;
+
+	transition: background-color 0.25s;
+	-moz-transition: background-color 0.25s;
+	-webkit-transition: background-color 0.25s;
+	-o-transition: background-color 0.25s;
+}
+
+a.button:hover
+{
+	background-color: #72c5fd;
+}
+
+a.button:active
+{
+	background-color: #2a89c9;
+}

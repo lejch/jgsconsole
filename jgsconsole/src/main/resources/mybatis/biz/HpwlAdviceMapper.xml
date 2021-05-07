@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jgsconsole.app.repository.biz.HpwlAdvDao">
+    
+	<resultMap id="noteResult" type="java.util.HashMap">  
+	    <result property="ID" column="ID" />  
+	    <result property="TITLE" column="TITLE" jdbcType="VARCHAR" javaType = "java.lang.String" />  
+	    <result property="CONTENT"  column="CONTENT" jdbcType="CLOB" javaType = "java.lang.String" />
+	    <result property="CREATETIME" column="CREATETIME" jdbcType="VARCHAR" javaType = "java.lang.String" />
+	    <result property="LINKWAY" column="LINKWAY" jdbcType="VARCHAR" javaType = "java.lang.String" />
+	    <result property="NAME" column="NAME" jdbcType="VARCHAR" javaType = "java.lang.String" />
+	    <result property="EMAIL" column="EMAIL" jdbcType="VARCHAR" javaType = "java.lang.String" />
+    </resultMap>
+    
+	<select id="getAllOrgAdviceData" resultMap="noteResult">
+		select * from org_advice order by CREATETIME desc
+	</select>
+    
+	<select id="getOrgAdviceCount" resultType="int">
+	  	select count(1) from org_advice
+	</select>
+	
+	<select id="getOrgAdvice" resultMap="noteResult" parameterType="map">
+		select * from org_advice order by CREATETIME desc
+	</select>
+
+</mapper> 

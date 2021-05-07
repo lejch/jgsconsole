@@ -1,0 +1,30 @@
+2018-12-10 11:23:57,321 [Thread-7] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120004} closed
+2018-12-10 11:23:57,324 [Thread-7] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120005} closed
+2018-12-10 11:23:57,324 [Thread-7] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120006} closed
+2018-12-10 11:23:57,324 [Thread-7] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120000} closed
+2018-12-10 11:23:57,324 [Thread-7] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120001} closed
+2018-12-10 11:23:57,324 [Thread-7] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120002} closed
+2018-12-10 11:23:57,324 [Thread-7] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120003} closed
+2018-12-10 11:23:57,348 [Thread-7] DEBUG [druid.sql.Connection] - {conn-110001} closed
+2018-12-10 11:23:57,350 [Thread-7] INFO  [com.alibaba.druid.pool.DruidDataSource] - {dataSource-2} closed
+2018-12-10 11:23:57,351 [Thread-7] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20000} closed
+2018-12-10 11:23:57,352 [Thread-7] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20001} closed
+2018-12-10 11:23:57,352 [Thread-7] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20002} closed
+2018-12-10 11:23:57,352 [Thread-7] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20003} closed
+2018-12-10 11:23:57,352 [Thread-7] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20004} closed
+2018-12-10 11:23:57,352 [Thread-7] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20005} closed
+2018-12-10 11:23:57,352 [Thread-7] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20006} closed
+2018-12-10 11:23:57,368 [Thread-7] DEBUG [druid.sql.Connection] - {conn-10001} closed
+2018-12-10 11:23:57,368 [Thread-7] INFO  [com.alibaba.druid.pool.DruidDataSource] - {dataSource-1} closed
+2018-12-10 14:12:09,150 [main] DEBUG [druid.sql.Connection] - {conn-10001} connected
+2018-12-10 14:12:09,150 [main] DEBUG [druid.sql.Connection] - {conn-10001} setAutoCommit false
+2018-12-10 14:12:09,189 [main] INFO  [com.alibaba.druid.pool.DruidDataSource] - {dataSource-1} inited
+2018-12-10 14:12:09,193 [main] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2018-12-10 14:12:09,193 [main] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2018-12-10 14:12:09,448 [main] ERROR [com.alibaba.druid.pool.DruidDataSource] - invalid oracle validationQuery. SELECT 'x', may should be : SELECT 'x' FROM DUAL
+2018-12-10 14:12:09,459 [main] DEBUG [druid.sql.Connection] - {conn-110001} connected
+2018-12-10 14:12:09,460 [main] DEBUG [druid.sql.Connection] - {conn-110001} setAutoCommit false
+2018-12-10 14:12:09,461 [main] INFO  [com.alibaba.druid.pool.DruidDataSource] - {dataSource-2} inited
+2018-12-10 14:12:09,461 [main] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2018-12-10 14:12:09,461 [main] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2018-12-10 14:12:10,699 [main] INFO  [org.hibernate.validator.internal.util.Version] - HV000001: Hibernate Validator 4.3.1.Final

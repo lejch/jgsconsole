@@ -1,0 +1,27 @@
+<ehcache updateCheck="false" name="app">
+
+   <cache
+   			name="appCache"
+            maxElementsInMemory="10000"
+            eternal="false"
+            overflowToDisk="false"
+            diskPersistent="false"
+            diskExpiryThreadIntervalSeconds="120"
+    >
+      <searchable>
+	    <searchAttribute name="typename" expression="value.getTypeName()"/>
+	    <searchAttribute name="typecode" expression="value.getTypeCode()"/>
+	    <searchAttribute name="typenamepy" expression="value.getTypeNamePy()"/>
+	  </searchable>
+    	
+    </cache>
+            
+    <!--  <cache name="SimplePageCachingFilter" 
+        maxElementsInMemory="10000" 
+        eternal="false"
+        overflowToDisk="false" 
+        timeToIdleSeconds="900" 
+        timeToLiveSeconds="1800"
+        memoryStoreEvictionPolicy="LFU" /> -->
+        
+</ehcache>

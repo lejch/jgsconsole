@@ -1,0 +1,57 @@
+2018-07-10 11:32:15,038 [Thread-22] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120000} closed
+2018-07-10 11:32:15,040 [Thread-22] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120001} closed
+2018-07-10 11:32:15,040 [Thread-22] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120002} closed
+2018-07-10 11:32:15,041 [Thread-22] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120003} closed
+2018-07-10 11:32:15,041 [Thread-22] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120004} closed
+2018-07-10 11:32:15,041 [Thread-22] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120005} closed
+2018-07-10 11:32:15,041 [Thread-22] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120006} closed
+2018-07-10 11:32:15,041 [Thread-22] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120007} closed
+2018-07-10 11:32:15,042 [Thread-22] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120011} closed
+2018-07-10 11:32:15,042 [Thread-22] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120008} closed
+2018-07-10 11:32:15,042 [Thread-22] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120009} closed
+2018-07-10 11:32:15,043 [Thread-22] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120010} closed
+2018-07-10 11:32:15,043 [Thread-22] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120015} closed
+2018-07-10 11:32:15,044 [Thread-22] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120016} closed
+2018-07-10 11:32:15,045 [Thread-22] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120017} closed
+2018-07-10 11:32:15,047 [Thread-22] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120012} closed
+2018-07-10 11:32:15,047 [Thread-22] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120013} closed
+2018-07-10 11:32:15,048 [Thread-22] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120014} closed
+2018-07-10 11:32:15,048 [Thread-22] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120018} closed
+2018-07-10 11:32:15,048 [Thread-22] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120019} closed
+2018-07-10 11:32:15,048 [Thread-22] DEBUG [druid.sql.Statement] - {conn-110001, pstmt-120020} closed
+2018-07-10 11:32:15,066 [Thread-22] DEBUG [druid.sql.Connection] - {conn-110001} closed
+2018-07-10 11:32:15,070 [Thread-22] INFO  [com.alibaba.druid.pool.DruidDataSource] - {dataSource-2} closed
+2018-07-10 11:32:15,071 [Thread-22] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20012} closed
+2018-07-10 11:32:15,072 [Thread-22] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20013} closed
+2018-07-10 11:32:15,072 [Thread-22] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20007} closed
+2018-07-10 11:32:15,072 [Thread-22] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20011} closed
+2018-07-10 11:32:15,073 [Thread-22] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20008} closed
+2018-07-10 11:32:15,073 [Thread-22] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20009} closed
+2018-07-10 11:32:15,073 [Thread-22] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20010} closed
+2018-07-10 11:32:15,074 [Thread-22] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20014} closed
+2018-07-10 11:32:15,074 [Thread-22] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20015} closed
+2018-07-10 11:32:15,074 [Thread-22] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20016} closed
+2018-07-10 11:32:15,074 [Thread-22] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20017} closed
+2018-07-10 11:32:15,075 [Thread-22] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20018} closed
+2018-07-10 11:32:15,076 [Thread-22] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20019} closed
+2018-07-10 11:32:15,078 [Thread-22] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20006} closed
+2018-07-10 11:32:15,079 [Thread-22] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20000} closed
+2018-07-10 11:32:15,080 [Thread-22] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20001} closed
+2018-07-10 11:32:15,080 [Thread-22] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20002} closed
+2018-07-10 11:32:15,081 [Thread-22] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20003} closed
+2018-07-10 11:32:15,081 [Thread-22] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20004} closed
+2018-07-10 11:32:15,081 [Thread-22] DEBUG [druid.sql.Statement] - {conn-10001, pstmt-20005} closed
+2018-07-10 11:32:15,090 [Thread-22] DEBUG [druid.sql.Connection] - {conn-10001} closed
+2018-07-10 11:32:15,091 [Thread-22] INFO  [com.alibaba.druid.pool.DruidDataSource] - {dataSource-1} closed
+2018-07-10 15:17:18,537 [main] DEBUG [druid.sql.Connection] - {conn-10001} connected
+2018-07-10 15:17:18,538 [main] DEBUG [druid.sql.Connection] - {conn-10001} setAutoCommit false
+2018-07-10 15:17:18,599 [main] INFO  [com.alibaba.druid.pool.DruidDataSource] - {dataSource-1} inited
+2018-07-10 15:17:18,605 [main] DEBUG [druid.sql.Connection] - {conn-10001} pool-connect
+2018-07-10 15:17:18,605 [main] DEBUG [druid.sql.Connection] - {conn-10001} pool-recycle
+2018-07-10 15:17:19,112 [main] ERROR [com.alibaba.druid.pool.DruidDataSource] - invalid oracle validationQuery. SELECT 'x', may should be : SELECT 'x' FROM DUAL
+2018-07-10 15:17:19,138 [main] DEBUG [druid.sql.Connection] - {conn-110001} connected
+2018-07-10 15:17:19,138 [main] DEBUG [druid.sql.Connection] - {conn-110001} setAutoCommit false
+2018-07-10 15:17:19,142 [main] INFO  [com.alibaba.druid.pool.DruidDataSource] - {dataSource-2} inited
+2018-07-10 15:17:19,142 [main] DEBUG [druid.sql.Connection] - {conn-110001} pool-connect
+2018-07-10 15:17:19,143 [main] DEBUG [druid.sql.Connection] - {conn-110001} pool-recycle
+2018-07-10 15:17:21,533 [main] INFO  [org.hibernate.validator.internal.util.Version] - HV000001: Hibernate Validator 4.3.1.Final

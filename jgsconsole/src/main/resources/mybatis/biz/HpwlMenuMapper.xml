@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.jgsconsole.app.repository.biz.HpwlMenuDao">
+
+    <insert id="addMenu" parameterType="Map">
+    	insert into org_menu(
+    		MENU_ID,
+    	<if test="PARENT_ID != null and PARENT_ID != ''">
+    		PARENT_ID,
+    	</if>
+    		FLAG,
+    		TITLE,
+    		ORDER_SORT,
+    		LOCATION,
+    		CREATE_TIME,
+    		TREELEVEL,
+    		CREATOR,
+    		TABLE_ID,
+    		STATE
+    	) 
+    	values (
+    		#{MENU_ID},
+    	<if test="PARENT_ID != null and PARENT_ID != ''">
+    		#{PARENT_ID},
+    	</if>
+    		#{FLAG},
+    		#{TITLE},
+    		#{ORDER_SORT},
+    		#{LOCATION},
+    		to_char(sysdate,'yyyy-mm-dd hh24:mi:ss'),
+    		#{TREELEVEL},
+    		#{CREATOR},
+    		#{TABLE_ID},
+    		#{STATE}
+    	)
+	</insert>
+	
+    <update id="editMenu" parameterType="Map">
+		update org_menu set PARENT_ID=#{PARENT_ID},
+		TREELEVEL=#{TREELEVEL},
+		TITLE=#{TITLE},
+		TABLE_ID=#{TABLE_ID},
+		ORDER_SORT=#{ORDER_SORT},
+		LOCATION=#{LOCATION}
+		where MENU_ID=#{MENU_ID}
+	</update>
+	
+    <update id="enableMenu" parameterType="Map">
+		update org_menu set FLAG=#{enableFlag}
+		where MENU_ID in (
+			select MENU_ID from org_menu
+		start with menu_id = #{MENU_ID}
+		connect by prior menu_id =  parent_id
+		)
+	</update>
+	
+    <select id="execSql" resultType="Map" parameterType="Map">
+		select * from sys_menu where title like #{SEARCHVAL} and app_id=#{APPID} and opertype='1' and flag='0' and parent_id!=#{APPID}
+	</select>
+    
+	<select id="getTreelistAdmin" resultType="java.util.HashMap" parameterType="Map"> 
+        select * from ORG_MENU
+        WHERE flag='0'
+        <if test="ID != null and ID != ''">
+  			and parent_id=#{ID} 
+  		</if>
+  		<if test="ID == null or ID == ''">
+  			and parent_id is null
+  		</if>
+        order by TO_NUMBER(ORDER_SORT)
+    </select>
+    
+	<select id="selectForDelMenus" resultType="java.util.HashMap" parameterType="java.lang.String"> 
+       	select * from org_menu
+		start with menu_id = #{_parameter}
+		connect by prior menu_id =  parent_id
+    </select>
+    
+	<delete id="delMenu" parameterType="java.lang.String"> 
+	    delete from org_menu
+		where MENU_ID in (
+			select MENU_ID from org_menu
+		start with menu_id = #{_parameter}
+		connect by prior menu_id =  parent_id
+		)
+    </delete>
+    
+	<select id="getTreeDatalistAdmin" resultType="java.util.HashMap" parameterType="Map"> 
+        select * from ORG_MENU
+        <if test="ID != null and ID != ''">
+  			WHERE parent_id=#{ID} 
+  		</if>
+  		<if test="ID == null or ID == ''">
+  			WHERE parent_id is null
+  		</if>
+        order by TO_NUMBER(ORDER_SORT)
+    </select>
+    
+    <update id="updateSetMenuState" parameterType="Map">
+    	update ORG_MENU set
+    		STATE = 'closed'
+    	where
+    		MENU_ID = #{PARENT_ID}
+    </update>
+    
+    <update id="delSetParentState" parameterType="Map">
+    	update ORG_MENU set
+    		STATE = 'open'
+    	where
+    		MENU_ID = #{PARENT_ID}
+    </update>
+    
+</mapper> 

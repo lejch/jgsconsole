@@ -1,0 +1,297 @@
+﻿@charset "utf-8";
+
+a,a:focus{text-decoration:none;color:#000;outline:none;blr:expression(this.onFocus=this.blur());}
+.btn:focus,.btn:active:focus,.btn.active:focus,.btn.focus,.btn:active.focus,.btn.active.focus {outline: none;box-shadow:none;}
+/*top.html*/
+.header{height:30px;}
+.topleft{height:35px;
+		 postion:absolute;
+		 margin-left:-10px;
+		 transform:skew(30deg);
+	-webkit-transform: skew(30deg); 
+	-moz-transform: skew(30deg); 
+	-o-transform: skew(30deg); 
+	-moz-box-shadow:0px 2px 3px #DADDE0, 0px 3px 3px #333; 
+	-webkit-box-shadow:0px 2px 3px #DADDE0, 0px 3px 3px #333; 
+	box-shadow:0px 2px 3px #DADDE0, 0px 3px 3px #333;
+		 top:0px;width:191px;
+	background:#58aeec;
+	-webkit-box-sizing: none !important;
+    -moz-box-sizing: border-box !important;
+    box-sizing: border-box !important;}
+
+.topright{height:35px;
+		  background-color:#3f93b9;
+		  position:absolute;
+		  top:0px;
+		  right:0px;}
+.userInfoOpeaList{
+	height:25px;
+	line-height:25px;
+	padding:7px 0px;
+	cursor:pointer;
+}
+.userInfoOpeaList a{
+	color: #666;
+	font-size: 12px;
+	display:inline-block;
+	width:150px;
+	padding:0px 10px 0px 20px;
+}
+.userInfoOpeaList a:hover{
+	color:#fff;
+	background-color:#666;
+}
+.userInfoOpeaList a i{color:#666;}
+.userInfoOpeaList a:hover i{color:#fff;}
+.divider{
+	height:1px;
+	background-color: #e5e5e5;
+	border-bottom: 1px solid #fff;
+}
+
+.nav{display:block;margin:0;padding:0;list-style: none;
+	transform:skew(30deg);
+	-webkit-transform: skew(30deg); 
+	-moz-transform: skew(30deg); 
+	-o-transform: skew(30deg); 
+	  height:50px;
+	  background-color:#58aeec;
+	  position:absolute;
+	  left:180px;
+	  top:0px;
+	  }
+
+.nav li{display:block;
+	padding:0;
+	line-height:35px;
+	list-style: none;
+	float:left;
+	margin-left:2px;
+	height:35px; text-align:center;}
+.nav li a{display:block;
+		  height:35px;
+		  line-height:40px;
+		  padding:0px 25px 0px 25px !important;
+		  position:relative;}
+.nav li a i{color:#fff;
+			transform: skew(-30deg);
+-webkit-transform: skew(-30deg); 
+	-moz-transform: skew(-30deg); 
+	-o-transform: skew(-30deg); 
+            position:absolute;
+            font-size:13px;
+            top:10px;
+            left:12px;}
+.nav a span{
+	letter-spacing:2px;
+	font-size:14px;
+	transform: skew(-30deg);
+    -webkit-transform: skew(-30deg); 
+	-moz-transform: skew(-30deg); 
+	-o-transform: skew(-30deg); 
+	font-weight:bold;
+	color:#fff;
+	text-shadow: 2px 2px rgba(100, 100, 100, 0.1);
+	display:inline-block;height:28px;line-height:28px;}
+	
+.nav li a.selected{background:#e9f0f5;}
+.nav li a.selected span{color:#465a64;}
+.nav li a.selected i{color:#465a64;}
+
+.nav li a:hover{background:#e9f0f5;}
+.nav a:hover i{color:#465a64;}
+.nav a:hover span{color:#465a64;}
+
+.nav a div{display:block;height:0px;border:1px solid #58aeec;width:28px;
+	position:absolute;top:5px;left:29px;
+	transform: skew(-30deg);
+	-webkit-transform: skew(-30deg); 
+	-moz-transform: skew(-30deg); 
+	-o-transform: skew(-30deg); 
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0), 0 2px 2px rgba(0, 0, 0, 0.1);
+	visibility:hidden;
+}
+.nav a.selected div{visibility:visible;}
+.nav a div:hover{visibility:visible;}
+
+.user{height:35px;
+	  background-color:#39474f;
+	  white-space:nowrap;
+	  position:relative;
+	  cursor:pointer;
+	  }
+#userCPanel{
+	padding:0px 10px 0px 0px;
+	cursor:pointer;
+}
+#userCPanel:hover{
+	background-color:#27a9e3;
+	cursor:pointer;
+}
+.userCPanelClk{background-color:#27a9e3;}
+.user span{display:inline-block;
+		   padding-right:2px;
+		   background:url(../images/user.png) no-repeat 15px 11px;
+		   line-height:35px;
+		   font-size:12px;
+		   color:#fff;
+		   cursor:pointer;
+		   padding-left:35px;}
+.user b{display:inline-block;
+		width:15px;height:18px;
+		position:absolute;
+		right:0px;
+		top:2px;
+/* 		text-align:center; */
+		font-weight:normal;
+		cursor:pointer;
+		color:#fff;font-size:12px; line-height:18px;}
+#userCPanel i{color:#fff;
+cursor:pointer;
+}
+
+
+.lefttop{width:201px;background:url(../images/lefttop.gif) repeat-x;height:39px;color:#fff;font-size:14px;line-height:39px;border-bottom:1px solid #4397c7;border-left:1px solid #4397c7;border-right:1px solid #4397c7;z-index:999;}
+.lefttop span{margin-left:8px; margin-top:10px;margin-right:8px; background:url(../images/leftico.png) no-repeat; width:20px; height:21px;float:left;}
+
+input.labelauty + label { font: 12px "Microsoft Yahei";}
+input.labelauty + label ::selection { background-color: rgba(255, 255, 255, 0); }
+input.labelauty + label ::-moz-selection { background-color: rgba(255, 255, 255, 0); }
+
+/* Hide original checkboxes. They are ugly! */
+input.labelauty { display: none !important; }
+
+/*
+ * Let's style the input
+ * Feel free to work with it as you wish!
+ */
+input.labelauty + label
+{
+	display: table;
+	font-size: 11px;
+	padding: 10px;
+	background-color: #efefef;
+	color: #b3b3b3;
+	cursor: pointer;
+
+	border-radius: 3px 3px 3px 3px;
+	-moz-border-radius: 3px 3px 3px 3px;
+	-webkit-border-radius: 3px 3px 3px 3px;
+
+
+	transition: background-color 0.25s;
+	-moz-transition: background-color 0.25s;
+	-webkit-transition: background-color 0.25s;
+	-o-transition: background-color 0.25s;
+
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-o-user-select: none;
+}
+
+/* Stylish text inside label */
+
+input.labelauty + label > span.labelauty-unchecked
+{
+	color:black;
+	display: inline-block;
+	line-height: 16px;
+	vertical-align: bottom;
+}
+input.labelauty + label > span.labelauty-checked
+{
+	color:white;
+	display: inline-block;
+	line-height: 16px;
+	vertical-align: bottom;
+}
+/* Stylish icons inside label */
+
+input.labelauty + label > span.labelauty-unchecked-image,
+input.labelauty + label > span.labelauty-checked-image
+{
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	vertical-align: bottom;
+	background-repeat: no-repeat;
+	background-position: left center;
+
+	transition: background-image 0.5s linear;
+	-moz-transition: background-image 0.5s linear;
+	-webkit-transition: background-image 0.5s linear;
+	-o-transition: background-image 0.5s linear;
+}
+
+/* When there's a label, add a little margin to the left */
+input.labelauty + label > span.labelauty-unchecked-image + span.labelauty-unchecked,
+input.labelauty + label > span.labelauty-checked-image + span.labelauty-checked
+{
+	margin-left: 7px;
+}
+
+/* When not Checked */
+input.labelauty:not(:checked):not([disabled]) + label:hover
+{
+	background-color: #eaeaea;
+	color: #a7a7a7;
+}
+input.labelauty:not(:checked) + label > span.labelauty-checked-image
+{
+	display: none;
+}
+
+input.labelauty:not(:checked) + label > span.labelauty-checked
+{
+	display: none;
+}
+
+/* When Checked */
+input.labelauty:checked + label
+{
+	background-color: #3498db;
+	color: #ffffff;
+}
+
+input.labelauty:checked:not([disabled]) + label:hover
+{
+	background-color: #72c5fd;
+}
+input.labelauty:checked + label > span.labelauty-unchecked-image
+{
+	display: none;
+}
+
+input.labelauty:checked + label > span.labelauty-unchecked
+{
+	display: none;
+}
+
+input.labelauty:checked + label > span.labelauty-checked
+{
+	display: inline-block;
+}
+
+input.labelauty.no-label:checked + label > span.labelauty-checked
+{
+	display: block;
+}
+
+/* When Disabled */
+input.labelauty[disabled] + label
+{
+	opacity: 0.5;
+}
+
+/* Add a background to (un)checked images */
+input.labelauty + label > span.labelauty-unchecked-image
+{
+	background-image: url( ../images/input-unchecked.png );
+}
+
+input.labelauty + label > span.labelauty-checked-image
+{
+	background-image: url( ../images/input-checked.png );
+}

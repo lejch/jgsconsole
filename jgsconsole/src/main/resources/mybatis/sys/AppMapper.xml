@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.jgsconsole.app.repository.account.AppDao">
+	<select id="searchApp" resultType="java.util.HashMap" parameterType="Map">
+		select * from sys_app where (app_name like #{SEARCHVAL} or app_code like #{SEARCHVAL})
+	</select>
+	
+	<select id="getSearchCount" resultType="int" parameterType="Map" >
+	  	select count(1) from sys_app where (app_name like #{SEARCHVAL} or app_code like #{SEARCHVAL})
+	</select>
+	
+	<select id="findAppByParam" resultType="Map" parameterType="map">
+	    select * from sys_app
+	</select>
+
+	<select id="getCount" resultType="int" parameterType="Map" >
+	  	<![CDATA[
+	  		select count(*) from sys_app
+		]]>
+	</select>
+	
+	<update id="enableApp" parameterType="Map" >
+  		update sys_app 
+  		set FLAG=#{FLAG}
+  		where ID=#{ID}
+	</update>
+	
+	<select id="getSYS_MENU" resultType="java.util.HashMap" parameterType="java.lang.String">
+		select * from sys_menu where APP_ID=#{_parameter}
+	</select>
+	
+	<select id="getSYS_ROLE" resultType="java.util.HashMap" parameterType="java.lang.String">
+		select * from sys_role where APP_ID=#{_parameter}
+	</select>
+	
+	<select id="getSYS_USER" resultType="java.util.HashMap" parameterType="java.lang.String">
+		select * from sys_user where CREATER=#{_parameter}
+	</select>
+	
+	<!-- addApp start -->
+		<insert id="addApp" parameterType="Map" >
+	  		insert into sys_app(ID,
+	  							APP_CODE,
+	  							APP_NAME,
+	  							APP_KEY,
+	  							DESCRIPTION,
+	  							FLAG,
+	  							IP,
+	  							PORT,
+	  							ICONCLS) values 
+	  		(#{ID},#{APP_CODE},#{APP_NAME},#{APP_KEY},#{DESCRIPTION},#{FLAG},#{IP},#{PORT},#{iconCls})
+		</insert>
+		
+		<insert id="addAppToSYS_MENU" parameterType="Map" >
+	  		insert into sys_menu(
+		  		MENU_ID,
+		  		TITLE,
+		  		<if test="iconCls!=null and iconCls!=''">
+		  		ICONCLS,
+		  		</if>
+		  		DESCRIPTION,
+		  		ORDER_SORT,
+		  		OPERTYPE,
+		  		FLAG,
+		  		APP_ID,
+		  		STATE) values 
+		  		(#{APP_CODE},
+		  		 #{APP_NAME},
+		  		 <if test="iconCls!=null and iconCls!=''">
+		  		 #{iconCls},
+		  		 </if>
+		  		 #{DESCRIPTION},
+		  		 '1',
+		  		 '0',
+		  		 '0',
+		  		 #{APP_CODE},
+		  		 'open')
+		</insert>
+		
+		<insert id="addAppToSYS_ROLE" parameterType="Map" >
+	  		insert into sys_role(
+		  		ROLE_ID,
+		  		ROLE_NAME,
+		  		ROLE_DESCRIPTION,
+		  		ROLE_TYPE,
+		  		APP_ID,
+		  		STATE) values 
+		  		(#{APP_CODE},
+		  		 #{APP_NAME},
+		  		 #{DESCRIPTION},
+		  		 '3',
+		  		 #{APP_CODE},
+		  		 'open')
+		</insert>
+	<!-- addApp end -->
+	
+	<!-- editApp start -->
+		<update id="editApp" parameterType="Map" >
+	  		update sys_app 
+	  		set APP_CODE=#{APP_CODE},
+	  			ID=#{APP_CODE},
+	  			APP_NAME=#{APP_NAME},
+	  			APP_KEY=#{APP_KEY},
+	  			DESCRIPTION=#{DESCRIPTION},
+	  			FLAG=#{FLAG}, 
+	  			IP=#{IP}, 
+	  			PORT=#{PORT}
+	  			<if test="iconCls!=null and iconCls!=''">
+	  				,ICONCLS=#{iconCls}
+	  			</if>
+	  		where ID=#{ID}
+		</update>
+		
+		<update id="editAppToMenuRoot" parameterType="Map" >
+	  		update sys_menu
+	  		set MENU_ID=#{APP_CODE},
+	  			APP_ID=#{APP_CODE},
+	  			title=#{APP_NAME},
+	  			DESCRIPTION=#{DESCRIPTION}
+	  			<if test="iconCls!=null and iconCls!=''">
+	  				,ICONCLS=#{iconCls}
+	  			</if>
+	  		where MENU_ID=#{ID}
+		</update>
+		
+		<update id="editAppToOtherMenus" parameterType="Map" >
+	  		update sys_menu
+	  		set APP_ID=#{APP_CODE}
+	  		where APP_ID=#{ID}
+		</update>
+		
+		<update id="editAppToRoleRoot" parameterType="Map" >
+	  		update sys_role
+	  		set ROLE_ID=#{APP_CODE},
+	  			APP_ID=#{APP_CODE},
+	  			ROLE_NAME=#{APP_NAME},
+	  			ROLE_DESCRIPTION=#{DESCRIPTION}
+	  		where ROLE_ID=#{ID}
+		</update>
+		
+		<update id="editAppToOtherRoles" parameterType="Map" >
+	  		update sys_role
+	  		set APP_ID=#{APP_CODE}
+	  		where APP_ID=#{ID}
+		</update>
+		
+		<update id="editUserCreator" parameterType="Map" >
+	  		update sys_user
+	  		set CREATER=#{APP_CODE}
+	  		where CREATER=#{ID}
+		</update>
+	<!-- editApp end -->
+	
+	<!-- delApp start -->
+		<delete id="delApp" parameterType="java.lang.String">
+			delete from sys_app where ID=#{_parameter}
+		</delete>
+		
+		<delete id="delAppToSYS_MENU" parameterType="java.lang.String">
+			delete from sys_menu where APP_ID=#{_parameter}
+		</delete>
+		
+		<delete id="delsys_role_menu">
+			delete from sys_role_menu where MENU_ID in (
+			<foreach collection="rmlist" item="item" index="index" open="" close="" separator=",">
+				#{item.MENU_ID}
+			</foreach>
+			)
+		</delete>
+		<delete id="delsys_user_menu">
+			delete from sys_user_menu where MENU_ID in (
+			<foreach collection="rmlist" item="item" index="index" open="" close="" separator=",">
+				#{item.MENU_ID}
+			</foreach>
+			)
+		</delete>
+		<delete id="delsys_user_role">
+			delete from sys_user_role where ROLE_ID in (
+			<foreach collection="rmlist" item="item" index="index" open="" close="" separator=",">
+				#{item.ROLE_ID}
+			</foreach>
+			)
+		</delete>
+		<delete id="delsys_role_menu_roleid">
+			delete from sys_role_menu where ROLE_ID in (
+			<foreach collection="rmlist" item="item" index="index" open="" close="" separator=",">
+				#{item.ROLE_ID}
+			</foreach>
+			)
+		</delete>
+		<delete id="delsys_user_role_userid">
+			delete from sys_user_role where user_id in (
+			<foreach collection="rmlist" item="item" index="index" open="" close="" separator=",">
+				#{item.USER_ID}
+			</foreach>
+			)
+		</delete>
+		<delete id="delsys_user_menu_userid">
+			delete from sys_user_menu where user_id in (
+			<foreach collection="rmlist" item="item" index="index" open="" close="" separator=",">
+				#{item.USER_ID}
+			</foreach>
+			)
+		</delete>
+		
+		<delete id="delAppToSYS_ROLE" parameterType="java.lang.String">
+			delete from sys_role where APP_ID=#{_parameter}
+		</delete>
+		
+		<delete id="delAppCreatedUser" parameterType="java.lang.String">
+			delete from sys_user where CREATER=#{_parameter}
+		</delete>
+	<!-- delApp end -->
+</mapper> 

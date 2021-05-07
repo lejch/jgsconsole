@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.jgsconsole.app.repository.account.LogDao">
+
+	<!-- 更具参数分页查找用户 -->
+	<select id="listLog" resultType="java.util.HashMap" parameterType="map">
+	    select * from sys_log order by time desc
+	</select>
+	
+	<select id="getCount" resultType="int" parameterType="Map" >
+	  	<![CDATA[
+	  		select count(1) from sys_log
+		]]>
+	</select>
+	
+	<insert id="insertLog" parameterType="Map">
+    	insert into sys_log(
+    		ID,
+    		IP,
+    		OPEARTER,
+    		LOG_TYPE,
+    		TIME,
+    		DESCRIBE,
+    		OPEATE_DETAIL,
+    		USER_ID
+    	) 
+    	values (
+    		#{ID},
+    		#{IP},
+    		#{OPEARTER},
+    		#{LOG_TYPE},
+    		#{TIME},
+    		#{DESCRIBE},
+    		#{OPEATE_DETAIL},
+    		#{USER_ID}
+    	)
+	</insert>
+	
+	<select id="hasAddResult" resultType="java.util.HashMap">
+		select result,a.app_name,title from (
+		<foreach collection="rmlist" item="item" index="index" open="" close="" separator="union all">
+			select #{item.FLAG} result,app_id,title from sys_menu where menu_id=#{item.RESULT}
+		</foreach>
+		) t left join sys_app a on t.app_id=a.id
+	</select>
+</mapper> 

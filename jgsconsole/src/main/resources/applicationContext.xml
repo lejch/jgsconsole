@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:jdbc="http://www.springframework.org/schema/jdbc"  
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+		http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd"
+	default-lazy-init="true">
+
+	<description>Spring公共配置 </description>
+    <context:property-placeholder ignore-unresolvable="true"
+                                  location="classpath*:/application.properties" />
+
+
+
+
+    <!-- 使用annotation 自动注册bean, 并保证@Required、@Autowired的属性被注入 -->
+	<context:component-scan base-package="com.jgsconsole">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	
+	<!-- 使用annotation定义事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+	
+	<!-- 事务配置 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="t_biz" proxy-target-class="true" />
+    <bean id="t_biz" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="bizDataSource"/>
+	</bean>
+	
+	<!-- 文件上传 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">	
+		<property name="maxUploadSize">
+			<value>104857600</value>
+		</property>
+		<property name="maxInMemorySize">
+			<value>4096</value>
+		</property>	
+	</bean>
+	
+	
+	
+	<!-- myBatis分页插件 -->
+	<bean id="paginationInterceptor" class="com.jgsconsole.common.mybatis.interceptor.PaginationInterceptor"></bean>
+    <!-- MyBatis配置 系统数据源 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->
+		<property name="typeAliasesPackage" value="com.jgsconsole.app.entity" />
+		<!-- 显式指定Mapper文件位置 -->
+		<property name="mapperLocations" value="classpath:/mybatis/sys/*Mapper.xml" />
+		
+		<!-- 分页插件配置 -->
+		<property name="plugins">
+	        <array>
+	            <ref bean="paginationInterceptor"/>
+	        </array>
+    	</property>
+    	<!-- mybatis配置文件 （用来配置数据库方言） -->
+    	<property name="configLocation" value="classpath:/mybatis/mybatis.cfg.xml"/>
+	</bean>
+	<!-- MyBatis配置 业务数据源 -->
+	<bean id="bizSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="bizDataSource" />
+		<!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->
+		<property name="typeAliasesPackage" value="com.jgsconsole.app.entity" />
+		<!-- 显式指定Mapper文件位置 -->
+		<property name="mapperLocations" value="classpath:/mybatis/biz/*Mapper.xml" />
+		<!--<property name="mapperLocations">-->
+			<!--<list>-->
+				<!--<value>classpath:/mybatis/biz/*Mapper.xml</value>-->
+			<!--</list>-->
+		<!--</property>-->
+		<!-- 分页插件配置 -->
+		<property name="plugins">
+	        <array>
+	            <ref bean="paginationInterceptor"/>
+	        </array>
+    	</property>
+    	<!-- mybatis配置文件 （用来配置数据库方言） -->
+    	<property name="configLocation" value="classpath:/mybatis/mybatis.cfg.xml"/>
+	</bean>
+	<!-- 扫描basePackage下所有以@MyBatisRepository标识的 接口-->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.jgsconsole.app" />
+		<property name="annotationClass" value="com.jgsconsole.app.repository.MyBatisRepository"/>
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+	</bean>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.jgsconsole.app" />
+		<property name="annotationClass" value="com.jgsconsole.app.repository.BizRepository"/>
+		<property name="sqlSessionFactoryBeanName" value="bizSqlSessionFactory"/>
+	</bean>
+   
+	<!-- JSR303 Validator定义 -->
+ 	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+	<!-- production环境 -->
+ 	<beans profile="production">
+
+		<!-- 系统数据源配置 -->
+		<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
+			<!-- Connection Info -->
+			<property name="driverClassName" value="${jdbc.driver}" />
+			<property name="url" value="${jdbc.url}" />
+			<property name="username" value="${jdbc.username}" />
+			<property name="password" value="${jdbc.password}" />
+			<property name="defaultAutoCommit" value="false" />
+		
+			<!-- 配置初始化大小、最小、最大 -->
+	      <property name="initialSize" value="1" />
+	      <property name="minIdle" value="1" /> 
+	      <property name="maxActive" value="50" />
+	
+	      <!-- 配置获取连接等待超时的时间 -->
+	      <property name="maxWait" value="60000" />
+	
+	      <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+	      <property name="timeBetweenEvictionRunsMillis" value="60000" />
+	
+	      <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+	      <property name="minEvictableIdleTimeMillis" value="300000" />
+	
+	      <property name="validationQuery" value="SELECT 'x' FROM DUAL" />
+	      <property name="testWhileIdle" value="true" />
+	      <property name="testOnBorrow" value="false" />
+	      <property name="testOnReturn" value="false" />
+	
+	      <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+	      <property name="poolPreparedStatements" value="true" />
+	      <property name="maxPoolPreparedStatementPerConnectionSize" value="100" />
+	
+	      <!-- 配置监控统计拦截的filters -->
+	      <property name="filters" value="log4j" />
+		</bean>
+		<!-- 业务数据源配置 -->
+		<bean id="bizDataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
+			<!-- Connection Info -->
+			<property name="driverClassName" value="${biz.driver}" />
+			<property name="url" value="${biz.url}" />
+			<property name="username" value="${biz.username}" />
+			<property name="password" value="${biz.password}" />
+			<property name="defaultAutoCommit" value="false" />
+		
+			<!-- 配置初始化大小、最小、最大 -->
+	      <property name="initialSize" value="1" />
+	      <property name="minIdle" value="1" /> 
+	      <property name="maxActive" value="50" />
+	
+	      <!-- 配置获取连接等待超时的时间 -->
+	      <property name="maxWait" value="60000" />
+	
+	      <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+	      <property name="timeBetweenEvictionRunsMillis" value="60000" />
+	
+	      <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+	      <property name="minEvictableIdleTimeMillis" value="300000" />
+	
+	      <property name="validationQuery" value="SELECT 'x'" />
+	      <property name="testWhileIdle" value="true" />
+	      <property name="testOnBorrow" value="false" />
+	      <property name="testOnReturn" value="false" />
+	
+	      <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+	      <property name="poolPreparedStatements" value="true" />
+	      <property name="maxPoolPreparedStatementPerConnectionSize" value="100" />
+	
+	      <!-- 配置监控统计拦截的filters -->
+	      <property name="filters" value="log4j" />
+		</bean>
+		
+		<!-- 用于持有ApplicationContext,可以使用SpringContextHolder.getBean('xxxx')的静态方法得到spring bean对象 -->  
+		<bean class="com.jgsconsole.common.util.SpringContextHolder" lazy-init="false" /> 
+	</beans>
+
+
+</beans>

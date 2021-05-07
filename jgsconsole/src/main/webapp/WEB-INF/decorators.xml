@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/WEB-INF/layouts/">
+	<excludes>
+		<pattern>/static/*</pattern>
+        <pattern>/login</pattern>
+        <pattern>/welcome</pattern>
+        <pattern>/apply/*</pattern>
+		<!-- 不需要被装饰的页面，请在URL上加参数sitemesh=false -->
+		<pattern>/*sitemesh=false*</pattern>
+	</excludes>
+	
+	<decorator name="default" page="layout.jsp">
+		<pattern>/*</pattern>
+	</decorator>
+</decorators>
